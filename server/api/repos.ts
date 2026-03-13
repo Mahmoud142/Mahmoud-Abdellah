@@ -1,5 +1,5 @@
-import { fetchRepos } from "./_lib/repos";
-import { applyCors, handleOptions, sendJson } from "./_lib/http";
+import { fetchRepos } from "./_lib/repos.js";
+import { applyCors, handleOptions, sendJson } from "./_lib/http.js";
 
 type RequestLike = { method?: string };
 

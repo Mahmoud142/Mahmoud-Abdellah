@@ -1,4 +1,4 @@
-import { applyCors, handleOptions, sendJson } from "./_lib/http";
+import { applyCors, handleOptions, sendJson } from "./_lib/http.js";
 
 type RequestLike = { method?: string };
 

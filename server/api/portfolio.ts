@@ -1,5 +1,5 @@
-import { portfolioData } from "../src/data/portfolio";
-import { applyCors, handleOptions, sendJson } from "./_lib/http";
+import { portfolioData } from "../src/data/portfolio.js";
+import { applyCors, handleOptions, sendJson } from "./_lib/http.js";
 
 type RequestLike = { method?: string };
 

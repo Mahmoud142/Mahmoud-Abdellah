@@ -1,6 +1,6 @@
 /// <reference types="node" />
 
-import { portfolioData } from "../../src/data/portfolio";
+import { portfolioData } from "../../src/data/portfolio.js";
 
 function getFallbackRepos() {
     return portfolioData.projects
