@@ -1,0 +1,97 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    background: rgba(18, 20, 48, 0.84);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 8px 32px rgba(2, 6, 23, 0.3);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 2.2rem;
+}
+
+.navbar-avatar {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    object-fit: cover;
+    opacity: 0;
+    transform: translateY(-6px) scale(0.92);
+    transition: opacity 220ms ease, transform 220ms ease;
+    pointer-events: none;
+}
+
+.navbar-avatar.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.navbar-avatar.is-hidden {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.92);
+}
+
+.navbar-brand-text {
+    display: grid;
+    gap: 0.08rem;
+}
+
+.navbar-name {
+    font-weight: 700;
+    font-size: 0.94rem;
+    background: linear-gradient(135deg, #ff7b54, #ff4d8d, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-brand-text small {
+    color: rgba(255, 245, 240, 0.55);
+    font-size: 0.72rem;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-links a {
+    color: rgba(255, 245, 240, 0.68);
+    text-decoration: none;
+    font-size: 0.87rem;
+    border-radius: 999px;
+    padding: 0.28rem 0.62rem;
+    border: 1px solid transparent;
+    transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.navbar-links a:hover {
+    color: #94e8ff;
+}
+
+.navbar-links a.is-active {
+    color: #e7fbff;
+    border-color: rgba(126, 240, 197, 0.62);
+    background: rgba(126, 240, 197, 0.2);
+    box-shadow: 0 0 0 1px rgba(126, 240, 197, 0.28) inset,
+        0 0 16px rgba(126, 240, 197, 0.2);
+}

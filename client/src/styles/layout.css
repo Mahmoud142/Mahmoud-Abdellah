@@ -1,0 +1,71 @@
+.shell {
+    position: relative;
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 1.4rem 0 3rem;
+    display: grid;
+    gap: 1.15rem;
+}
+
+.status-shell {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.panel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    background: rgba(18, 20, 48, 0.68);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 24px 80px rgba(2, 6, 23, 0.34);
+    padding: 1.3rem;
+}
+
+.panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 38%);
+    pointer-events: none;
+}
+
+.panel h2,
+.panel h3 {
+    margin: 0;
+}
+
+.panel h2 {
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    margin-bottom: 0.85rem;
+}
+
+.panel p {
+    margin: 0;
+    color: rgba(247, 241, 232, 0.82);
+}
+
+.eyebrow {
+    margin: 0 0 0.55rem;
+    color: #ffd166;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+}
+
+.content-grid,
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.about-stack-layout {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.nav-section {
+    scroll-margin-top: 5.4rem;
+}
