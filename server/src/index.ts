@@ -30,7 +30,9 @@ function getFallbackRepos() {
 
 app.use(cors());
 app.use(express.json());
-
+app.get('/', (_request, response) => {
+    response.send('Hello from the Portfolio API!');
+});
 app.get("/api/health", (_request, response) => {
     response.json({ status: "ok" });
 });
