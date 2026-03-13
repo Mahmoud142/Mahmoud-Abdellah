@@ -1,4 +1,4 @@
-import { applyCors, handleOptions } from "./_lib/http";
+import { applyCors, handleOptions, sendJson } from "./_lib/http";
 
 type RequestLike = { method?: string };
 
@@ -9,5 +9,5 @@ export default async function handler(request: RequestLike, response: any) {
         return;
     }
 
-    response.status(200).json({ status: "ok" });
+    sendJson(response, 200, { status: "ok" });
 }

@@ -11,16 +11,32 @@ export function applyCors(response: {
     );
 }
 
+export function sendJson(
+    response: {
+        setHeader: (name: string, value: string) => void;
+        statusCode: number;
+        end: (body?: string) => void;
+    },
+    statusCode: number,
+    payload: unknown,
+) {
+    response.statusCode = statusCode;
+    response.setHeader("Content-Type", "application/json; charset=utf-8");
+    response.end(JSON.stringify(payload));
+}
+
 export function handleOptions(
     method: string | undefined,
     response: {
-        status: (code: number) => { end: () => void };
+        statusCode: number;
+        end: () => void;
     },
 ): boolean {
     if (method !== "OPTIONS") {
         return false;
     }
 
-    response.status(204).end();
+    response.statusCode = 204;
+    response.end();
     return true;
 }
