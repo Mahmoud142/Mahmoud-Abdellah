@@ -95,3 +95,24 @@
     box-shadow: 0 0 0 1px rgba(126, 240, 197, 0.28) inset,
         0 0 16px rgba(126, 240, 197, 0.2);
 }
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    background: var(--color-bg-surface);
+    box-shadow: 0 0 10px var(--color-accent-glow);
+}
