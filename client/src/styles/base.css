@@ -3,12 +3,8 @@
     font-family: 'Space Grotesk', sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    color: #fff5f0;
-    background:
-        radial-gradient(circle at top left, rgba(255, 120, 90, 0.34), transparent 24%),
-        radial-gradient(circle at top right, rgba(255, 206, 86, 0.22), transparent 22%),
-        radial-gradient(circle at bottom left, rgba(87, 117, 255, 0.26), transparent 24%),
-        linear-gradient(145deg, #180c2e 0%, #1f123d 34%, #0c1636 68%, #081018 100%);
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
