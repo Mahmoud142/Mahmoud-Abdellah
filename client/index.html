@@ -12,6 +12,16 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
         rel="stylesheet" />
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
 </head>
 
