@@ -14,6 +14,8 @@ import {
     FaInstagram,
     FaLinkedin,
     FaLock,
+    FaMoon,
+    FaSun,
     FaRegClock,
     FaRegCircleDot,
     FaServer,
@@ -150,6 +152,29 @@ function App() {
     const [reposError, setReposError] = useState<string | null>(null);
     const [showNavAvatar, setShowNavAvatar] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
+
+    // Theme toggle state logic
+    const [theme, setTheme] = useState<"dark" | "light">("dark");
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("portfolio-theme") as
+            | "dark"
+            | "light"
+            | null;
+        if (savedTheme) {
+            setTheme(savedTheme);
+            document.documentElement.setAttribute("data-theme", savedTheme);
+        } else {
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = theme === "dark" ? "light" : "dark";
+        setTheme(newTheme);
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("portfolio-theme", newTheme);
+    };
+
     const [activeSection, setActiveSection] = useState<NavSectionId>("home");
     const avatarShowScrollY = 560;
     const avatarHideScrollY = 500;
@@ -417,7 +442,15 @@ function App() {
                         >
                             {link.label}
                         </a>
-                    ))}
+                    ))}{" "}
+                    <button
+                        className="theme-toggle"
+                        onClick={toggleTheme}
+                        aria-label="Toggle Theme"
+                        title="Toggle Theme"
+                    >
+                        {theme === "dark" ? <FaSun /> : <FaMoon />}
+                    </button>{" "}
                 </div>
             </nav>
 
@@ -629,7 +662,14 @@ function App() {
                 </section>
 
                 <footer className="site-footer">
-                    <p>© 2026 · Made by Mahmoud Abdellah</p>
+                    <div className="terminal-signature">
+                        <span className="prompt-symbol">&gt;</span>
+                        <span className="command-text">
+                            Built by Mahmoud Abdellah
+                        </span>
+                        <span className="comment-text">/* &copy; 2026 */</span>
+                        <span className="cursor-blink">_</span>
+                    </div>
                 </footer>
 
                 <button
