@@ -115,6 +115,17 @@ export const portfolioData: PortfolioData = {
             ],
         },
         {
+            title: "Frontend Development",
+            items: [
+                "React",
+                "Redux Toolkit",
+                "JavaScript (ES6+)",
+                "TypeScript",
+                "HTML",
+                "CSS",
+            ],
+        },
+        {
             title: "Databases & ORMs",
             items: [
                 "MongoDB",
@@ -124,17 +135,6 @@ export const portfolioData: PortfolioData = {
                 "SQL",
                 "Prisma ORM",
                 "Redis",
-            ],
-        },
-        {
-            title: "Frontend Development",
-            items: [
-                "React",
-                "Redux Toolkit",
-                "JavaScript (ES6+)",
-                "TypeScript",
-                "HTML",
-                "CSS",
             ],
         },
         {
