@@ -55,6 +55,7 @@ import { TbApi } from "react-icons/tb";
 import type { GitHubRepo } from "./types";
 import { portfolioData } from "./data/portfolio";
 import { getGitHubRepos } from "./data/github";
+import { useScrollReveal } from "./hooks/useScrollReveal";
 
 const NAV_LINKS = [
     { id: "home", label: "Home" },
@@ -145,6 +146,7 @@ function formatRepoDate(updatedAt: string): string {
 }
 
 function App() {
+    useScrollReveal();
     const [repos, setRepos] = useState<GitHubRepo[]>([]);
     const [reposError, setReposError] = useState<string | null>(null);
     const [showScrollTop, setShowScrollTop] = useState(false);
@@ -433,14 +435,14 @@ function App() {
 
                 <section className="hero panel nav-section" id="home">
                     <div className="hero-copy">
-                        <p className="eyebrow">{portfolioData.location}</p>
-                        <h1>
+                        <p className="eyebrow hero-animate">{portfolioData.location}</p>
+                        <h1 className="hero-animate hero-delay-1">
                             {portfolioData.name}
                             <span>{portfolioData.role}</span>
                         </h1>
-                        <p className="hero-intro">{portfolioData.intro}</p>
-                        <p className="hero-blurb">{portfolioData.heroBlurb}</p>
-                        <div className="hero-actions">
+                        <p className="hero-intro hero-animate hero-delay-2">{portfolioData.intro}</p>
+                        <p className="hero-blurb hero-animate hero-delay-2">{portfolioData.heroBlurb}</p>
+                        <div className="hero-actions hero-animate hero-delay-3">
                             <a
                                 href="#about"
                                 className="primary-link action-projects"
@@ -448,7 +450,7 @@ function App() {
                                 Who am I?
                             </a>
                         </div>
-                        <div className="hero-social-icons">
+                        <div className="hero-social-icons hero-animate hero-delay-3">
                             {portfolioData.contactLinks.map((link) => (
                                 <a
                                     href={link.href}
@@ -466,7 +468,7 @@ function App() {
                     </div>
 
                     <div className="hero-side">
-                        <section className="panel inset-panel hero-image-card">
+                        <section className="panel inset-panel hero-image-card hero-animate hero-delay-2">
                             <img
                                 src="/images/profile.jpg"
                                 alt="Mahmoud profile"
@@ -482,7 +484,7 @@ function App() {
                         <h2>Who I am and how I build</h2>
                         <div className="about-text">
                             {portfolioData.focusAreas.map((area) => (
-                                <p className="about-paragraph" key={area}>
+                                <p className="about-paragraph reveal" key={area}>
                                     {area}
                                 </p>
                             ))}
@@ -503,7 +505,7 @@ function App() {
                         <div className="skill-groups">
                             {portfolioData.skillGroups.map((group) => (
                                 <article
-                                    className="skill-group"
+                                    className="skill-group reveal"
                                     key={group.title}
                                 >
                                     <h3>{group.title}</h3>
@@ -537,7 +539,7 @@ function App() {
                     <div className="projects-grid">
                         {portfolioData.projects.map((project) => (
                             <article
-                                className="project-card"
+                                className="project-card reveal"
                                 key={project.title}
                             >
                                 <h3>{project.title}</h3>
@@ -576,7 +578,7 @@ function App() {
                     ) : (
                         <div className="repos-grid">
                             {repos.map((repo) => (
-                                <article className="repo-card" key={repo.id}>
+                                <article className="repo-card reveal" key={repo.id}>
                                     <h3>{repo.name}</h3>
                                     <p>{repo.description}</p>
                                     <div className="repo-meta">
@@ -622,7 +624,7 @@ function App() {
                                 key={link.label}
                                 target="_blank"
                                 rel="noreferrer"
-                                className={`contact-card ${getContactClass(link.label)}`}
+                                className={`contact-card reveal ${getContactClass(link.label)}`}
                             >
                                 <span className="contact-icon">
                                     {getContactIcon(link.label)}
