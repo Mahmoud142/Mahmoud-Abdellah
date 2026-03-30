@@ -1,0 +1,118 @@
+.contact-strip {
+    display: grid;
+    gap: 0.45rem;
+    text-align: center;
+}
+
+.contact-strip h2 {
+    margin-bottom: 0.25rem;
+}
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.58rem 0.78rem;
+    min-height: 2.8rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #f7f1e8;
+    background: rgba(255, 255, 255, 0.04);
+    text-decoration: none;
+    transition: transform 170ms ease, border-color 190ms ease,
+        background 190ms ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-1px);
+}
+
+.contact-icon {
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #5d8cff, #68d0ff);
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.contact-icon svg {
+    width: 0.95rem;
+    height: 0.95rem;
+    display: block;
+}
+
+.contact-card.contact-github {
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.contact-card.contact-github .contact-icon {
+    background: linear-gradient(135deg, #2e3035, #111216);
+}
+
+.contact-card.contact-linkedin {
+    border-color: rgba(10, 102, 194, 0.45);
+    background: rgba(10, 102, 194, 0.12);
+}
+
+.contact-card.contact-linkedin .contact-icon {
+    background: linear-gradient(135deg, #0a66c2, #3289de);
+}
+
+.contact-card.contact-facebook {
+    border-color: rgba(24, 119, 242, 0.42);
+    background: rgba(24, 119, 242, 0.12);
+}
+
+.contact-card.contact-facebook .contact-icon {
+    background: linear-gradient(135deg, #1877f2, #5798ff);
+}
+
+.contact-card.contact-instagram {
+    border-color: rgba(245, 96, 64, 0.42);
+    background: rgba(245, 96, 64, 0.12);
+}
+
+.contact-card.contact-instagram .contact-icon {
+    background: linear-gradient(135deg, #f58529, #dd2a7b 56%, #8134af);
+}
+
+.contact-card.contact-whatsapp {
+    border-color: rgba(37, 211, 102, 0.42);
+    background: rgba(37, 211, 102, 0.11);
+}
+
+.contact-card.contact-whatsapp .contact-icon {
+    background: linear-gradient(135deg, #25d366, #18a755);
+}
+
+.contact-card.contact-x {
+    border-color: rgba(180, 195, 215, 0.35);
+    background: rgba(180, 195, 215, 0.1);
+}
+
+.contact-card.contact-x .contact-icon {
+    background: linear-gradient(135deg, #1b1d22, #0b0d10);
+}
+
+.contact-card.contact-email {
+    border-color: rgba(244, 114, 182, 0.4);
+    background: rgba(244, 114, 182, 0.12);
+}
+
+.contact-card.contact-email .contact-icon {
+    background: linear-gradient(135deg, #ec4899, #f97316);
+}
