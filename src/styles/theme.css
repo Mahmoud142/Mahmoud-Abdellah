@@ -19,18 +19,17 @@
 }
 
 [data-theme="light"] {
-  /* ☀️ Calm Light Mode — Extra Calm variant */
-  --color-bg-primary: #F0F2F5;    /* Very soft, slightly warmer neutral gray */
-  /* Make cards a solid, extremely soft off-white/beige tone instead of glaring translucent white */
-  --color-bg-surface: #F8F9FA; 
-  --color-bg-surface-hover: #FFFFFF;
-  --color-border: rgba(0, 0, 0, 0.08);
+  /* ☀️ Calm Light Mode — Modern Paper/Tailwind */
+  --color-bg-primary: #F9FAFB;
+  --color-bg-surface: #FFFFFF; 
+  --color-bg-surface-hover: #F3F4F6;
+  --color-border: #E5E7EB;
   
-  --color-accent: #0284C7;
-  --color-accent-glow: rgba(2, 132, 199, 0.15);
+  --color-accent: #4F46E5;
+  --color-accent-glow: rgba(79, 70, 229, 0.15);
   
-  --color-text-primary: #334155;  /* Calmer dark slate */
-  --color-text-secondary: #64748B; /* Calmer medium slate */
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
   
   --color-success: #059669;
   --color-error: #DC2626;
@@ -104,6 +103,14 @@ html, body {
     color: var(--color-text-primary) !important;
 }
 
+[data-theme="light"] .hero-copy h1 span {
+    color: var(--color-accent) !important;
+}
+
+[data-theme="light"] .navbar-brand-text small {
+    color: var(--color-text-secondary) !important;
+}
+
 [data-theme="light"] .skill-tag,
 [data-theme="light"] .tech-tag,
 [data-theme="light"] .project-tag {
@@ -113,7 +120,7 @@ html, body {
 }
 
 [data-theme="light"] .navbar {
-    background: rgba(248, 249, 250, 0.85) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
     border-bottom: 1px solid var(--color-border) !important;
     backdrop-filter: blur(12px) !important;
 }
@@ -179,11 +186,11 @@ html, body {
 }
 
 [data-theme="light"] ::-webkit-scrollbar-track {
-    background: #F0F2F5 !important;
+    background: var(--color-bg-primary) !important;
 }
 [data-theme="light"] ::-webkit-scrollbar-thumb {
     background: #CBD5E1 !important;
-    border: 2px solid #F0F2F5 !important;
+    border: 2px solid var(--color-bg-primary) !important;
 }
 [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
     background: var(--color-accent) !important;
