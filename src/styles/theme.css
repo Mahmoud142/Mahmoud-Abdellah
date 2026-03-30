@@ -267,6 +267,15 @@ html, body {
     border-color: var(--color-accent) !important;
 }
 
+[data-theme="light"] .contact-card.contact-github {
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="light"] .contact-card.contact-github .contact-icon {
+    background: linear-gradient(135deg, #111827, #374151) !important;
+}
+
 /* === Interactive Hover Effects for Cards === */
 
 /* Add smooth transition bases */
