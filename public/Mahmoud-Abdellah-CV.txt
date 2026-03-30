@@ -1,0 +1,11 @@
+Mahmoud Abdellah - CV Placeholder
+
+This is a placeholder CV file.
+Replace this file with your real CV PDF later and keep the same filename:
+Mahmoud-Abdellah-CV.txt (or update links to .pdf).
+
+Name: Mahmoud Abdellah
+Role: Software Engineer
+Location: Ismailia, Egypt
+GitHub: https://github.com/Mahmoud142
+LinkedIn: https://www.linkedin.com/in/mahmoud-3bdellah
