@@ -1,0 +1,290 @@
+:root, [data-theme="dark"] {
+  /* 🌑 Dark Mode — Unified Programmer Palette */
+  --color-bg-primary: #0A0A0F;
+  /* Make the surface glassy like the hero card */
+  --color-bg-surface: linear-gradient(150deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)); 
+  --color-bg-surface-hover: rgba(255, 255, 255, 0.12); 
+  --color-border: rgba(255, 255, 255, 0.12);
+  
+  --color-accent: #00E5FF;
+  --color-accent-glow: rgba(0, 229, 255, 0.2);
+  
+  --color-text-primary: #F0F0F5;
+  --color-text-secondary: #8A8A9E;
+  
+  --color-success: #4ADE80;
+  --color-error: #F87171;
+  
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  /* ☀️ Calm Light Mode — Extra Calm variant */
+  --color-bg-primary: #F0F2F5;    /* Very soft, slightly warmer neutral gray */
+  /* Make cards a solid, extremely soft off-white/beige tone instead of glaring translucent white */
+  --color-bg-surface: #F8F9FA; 
+  --color-bg-surface-hover: #FFFFFF;
+  --color-border: rgba(0, 0, 0, 0.08);
+  
+  --color-accent: #0284C7;
+  --color-accent-glow: rgba(2, 132, 199, 0.15);
+  
+  --color-text-primary: #334155;  /* Calmer dark slate */
+  --color-text-secondary: #64748B; /* Calmer medium slate */
+  
+  --color-success: #059669;
+  --color-error: #DC2626;
+  
+  color-scheme: light;
+}
+
+html, body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="light"] {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Make all panels match the Hero card vibe & use variables */
+.panel, 
+.hero, 
+.card, 
+.project-card, 
+.timeline-node, 
+.hero-stats {
+    background: var(--color-bg-surface) !important;
+    border-color: var(--color-border) !important;
+}
+
+/* Light mode specific softening - much less shadow and no glare blur */
+[data-theme="light"] .panel,
+[data-theme="light"] .hero,
+[data-theme="light"] .card, 
+[data-theme="light"] .project-card, 
+[data-theme="light"] .timeline-node,
+[data-theme="light"] .hero-stats {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+    backdrop-filter: none !important; /* Removed blur since background is solid soft off-white */
+}
+
+/* Dark mode panel inner flare */
+.panel::after {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 38%) !important;
+}
+/* Completely remove the glaring bright inner flare in light mode */
+[data-theme="light"] .panel::after {
+    background: none !important;
+}
+
+/* Override text colors globally for light mode */
+[data-theme="light"] .about-paragraph,
+[data-theme="light"] p,
+[data-theme="light"] .role,
+[data-theme="light"] .stat-label,
+[data-theme="light"] .nav-link,
+[data-theme="light"] .footer-text,
+[data-theme="light"] .timeline-date,
+[data-theme="light"] .hero-intro,
+[data-theme="light"] .hero-blurb {
+    color: var(--color-text-secondary) !important;
+}
+
+[data-theme="light"] h1, 
+[data-theme="light"] h2, 
+[data-theme="light"] h3, 
+[data-theme="light"] h4, 
+[data-theme="light"] .navbar-name,
+[data-theme="light"] .stat-value,
+[data-theme="light"] strong,
+[data-theme="light"] .project-title,
+[data-theme="light"] .timeline-title,
+[data-theme="light"] a {
+    color: var(--color-text-primary) !important;
+}
+
+[data-theme="light"] .skill-tag,
+[data-theme="light"] .tech-tag,
+[data-theme="light"] .project-tag {
+    background: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
+    border-color: var(--color-border) !important;
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(248, 249, 250, 0.85) !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+[data-theme="light"] .mobile-drawer {
+    background: var(--color-bg-primary) !important;
+    border-left-color: var(--color-border) !important;
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .mobile-drawer-links a {
+    color: var(--color-text-secondary) !important;
+}
+
+[data-theme="light"] .mobile-drawer-links a:hover {
+    color: var(--color-text-primary) !important;
+    background: rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .mobile-drawer-links a.is-active {
+    color: var(--color-accent) !important;
+    border-color: var(--color-accent) !important;
+    background: var(--color-accent-glow) !important;
+}
+
+[data-theme="light"] .mobile-drawer-backdrop {
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="light"] .mobile-menu-toggle {
+    color: var(--color-text-secondary) !important;
+    border-color: var(--color-border) !important;
+}
+
+[data-theme="light"] .mobile-menu-toggle:hover {
+    color: var(--color-accent) !important;
+    border-color: var(--color-accent) !important;
+}
+
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-link.is-active {
+    color: var(--color-accent) !important;
+    background: var(--color-accent-glow) !important;
+}
+
+[data-theme="light"] .hero-cv-btn,
+[data-theme="light"] .project-link,
+[data-theme="light"] .social-link {
+    color: var(--color-text-secondary) !important;
+    border-color: var(--color-border) !important;
+}
+[data-theme="light"] .hero-cv-btn:hover,
+[data-theme="light"] .project-link:hover,
+[data-theme="light"] .social-link:hover {
+    color: var(--color-accent) !important;
+    background: var(--color-bg-surface-hover) !important;
+    border-color: var(--color-accent) !important;
+}
+
+[data-theme="light"] .background-orb {
+    background: var(--color-accent) !important;
+    opacity: 0.04 !important;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+    background: #F0F2F5 !important;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: #CBD5E1 !important;
+    border: 2px solid #F0F2F5 !important;
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent) !important;
+}
+
+/* Gradient block elements to clean flat color */
+[data-theme="light"] .status-card,
+[data-theme="light"] .hero-copy {
+    background: transparent !important;
+}
+
+[data-theme="light"] .eyebrow {
+    color: var(--color-accent) !important;
+    font-weight: 600;
+}
+
+[data-theme="light"] .timeline-node::before {
+    background: var(--color-accent) !important;
+    box-shadow: 0 0 0 4px var(--color-accent-glow) !important;
+}
+
+[data-theme="light"] .gradient-text {
+    background: var(--color-accent) !important;
+    -webkit-text-fill-color: var(--color-accent) !important;
+}
+
+/* Override Skill Group colors for light mode so they are visible */
+[data-theme="light"] .skill-group {
+    background: var(--color-bg-primary) !important;
+    border-color: var(--color-border) !important;
+}
+
+[data-theme="light"] .skill-group h3 {
+    color: var(--color-accent) !important;
+}
+
+[data-theme="light"] .skill-group li,
+[data-theme="light"] .skill-group span {
+    color: var(--color-text-primary) !important;
+}
+
+[data-theme="light"] .skill-icon {
+    color: var(--color-accent) !important;
+}
+
+/* Override GitHub Repository & Status Card colors for light mode */
+[data-theme="light"] .repo-card,
+[data-theme="light"] .status-card {
+    background: var(--color-bg-primary) !important;
+    border-color: var(--color-border) !important;
+}
+
+
+[data-theme="light"] .repo-pill {
+    background: var(--color-bg-surface) !important;
+    border-color: var(--color-border) !important;
+    color: var(--color-text-secondary) !important;
+}
+
+[data-theme="light"] .repo-pill span,
+[data-theme="light"] .repo-pill svg {
+    color: var(--color-text-secondary) !important;
+}
+
+[data-theme="light"] .repo-card h3 {
+    color: var(--color-text-primary) !important;
+}
+
+[data-theme="light"] .github-link {
+    color: var(--color-text-secondary) !important;
+}
+[data-theme="light"] .github-link:hover {
+    color: var(--color-accent) !important;
+    border-color: var(--color-accent) !important;
+}
+
+/* === Interactive Hover Effects for Cards === */
+
+/* Add smooth transition bases */
+.skill-group,
+.project-card,
+.repo-card {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease, 
+                background-color 0.3s ease !important;
+}
+
+/* Hover effect for BOTH dark and light modes */
+.skill-group:hover,
+.project-card:hover,
+.repo-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 10px 30px var(--color-accent-glow) !important;
+}
+
+/* Light mode specific hover tweaks (if we want softer backgrounds on hover) */
+[data-theme="light"] .skill-group:hover,
+[data-theme="light"] .project-card:hover,
+[data-theme="light"] .repo-card:hover {
+    background: var(--color-bg-surface-hover) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08), 0 0 15px var(--color-accent-glow) !important;
+}
