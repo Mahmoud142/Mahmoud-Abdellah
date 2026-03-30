@@ -71,3 +71,42 @@ button {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #b7f2ff 0%, #93f6d8 46%, #79ddff 100%);
 }
+
+/* --- Scroll Reveal Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-100 { transition-delay: 100ms; }
+.reveal-delay-200 { transition-delay: 200ms; }
+.reveal-delay-300 { transition-delay: 300ms; }
+
+/* Hero Entrance Animation (Runs immediately on load without scrolling) */
+@keyframes slideUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-animate {
+    opacity: 0;
+    animation: slideUpFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-delay-1 { animation-delay: 150ms; }
+.hero-delay-2 { animation-delay: 300ms; }
+.hero-delay-3 { animation-delay: 450ms; }
