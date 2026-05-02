@@ -16,6 +16,7 @@ export const portfolioData: PortfolioData = {
     skills: [
         "Node.js",
         "Express.js",
+        "NestJS",
         "API Design",
         "RESTful Services",
         "JWT Authentication",
@@ -64,6 +65,7 @@ export const portfolioData: PortfolioData = {
             items: [
                 "Node.js",
                 "Express.js",
+                "NestJS",
                 "API Design",
                 "RESTful Services",
                 "JWT Authentication",
