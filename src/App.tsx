@@ -490,12 +490,13 @@ function App() {
                             ))}
                         </div>
                         <a
-                            href="/Mahmoud-Abdellah-CV.txt"
+                            href="https://drive.google.com/file/d/11iOwWfEnS-bfQvERM3FHGreAwZDV-Op0/view?usp=sharing"
                             className="about-cv-link"
-                            download
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             <FaFileArrowDown aria-hidden="true" />
-                            Download Resume
+                            View Resume
                         </a>
                     </section>
 
