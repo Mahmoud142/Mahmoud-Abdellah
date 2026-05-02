@@ -85,17 +85,15 @@ async function fetchFromGitHub(): Promise<GitHubRepo[]> {
 
     const repos = (await response.json()) as GitHubApiRepo[];
 
-    return repos
-        .filter((repo) => !repo.fork)
-        .map((repo) => ({
-            id: repo.id,
-            name: repo.name,
-            description: repo.description ?? "No description provided.",
-            url: repo.html_url,
-            language: repo.language ?? "Unknown",
-            stars: repo.stargazers_count,
-            updatedAt: repo.updated_at,
-        }));
+    return repos.map((repo) => ({
+        id: repo.id,
+        name: repo.name,
+        description: repo.description ?? "No description provided.",
+        url: repo.html_url,
+        language: repo.language ?? "Unknown",
+        stars: repo.stargazers_count,
+        updatedAt: repo.updated_at,
+    }));
 }
 
 export async function getGitHubRepos(): Promise<GitHubRepo[]> {
