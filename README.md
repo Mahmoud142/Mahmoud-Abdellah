@@ -1,58 +1,80 @@
 # Mahmoud Abdellah Portfolio
 
-A frontend Typescript portfolio website built with React and Vite.
-The project renders personal profile content, skills, featured projects, contact links, and latest GitHub repositories.
+A modern personal portfolio built with React, TypeScript, and Vite. It presents profile details, skills, featured projects, GitHub activity, and contact links in a clean responsive layout.
 
-## Tech Stack
+## ✨ Overview
 
-- Frontend: React, TypeScript, Vite, CSS, React Icons
-- Styling: Custom CSS (Modular, Themeable)
+This portfolio is designed to showcase my work as a full-stack software engineer. The site includes:
 
-## Prerequisites
+- A hero section with personal introduction and availability
+- Skills grouped by backend, frontend, databases, DevOps, and tools
+- Featured projects with GitHub links
+- A live GitHub repositories section
+- Contact links for email and social platforms
+- Light and dark theme support
+- Scroll reveal and responsive navigation
 
-- Node.js 18+
-- npm 9+
+## 🛠 Tech Stack
 
-## Installation
+- React
+- TypeScript
+- Vite
+- Custom CSS
+- React Icons
 
-Install dependencies:
+## 🚀 Getting Started
+
+### 📦 Prerequisites
+
+- Node.js 18 or later
+- npm 9 or later
+
+### 🔧 Install Dependencies
 
 ```bash
 npm install
 ```
 
-## Running Locally
-
-Start the development server:
+### ▶ Run Locally
 
 ```bash
 npm run dev
 ```
 
-Default local URL is usually `http://localhost:5173` or `http://localhost:5174`.
+Open the local URL shown in the terminal.
 
-## Build
-
-Build the project for production:
+### 🏗 Build for Production
 
 ```bash
 npm run build
 ```
 
-The output will be placed in the `dist` directory.
+The production output is generated in `dist`.
 
-## Deployment (Vercel)
+## 📁 Project Structure
 
-This project is optimized for deployment on Vercel.
+- `src/App.tsx` contains the main portfolio layout and sections
+- `src/data/portfolio.ts` stores the portfolio content
+- `src/data/github.ts` handles GitHub repository data and fallback content
+- `src/styles/` contains the site styling
 
-**Important Vercel Settings:**
+## 🌐 Deployment
 
-- **Framework Preset**: Vite
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Root Directory**: *(Leave empty)*
+This project is ready to deploy on Vercel or any static hosting platform.
 
-*(Note: Because this is a flattened frontend repository, do not specify `client` as the root directory).*
+Recommended settings for Vercel:
 
-## GitHub Data Fallback
-If actual GitHub API requests fail (e.g., rate limits), the app automatically serves fallback repositories from the static `src/data/github.ts` file.
+- Framework Preset: Vite
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Root Directory: leave empty
+
+## 📡 GitHub Repositories
+
+If the GitHub API is unavailable or rate-limited, the app falls back to the static repository data in `src/data/github.ts` so the portfolio still displays project activity.
+
+## 📬 Contact
+
+- GitHub: https://github.com/Mahmoud142
+- LinkedIn: https://www.linkedin.com/in/mahmoud-3bdellah
+- Email: mahmoud.abdellah014@gmail.com
