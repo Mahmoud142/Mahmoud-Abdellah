@@ -487,7 +487,7 @@ function App() {
                             ))}
                         </div>
                         <a
-                            href="https://drive.google.com/file/d/11iOwWfEnS-bfQvERM3FHGreAwZDV-Op0/view?usp=sharing"
+                            href="https://drive.google.com/file/d/1QopGpVKlf9oUcYkB3zBz4I2efCM5HQmL/view?usp=drive_link"
                             className="about-cv-link"
                             target="_blank"
                             rel="noopener noreferrer"
