@@ -1,27 +1,30 @@
 .background-orb {
     position: fixed;
-    width: 18rem;
-    height: 18rem;
+    width: 20rem;
+    height: 20rem;
     border-radius: 999px;
-    filter: blur(40px);
-    opacity: 0.45;
+    filter: blur(80px);
+    opacity: var(--color-orb-opacity);
     pointer-events: none;
+    z-index: -1;
 }
 
 .orb-one {
-    top: 4rem;
+    top: -5%;
     right: 5%;
-    background: rgba(255, 94, 125, 0.34);
+    background: var(--color-accent);
 }
 
 .orb-two {
-    bottom: 8rem;
-    left: 3%;
-    background: rgba(58, 134, 255, 0.28);
+    bottom: 5%;
+    left: 2%;
+    background: var(--color-accent-secondary);
 }
 
 .orb-three {
-    top: 52%;
-    right: 0;
-    background: rgba(168, 85, 247, 0.2);
+    top: 30%;
+    left: 10%;
+    background: var(--color-accent-tertiary);
+    width: 15rem;
+    height: 15rem;
 }
