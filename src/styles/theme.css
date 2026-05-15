@@ -1,39 +1,92 @@
 :root, [data-theme="dark"] {
-  /* 🌑 Dark Mode — Unified Programmer Palette */
-  --color-bg-primary: #0A0A0F;
-  /* Make the surface glassy like the hero card */
-  --color-bg-surface: linear-gradient(150deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)); 
-  --color-bg-surface-hover: rgba(255, 255, 255, 0.12); 
-  --color-border: rgba(255, 255, 255, 0.12);
+  /* 🌑 Dark Mode — Refined Electric Pulse Glass Design */
+  --color-bg-primary: #0B0C10;
+  --color-bg-primary-alt: #111827;
   
-  --color-accent: #00E5FF;
-  --color-accent-glow: rgba(0, 229, 255, 0.2);
+  /* Glass Surfaces */
+  --color-bg-surface: rgba(31, 40, 51, 0.45);
+  --color-bg-surface-hover: rgba(45, 55, 72, 0.6);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-glass-blur: blur(14px);
+
+  --color-accent: #00E5E5; /* Neon Cyan */
+  --color-accent-secondary: #635BFF; /* Electric Blue */
+  --color-accent-tertiary: #A855F7; /* Deep Orchid */
   
-  --color-text-primary: #F0F0F5;
-  --color-text-secondary: #8A8A9E;
+  --color-accent-glow: rgba(0, 229, 229, 0.25);
+  --color-accent-glow-2: rgba(99, 91, 255, 0.25);
+  --color-accent-glow-3: rgba(168, 85, 247, 0.2);
+
+  /* Animation Tokens */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --transition-speed: 300ms;
+
+  /* High-Voltage Accents */
+  --color-disruptor: #00F5FF; /* High-Energy Cyan */
+  --color-disruptor-glow: rgba(0, 245, 255, 0.3);
+  --color-success: #39FF14; /* Acid Green */
+  --color-glow-decorative: #8A2BE2; /* Plasma Purple */
   
-  --color-success: #4ADE80;
-  --color-error: #F87171;
-  
+  /* Rich Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+  --gradient-metallic: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%);
+  --gradient-mesh: radial-gradient(at 0% 0%, var(--color-accent-glow) 0, transparent 50%),
+                   radial-gradient(at 100% 100%, var(--color-accent-glow-2) 0, transparent 50%);
+
+  /* Typography */
+  --color-text-primary: #F3F4F6; /* Ice White */
+  --color-text-secondary: #9CA3AF; /* Steel Slate */
+
+  /* Section Backgrounds */
+  --color-hero-bg: linear-gradient(150deg, rgba(99, 91, 255, 0.08), rgba(0, 229, 229, 0.04));
+  --color-orb-opacity: 0.15;
+
+  /* Semantic Colors */
+  --color-error: #FF2A2A;
+  --color-warning: #FACC15;
+
   color-scheme: dark;
 }
 
 [data-theme="light"] {
-  /* ☀️ Calm Light Mode — Modern Paper/Tailwind */
-  --color-bg-primary: #F9FAFB;
-  --color-bg-surface: #FFFFFF; 
-  --color-bg-surface-hover: #F3F4F6;
-  --color-border: #E5E7EB;
+  /* ☀️ Light Mode — Ultra-Soft "Paper & Ink" Aesthetic */
+  --color-bg-primary: #F1F3F5; /* Soft Fog Gray */
+  --color-bg-primary-alt: #E9ECEF;
   
-  --color-accent: #4F46E5;
-  --color-accent-glow: rgba(79, 70, 229, 0.15);
+  /* Surface Tokens — Softer Glass */
+  --color-bg-surface: rgba(255, 255, 255, 0.65);
+  --color-bg-surface-hover: rgba(255, 255, 255, 0.85);
+  --color-border: rgba(0, 0, 0, 0.06);
+  --color-glass-blur: blur(10px);
+
+  /* Muted Professional Accents */
+  --color-accent: #364FC7; /* Muted Royal Blue */
+  --color-accent-secondary: #4C6EF5; 
+  --color-accent-tertiary: #7048E8;
   
-  --color-text-primary: #111827;
-  --color-text-secondary: #4B5563;
-  
-  --color-success: #059669;
-  --color-error: #DC2626;
-  
+  --color-accent-glow: rgba(54, 79, 199, 0.05);
+  --color-accent-glow-2: rgba(76, 110, 245, 0.04);
+  --color-accent-glow-3: rgba(112, 72, 232, 0.04);
+
+  /* Low-Impact Accents */
+  --color-disruptor: #1C7ED6; /* Soft Blue */
+  --color-disruptor-glow: rgba(28, 126, 214, 0.08);
+  --color-success: #2B8A3E; /* Muted Forest Green */
+  --color-glow-decorative: transparent;
+
+  /* Typography — Softer Black */
+  --color-text-primary: #343A40; /* Soft Charcoal */
+  --color-text-secondary: #495057; /* Medium Gray */
+
+  /* Section Backgrounds — Soft & Airy */
+  --color-hero-bg: linear-gradient(150deg, rgba(54, 79, 199, 0.04), rgba(28, 126, 214, 0.03));
+  --color-orb-opacity: 0.05;
+
+  /* Gradients — Gentle Transitions */
+  --gradient-primary: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+  --gradient-metallic: linear-gradient(180deg, #343A40 0%, #495057 100%);
+
   color-scheme: light;
 }
 
@@ -47,32 +100,33 @@ html, body {
 }
 
 /* Make all panels match the Hero card vibe & use variables */
-.panel, 
-.hero, 
-.card, 
-.project-card, 
-.timeline-node, 
+.panel,
+.hero,
+.card,
+.project-card,
+.timeline-node,
 .hero-stats {
     background: var(--color-bg-surface) !important;
     border-color: var(--color-border) !important;
+    backdrop-filter: var(--color-glass-blur) !important;
+    -webkit-backdrop-filter: var(--color-glass-blur) !important;
 }
 
-/* Light mode specific softening - much less shadow and no glare blur */
+/* Light mode specific softening */
 [data-theme="light"] .panel,
 [data-theme="light"] .hero,
-[data-theme="light"] .card, 
-[data-theme="light"] .project-card, 
+[data-theme="light"] .card,
+[data-theme="light"] .project-card,
 [data-theme="light"] .timeline-node,
 [data-theme="light"] .hero-stats {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
-    backdrop-filter: none !important; /* Removed blur since background is solid soft off-white */
+    backdrop-filter: none !important;
 }
 
 /* Dark mode panel inner flare */
 .panel::after {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 38%) !important;
+    background: linear-gradient(145deg, rgba(0, 245, 255, 0.06), transparent 38%) !important;
 }
-/* Completely remove the glaring bright inner flare in light mode */
 [data-theme="light"] .panel::after {
     background: none !important;
 }
@@ -90,10 +144,10 @@ html, body {
     color: var(--color-text-secondary) !important;
 }
 
-[data-theme="light"] h1, 
-[data-theme="light"] h2, 
-[data-theme="light"] h3, 
-[data-theme="light"] h4, 
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
 [data-theme="light"] .navbar-name,
 [data-theme="light"] .stat-value,
 [data-theme="light"] strong,
@@ -104,7 +158,7 @@ html, body {
 }
 
 [data-theme="light"] .hero-copy h1 span {
-    color: var(--color-accent) !important;
+    color: var(--color-accent-secondary) !important;
 }
 
 [data-theme="light"] .navbar-brand-text small {
@@ -117,6 +171,16 @@ html, body {
     background: var(--color-bg-primary) !important;
     color: var(--color-text-primary) !important;
     border-color: var(--color-border) !important;
+}
+
+.panel h2 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    margin-bottom: 1.4rem;
+    letter-spacing: -0.025em;
+    background: var(--gradient-metallic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 [data-theme="light"] .navbar {
@@ -137,12 +201,12 @@ html, body {
 
 [data-theme="light"] .mobile-drawer-links a:hover {
     color: var(--color-text-primary) !important;
-    background: rgba(0, 0, 0, 0.04) !important;
+    background: rgba(0, 150, 255, 0.06) !important;
 }
 
 [data-theme="light"] .mobile-drawer-links a.is-active {
-    color: var(--color-accent) !important;
-    border-color: var(--color-accent) !important;
+    color: var(--color-accent-secondary) !important;
+    border-color: var(--color-accent-secondary) !important;
     background: var(--color-accent-glow) !important;
 }
 
@@ -156,13 +220,13 @@ html, body {
 }
 
 [data-theme="light"] .mobile-menu-toggle:hover {
-    color: var(--color-accent) !important;
-    border-color: var(--color-accent) !important;
+    color: var(--color-accent-secondary) !important;
+    border-color: var(--color-accent-secondary) !important;
 }
 
 [data-theme="light"] .nav-link:hover,
 [data-theme="light"] .nav-link.is-active {
-    color: var(--color-accent) !important;
+    color: var(--color-accent-secondary) !important;
     background: var(--color-accent-glow) !important;
 }
 
@@ -175,13 +239,13 @@ html, body {
 [data-theme="light"] .hero-cv-btn:hover,
 [data-theme="light"] .project-link:hover,
 [data-theme="light"] .social-link:hover {
-    color: var(--color-accent) !important;
+    color: var(--color-accent-secondary) !important;
     background: var(--color-bg-surface-hover) !important;
-    border-color: var(--color-accent) !important;
+    border-color: var(--color-accent-secondary) !important;
 }
 
 [data-theme="light"] .background-orb {
-    background: var(--color-accent) !important;
+    background: var(--color-accent-secondary) !important;
     opacity: 0.04 !important;
 }
 
@@ -189,11 +253,11 @@ html, body {
     background: var(--color-bg-primary) !important;
 }
 [data-theme="light"] ::-webkit-scrollbar-thumb {
-    background: #CBD5E1 !important;
+    background: #93C5FD !important;
     border: 2px solid var(--color-bg-primary) !important;
 }
 [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent) !important;
+    background: var(--color-accent-secondary) !important;
 }
 
 /* Gradient block elements to clean flat color */
@@ -203,28 +267,28 @@ html, body {
 }
 
 [data-theme="light"] .eyebrow {
-    color: var(--color-accent) !important;
+    color: var(--color-accent-secondary) !important;
     font-weight: 600;
 }
 
 [data-theme="light"] .timeline-node::before {
-    background: var(--color-accent) !important;
-    box-shadow: 0 0 0 4px var(--color-accent-glow) !important;
+    background: var(--color-accent-secondary) !important;
+    box-shadow: 0 0 0 4px var(--color-accent-glow-2) !important;
 }
 
 [data-theme="light"] .gradient-text {
-    background: var(--color-accent) !important;
-    -webkit-text-fill-color: var(--color-accent) !important;
+    background: var(--color-accent-secondary) !important;
+    -webkit-text-fill-color: var(--color-accent-secondary) !important;
 }
 
-/* Override Skill Group colors for light mode so they are visible */
+/* Override Skill Group colors for light mode */
 [data-theme="light"] .skill-group {
     background: var(--color-bg-primary) !important;
     border-color: var(--color-border) !important;
 }
 
 [data-theme="light"] .skill-group h3 {
-    color: var(--color-accent) !important;
+    color: var(--color-accent-secondary) !important;
 }
 
 [data-theme="light"] .skill-group li,
@@ -233,7 +297,7 @@ html, body {
 }
 
 [data-theme="light"] .skill-icon {
-    color: var(--color-accent) !important;
+    color: var(--color-accent-secondary) !important;
 }
 
 /* Override GitHub Repository & Status Card colors for light mode */
@@ -242,7 +306,6 @@ html, body {
     background: var(--color-bg-primary) !important;
     border-color: var(--color-border) !important;
 }
-
 
 [data-theme="light"] .repo-pill {
     background: var(--color-bg-surface) !important;
@@ -263,8 +326,8 @@ html, body {
     color: var(--color-text-secondary) !important;
 }
 [data-theme="light"] .github-link:hover {
-    color: var(--color-accent) !important;
-    border-color: var(--color-accent) !important;
+    color: var(--color-accent-secondary) !important;
+    border-color: var(--color-accent-secondary) !important;
 }
 
 [data-theme="light"] .contact-card.contact-github {
@@ -273,34 +336,31 @@ html, body {
 }
 
 [data-theme="light"] .contact-card.contact-github .contact-icon {
-    background: linear-gradient(135deg, #111827, #374151) !important;
+    background: linear-gradient(135deg, #1E1B2E, #3B3550) !important;
 }
 
 /* === Interactive Hover Effects for Cards === */
-
-/* Add smooth transition bases */
 .skill-group,
 .project-card,
 .repo-card {
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                border-color 0.3s ease, 
-                box-shadow 0.3s ease, 
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
                 background-color 0.3s ease !important;
 }
 
-/* Hover effect for BOTH dark and light modes */
 .skill-group:hover,
 .project-card:hover,
 .repo-card:hover {
     transform: translateY(-5px) !important;
-    border-color: var(--color-accent) !important;
-    box-shadow: 0 10px 30px var(--color-accent-glow) !important;
+    border-color: var(--color-accent-secondary) !important;
+    box-shadow: 0 10px 30px var(--color-accent-glow-2) !important;
 }
 
-/* Light mode specific hover tweaks (if we want softer backgrounds on hover) */
+/* Light mode specific hover tweaks */
 [data-theme="light"] .skill-group:hover,
 [data-theme="light"] .project-card:hover,
 [data-theme="light"] .repo-card:hover {
     background: var(--color-bg-surface-hover) !important;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08), 0 0 15px var(--color-accent-glow) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08), 0 0 15px var(--color-accent-glow-2) !important;
 }
