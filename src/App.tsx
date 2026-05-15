@@ -24,6 +24,11 @@ import {
     FaWhatsapp,
     FaXmark,
     FaXTwitter,
+    FaGraduationCap,
+    FaUser,
+    FaCode,
+    FaRocket,
+    FaLocationDot,
 } from "react-icons/fa6";
 import {
     SiBootstrap,
@@ -58,6 +63,7 @@ import { useScrollReveal } from "./hooks/useScrollReveal";
 
 const NAV_LINKS = [
     { id: "home", label: "Home" },
+    { id: "education", label: "Education" },
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
@@ -148,6 +154,8 @@ function App() {
     const [reposError, setReposError] = useState<string | null>(null);
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     // Theme toggle state logic
     const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -201,6 +209,12 @@ function App() {
     useEffect(() => {
         function handleScroll() {
             setShowScrollTop(window.scrollY > 420);
+            setIsScrolled(window.scrollY > 20);
+            
+            const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+            if (totalScroll > 0) {
+                setScrollProgress((window.scrollY / totalScroll) * 100);
+            }
         }
 
         window.addEventListener("scroll", handleScroll, { passive: true });
@@ -350,17 +364,20 @@ function App() {
 
     return (
         <>
-            <nav className="navbar">
+            <nav className={`navbar ${isScrolled ? "is-scrolled" : ""}`}>
+                <div 
+                    className="scroll-progress-bar" 
+                    style={{ width: `${scrollProgress}%` }} 
+                />
                 <div className="navbar-brand">
-                    <img
-                        src="/images/profile.jpg"
-                        alt="Mahmoud profile"
-                        className={`navbar-avatar ${showNavAvatar ? "is-visible" : "is-hidden"}`}
-                    />
-                    <div className="navbar-brand-text">
-                        <span className="navbar-name">{portfolioData.name}</span>
-                        <small>{portfolioData.role}</small>
+                    <div className="navbar-avatar-wrapper">
+                        <img
+                            src="/images/profile.jpg"
+                            alt="Mahmoud profile"
+                            className="navbar-avatar"
+                        />
                     </div>
+                    <span className="navbar-name">{portfolioData.name}</span>
                 </div>
                 <div className="navbar-links">
                     {NAV_LINKS.map((link) => (
@@ -432,21 +449,25 @@ function App() {
 
                 <section className="hero panel nav-section" id="home">
                     <div className="hero-copy">
-                        <p className="eyebrow hero-animate">{portfolioData.location}</p>
+                        <div className="hero-status-row hero-animate">
+                            <div className="status-badge">
+                                <span className="status-dot"></span>
+                                {portfolioData.availability}
+                            </div>
+                            <div className="location-badge">
+                                <FaLocationDot aria-hidden="true" />
+                                {portfolioData.location}
+                            </div>
+                        </div>
                         <h1 className="hero-animate hero-delay-1">
                             {portfolioData.name}
                             <span>{portfolioData.role}</span>
                         </h1>
                         <p className="hero-intro hero-animate hero-delay-2">{portfolioData.intro}</p>
-                        <p className="hero-blurb hero-animate hero-delay-2">{portfolioData.heroBlurb}</p>
-                        <div className="hero-actions hero-animate hero-delay-3">
-                            <a
-                                href="#about"
-                                className="primary-link action-projects"
-                            >
-                                Who am I?
-                            </a>
-                        </div>
+                        {portfolioData.heroBlurb && (
+                            <p className="hero-blurb hero-animate hero-delay-2">{portfolioData.heroBlurb}</p>
+                        )}
+
                         <div className="hero-social-icons hero-animate hero-delay-3">
                             {portfolioData.contactLinks.map((link) => (
                                 <a
@@ -475,10 +496,38 @@ function App() {
                     </div>
                 </section>
 
+                <section className="panel nav-section" id="education">
+                    <p className="eyebrow">
+                        <FaGraduationCap aria-hidden="true" />
+                        Education
+                    </p>
+                    <h2>Academic Background</h2>
+                    <div className="education-list">
+                        {portfolioData.education.map((edu) => (
+                            <div className="education-item reveal" key={edu.institution}>
+                                <div className="education-header">
+                                    <div>
+                                        <h3>{edu.institution}</h3>
+                                        <p className="education-degree">{edu.degree}</p>
+                                    </div>
+                                    <div className="education-meta">
+                                        <span className="education-period">{edu.period}</span>
+                                        <span className="education-location">{edu.location}</span>
+                                    </div>
+                                </div>
+                                {edu.details && <p className="education-details">{edu.details}</p>}
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
                 <section className="content-grid about-stack-layout">
                     <section className="panel nav-section" id="about">
-                        <p className="eyebrow">About</p>
-                        <h2>Who I am and how I build</h2>
+                        <p className="eyebrow">
+                            <FaUser aria-hidden="true" />
+                            About
+                        </p>
+                        <h2>Who am I?</h2>
                         <div className="about-text">
                             {portfolioData.focusAreas.map((area) => (
                                 <p className="about-paragraph reveal" key={area}>
@@ -498,8 +547,11 @@ function App() {
                     </section>
 
                     <section className="panel nav-section" id="skills">
-                        <p className="eyebrow">Skills</p>
-                        <h2>Core skills and technologies</h2>
+                        <p className="eyebrow">
+                            <FaCode aria-hidden="true" />
+                            Skills
+                        </p>
+                        <h2>Technical capabilities</h2>
                         <div className="skill-groups">
                             {portfolioData.skillGroups.map((group) => (
                                 <article
@@ -532,7 +584,10 @@ function App() {
                 </section>
 
                 <section className="panel nav-section" id="projects">
-                    <p className="eyebrow">Selected work</p>
+                    <p className="eyebrow">
+                        <FaRocket aria-hidden="true" />
+                        Selected Work
+                    </p>
                     <h2>Featured projects and real outcomes</h2>
                     <div className="projects-grid">
                         {portfolioData.projects.map((project) => (
@@ -551,25 +606,41 @@ function App() {
                                     <FaCircleCheck aria-hidden="true" />
                                     <span>{project.outcome}</span>
                                 </p>
-                                {project.github && (
-                                    <a
-                                        href={project.github}
-                                        className="github-link"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        <FaCodeBranch aria-hidden="true" />
-                                        <span>View on GitHub</span>
-                                        <FaArrowUpRightFromSquare aria-hidden="true" />
-                                    </a>
-                                )}
+                                <div className="project-links">
+                                    {project.github && (
+                                        <a
+                                            href={project.github}
+                                            className="github-link"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            <FaCodeBranch aria-hidden="true" />
+                                            <span>GitHub</span>
+                                            <FaArrowUpRightFromSquare aria-hidden="true" />
+                                        </a>
+                                    )}
+                                    {project.live && (
+                                        <a
+                                            href={project.live}
+                                            className="github-link live-link"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            <FaArrowUpRightFromSquare aria-hidden="true" />
+                                            <span>Live Demo</span>
+                                        </a>
+                                    )}
+                                </div>
                             </article>
                         ))}
                     </div>
                 </section>
 
                 <section className="panel nav-section" id="github">
-                    <p className="eyebrow">GitHub Repositories</p>
+                    <p className="eyebrow">
+                        <SiGithub aria-hidden="true" />
+                        GitHub Repositories
+                    </p>
                     <h2>Latest repositories from GitHub</h2>
                     {reposError ? (
                         <p>{reposError}</p>
@@ -613,7 +684,10 @@ function App() {
                     className="panel contact-strip nav-section"
                     id="contact"
                 >
-                    <p className="eyebrow">Connect</p>
+                    <p className="eyebrow">
+                        <FaEnvelope aria-hidden="true" />
+                        Connect
+                    </p>
                     <h2>Let&apos;s connect</h2>
                     <div className="contact-grid">
                         {portfolioData.contactLinks.map((link) => (
