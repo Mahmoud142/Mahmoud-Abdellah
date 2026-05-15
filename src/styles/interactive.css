@@ -11,16 +11,16 @@
     bottom: 1.2rem;
     width: 2.55rem;
     height: 2.55rem;
-    border: 1px solid rgba(126, 240, 197, 0.42);
+    border: 1px solid var(--color-accent-secondary);
     border-radius: 999px;
     background: linear-gradient(145deg,
-            rgba(124, 58, 237, 0.26),
-            rgba(104, 208, 255, 0.28));
-    color: #e8fbff;
+            rgba(99, 91, 255, 0.26),
+            rgba(0, 229, 229, 0.28));
+    color: var(--color-text-primary);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 24px rgba(3, 10, 24, 0.36);
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.36);
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
@@ -37,10 +37,10 @@
 }
 
 .scroll-top-btn:hover {
-    border-color: rgba(126, 240, 197, 0.66);
+    border-color: var(--color-accent);
     background: linear-gradient(145deg,
-            rgba(124, 58, 237, 0.34),
-            rgba(104, 208, 255, 0.36));
+            rgba(99, 91, 255, 0.34),
+            rgba(0, 229, 229, 0.36));
 }
 
 .scroll-top-btn svg {

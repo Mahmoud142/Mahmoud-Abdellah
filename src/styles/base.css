@@ -1,14 +1,4 @@
-:root {
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    color: var(--color-text-primary);
-    background: var(--color-bg-primary);
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+@import './theme.css';
 
 * {
     box-sizing: border-box;
@@ -16,7 +6,7 @@
 
 html {
     scroll-behavior: smooth;
-    scrollbar-color: rgba(126, 240, 197, 0.9) rgba(20, 24, 54, 0.75);
+    scrollbar-color: var(--color-accent-secondary) var(--color-bg-primary-alt);
     scrollbar-width: thin;
 }
 
@@ -31,8 +21,8 @@ body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(99, 91, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 229, 0.04) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
     pointer-events: none;
@@ -55,21 +45,21 @@ button {
 
 ::-webkit-scrollbar-track {
     background: linear-gradient(180deg,
-            rgba(18, 20, 48, 0.88),
-            rgba(8, 16, 24, 0.86));
+            rgba(99, 91, 255, 0.12),
+            rgba(0, 229, 229, 0.08));
     border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #9be9ff 0%, #7cefc8 48%, #68d0ff 100%);
+    background: linear-gradient(180deg, #635BFF 0%, #00E5E5 48%, #4F46E5 100%);
     border-radius: 999px;
-    border: 2px solid rgba(13, 18, 43, 0.82);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-        0 0 18px rgba(104, 208, 255, 0.28);
+    border: 2px solid #0B0C10;
+    box-shadow: 0 0 0 1px rgba(99, 91, 255, 0.06) inset,
+        0 0 18px rgba(99, 91, 255, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #b7f2ff 0%, #93f6d8 46%, #79ddff 100%);
+    background: linear-gradient(180deg, #3B82F6 0%, #67E8F9 46%, #93C5FD 100%);
 }
 
 /* --- Scroll Reveal Animations --- */
@@ -77,7 +67,7 @@ button {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -86,9 +76,17 @@ button {
     transform: translateY(0);
 }
 
-.reveal-delay-100 { transition-delay: 100ms; }
-.reveal-delay-200 { transition-delay: 200ms; }
-.reveal-delay-300 { transition-delay: 300ms; }
+.reveal-delay-100 {
+    transition-delay: 100ms;
+}
+
+.reveal-delay-200 {
+    transition-delay: 200ms;
+}
+
+.reveal-delay-300 {
+    transition-delay: 300ms;
+}
 
 /* Hero Entrance Animation (Runs immediately on load without scrolling) */
 @keyframes slideUpFade {
@@ -96,6 +94,7 @@ button {
         opacity: 0;
         transform: translateY(40px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -107,6 +106,14 @@ button {
     animation: slideUpFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero-delay-1 { animation-delay: 150ms; }
-.hero-delay-2 { animation-delay: 300ms; }
-.hero-delay-3 { animation-delay: 450ms; }
+.hero-delay-1 {
+    animation-delay: 150ms;
+}
+
+.hero-delay-2 {
+    animation-delay: 300ms;
+}
+
+.hero-delay-3 {
+    animation-delay: 450ms;
+}

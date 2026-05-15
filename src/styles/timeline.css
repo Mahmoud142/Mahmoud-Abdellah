@@ -17,8 +17,8 @@
     left: 50%;
     width: 1px;
     background: linear-gradient(180deg,
-            rgba(126, 240, 197, 0.52),
-            rgba(148, 232, 255, 0.18));
+            var(--color-accent-glow-2),
+            rgba(0, 229, 229, 0.2));
     transform: translateX(-50%);
     pointer-events: none;
 }
@@ -26,10 +26,10 @@
 .journey-card {
     position: relative;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: linear-gradient(160deg,
-            rgba(255, 255, 255, 0.08),
-            rgba(255, 255, 255, 0.025));
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-surface);
+    backdrop-filter: var(--color-glass-blur);
+    -webkit-backdrop-filter: var(--color-glass-blur);
     padding: 0.95rem 1rem;
     display: grid;
     gap: 0.45rem;
@@ -42,8 +42,8 @@
     width: 0.62rem;
     height: 0.62rem;
     border-radius: 50%;
-    background: #7ef0c5;
-    box-shadow: 0 0 0 4px rgba(126, 240, 197, 0.16);
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px var(--color-accent-glow);
 }
 
 .journey-card:nth-child(odd)::before {
@@ -63,7 +63,7 @@
 
 .journey-year {
     margin: 0;
-    color: #94e8ff;
+    color: var(--color-accent);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -72,9 +72,9 @@
 .journey-index {
     margin: 0;
     border-radius: 999px;
-    border: 1px solid rgba(126, 240, 197, 0.38);
-    background: rgba(126, 240, 197, 0.14);
-    color: #dffff1;
+    border: 1px solid var(--color-accent-glow-2);
+    background: var(--color-accent-glow-2);
+    color: var(--color-text-primary);
     font-size: 0.72rem;
     font-weight: 600;
     padding: 0.16rem 0.48rem;
@@ -82,7 +82,7 @@
 
 .journey-step {
     margin: 0;
-    color: #fff7ef;
+    color: var(--color-text-primary);
     font-weight: 600;
     font-size: 1rem;
     line-height: 1.35;
@@ -91,7 +91,7 @@
 .journey-description {
     margin: 0;
     font-size: 0.9rem;
-    color: rgba(247, 241, 232, 0.82);
+    color: var(--color-text-secondary);
     line-height: 1.5;
 }
 
