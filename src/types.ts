@@ -14,6 +14,15 @@ export interface Project {
     stack: string[];
     outcome: string;
     github?: string;
+    live?: string;
+}
+
+export interface Education {
+    institution: string;
+    location: string;
+    degree: string;
+    period: string;
+    details: string;
 }
 
 export interface GitHubRepo {
@@ -45,6 +54,7 @@ export interface PortfolioData {
     availability: string;
     heroBlurb: string;
     stats: Stat[];
+    education: Education[];
     skills: string[];
     skillGroups: SkillGroup[];
     focusAreas: string[];
