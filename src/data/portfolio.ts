@@ -4,14 +4,22 @@ export const portfolioData: PortfolioData = {
     name: "Mahmoud Abdellah",
     role: "Software Engineer",
     location: "Ismailia, Egypt",
-    intro: "I am a versatile full-stack developer with a passion for building clean, efficient, and scalable web applications.",
-    availability: "Open for freelance work.",
-    heroBlurb:
-        "My work spans frontend and backend engineering, from API design and system architecture to responsive interfaces that feel clear, fast, and reliable in production.",
+    intro: "Software Engineer dedicated to building high-quality, impactful digital solutions.",
+    availability: "Available",
+    heroBlurb: "",
     stats: [
-        { label: "Computer science journey", value: "2022" },
-        { label: "Main focus", value: "Full-stack" },
-        { label: "Current track", value: "Production apps" },
+        { label: "Graduation", value: "2026" },
+        { label: "Focus", value: "Backend & Systems" },
+        { label: "Track", value: "Enterprise Architecture" },
+    ],
+    education: [
+        {
+            institution: "Suez Canal University",
+            location: "Ismailia, Egypt",
+            degree: "Bachelor of Computer Science and Informatics",
+            period: "Sep 2022 – Jun 2026",
+            details: ""
+        }
     ],
     skills: [
         "TypeScript",
@@ -96,13 +104,13 @@ export const portfolioData: PortfolioData = {
         },
         {
             title: "Tools & Platforms",
-            items: ["Git", "GitHub", "Postman", "Vercel"],
+            items: ["Git", "GitHub", "GitLab", "Postman", "Vercel"],
         },
     ],
     focusAreas: [
-        "I am Mahmoud Abdellah, a full-stack software engineer from Ismailia, Egypt. I started my computer science journey in 2022, and since then I have been focused on turning strong fundamentals into real, production-ready applications.",
-        "My strongest comfort zone is backend engineering: API design, authentication, database modeling, and clean architecture. At the same time, I enjoy building the frontend side with React so the final product is not only reliable, but also easy and pleasant to use.",
-        "What defines me most is ownership. I like building complete systems end-to-end, from idea to deployment, with attention to maintainability, performance, and user value. I am currently open to freelance and collaborative opportunities where I can keep shipping meaningful software.",
+        "Software Engineer with a strong commitment to building resilient, distributed systems and managing high-scale data telemetry since 2022.",
+        "Focusing on architectural integrity and fault tolerance in large-scale services, leveraging rigorous algorithmic logic to solve complex structural problems in high-concurrency environments.",
+        "Bridging the gap between robust system design and user-centric delivery, ensuring that every layer—from identity security to front-end state management—is optimized for production stability.",
     ],
     timeline: [
         {
@@ -138,50 +146,35 @@ export const portfolioData: PortfolioData = {
     ],
     projects: [
         {
-            title: "Project-Management",
-            summary:
-                "A project management application focused on practical team workflows, task organization, and active feature development.",
-            stack: ["JavaScript", "Node.js", "Express", "React"],
-            outcome:
-                "Showcases current development work and demonstrates how I design useful tools around modern full-stack architecture.",
-            github: "https://github.com/Mahmoud142/Project-Management",
+            title: "Minify Analytics Platform",
+            summary: "A high-throughput link management and real-time analytics platform built with NestJS and React 19.",
+            stack: ["NestJS", "React 19", "TypeScript", "Redux", "MongoDB", "GeoIP"],
+            outcome: "Architected scalable NoSQL schemas and engineered secure 2FA flows for rigorous identity verification.",
+            github: "https://github.com/Mahmoud142/minify-api",
+            live: "https://minifyapp.vercel.app"
         },
         {
-            title: "Shopply",
-            summary:
-                "A modern e-commerce web application with product browsing, cart flow, checkout-focused UX, and dynamic frontend behavior.",
-            stack: ["React", "JavaScript", "API Integration", "Responsive UI"],
-            outcome:
-                "Highlights frontend engineering strength, user-facing product thinking, and clean API consumption in a real shopping experience.",
-            github: "https://github.com/Mahmoud142/Shopply",
+            title: "MindMate Healthcare",
+            summary: "Real-time IoT telemetry platform for Alzheimer’s patients tracking with live GPS streaming.",
+            stack: ["React", "Redux Toolkit", "Socket.io", "Leaflet", "Node.js"],
+            outcome: "Spearheaded low-latency tracking and designed fault-tolerant state management for critical medical dashboards.",
+            github: "https://github.com/MindMate-Project/Web",
+            live: "https://web-mindmate.vercel.app"
         },
         {
-            title: "ECommerce-api",
-            summary:
-                "A complete backend REST API for e-commerce features such as products, users, orders, carts, and authentication flows.",
-            stack: ["Node.js", "Express.js", "MongoDB", "REST API"],
-            outcome:
-                "Demonstrates backend architecture, validation, error handling, and scalable service design for production-style commerce systems.",
-            github: "https://github.com/Mahmoud142/ECommerce-api",
+            title: "Enterprise E-Commerce API",
+            summary: "Production-ready RESTful API designed for high-volume product catalogs and secure financial transactions.",
+            stack: ["Node.js", "Express.js", "MongoDB", "Stripe", "RBAC"],
+            outcome: "Implemented rigorous RBAC and integrated Stripe for secure transactions and optimized image processing pipelines.",
+            github: "https://github.com/Mahmoud142/ECommerce-api"
         },
         {
-            title: "todo-api",
-            summary:
-                "A secure task management API with JWT authentication, full CRUD flows, categories, and relational data modeling.",
+            title: "Secure Todo API",
+            summary: "Advanced task management API with relational modeling and JWT-secured authentication flows.",
             stack: ["Node.js", "Express.js", "Prisma", "MySQL", "JWT"],
-            outcome:
-                "Shows strong backend engineering with relational modeling, authentication, and modern ORM-based API development.",
-            github: "https://github.com/Mahmoud142/todo-api",
-        },
-        {
-            title: "URL-Shortener",
-            summary:
-                "A full-stack URL shortening service with link creation, database persistence, redirect handling, and a lightweight UI.",
-            stack: ["Node.js", "Express", "MongoDB", "Bootstrap"],
-            outcome:
-                "Presents a concise but solid product that covers routing, persistence, redirects, and practical backend fundamentals.",
-            github: "https://github.com/Mahmoud142/URL-Shortener",
-        },
+            outcome: "Demonstrated strong backend engineering with relational modeling and modern ORM-based development.",
+            github: "https://github.com/Mahmoud142/todo-api"
+        }
     ],
     contactLinks: [
         {
