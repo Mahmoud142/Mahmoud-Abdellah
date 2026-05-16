@@ -1,6 +1,15 @@
 .education-list {
     display: grid;
     gap: 1.5rem;
+    text-align: center;
+}
+
+#education h2 {
+    font-size: 1rem;
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin-bottom: 3rem;
+    opacity: 0.8;
 }
 
 .education-item {
@@ -20,32 +29,38 @@
 
 .education-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
     margin-bottom: 1rem;
 }
 
 .education-header h3 {
     margin: 0;
-    font-size: 1.5rem;
-    color: var(--color-text-primary);
-    letter-spacing: -0.015em;
+    font-size: 1.55rem;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    background: var(--gradient-metallic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
 }
 
 .education-degree {
-    margin: 0.35rem 0 0;
-    font-size: 1.15rem;
-    color: var(--color-accent);
-    font-weight: 500;
+    margin: 0.4rem 0 0;
+    font-size: 1.35rem;
+    color: var(--color-accent-secondary);
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 .education-meta {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    gap: 0.25rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
 }
 
 .education-period {
@@ -74,7 +89,7 @@
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .education-meta {
         align-items: flex-start;
         text-align: left;
