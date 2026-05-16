@@ -44,48 +44,61 @@
 
 .skill-groups {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.2rem;
     width: 100%;
 }
 
 .skill-group {
     min-width: 0;
-    border-radius: 16px;
+    border-radius: 20px;
     border: 1px solid var(--color-border);
     background: var(--color-bg-surface);
-    padding: 1.2rem;
+    padding: 2rem;
 }
 
 .skill-group h3 {
-    margin: 0 0 0.8rem;
-    font-size: 1.05rem;
+    margin: 0 0 1.2rem;
+    font-size: 1.15rem;
     color: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 .skill-group ul {
     margin: 0;
-    padding-left: 1rem;
-    display: grid;
-    gap: 0.38rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    list-style: none;
 }
 
 .skill-group li {
     display: flex;
     align-items: center;
-    gap: 0.45rem;
-    color: var(--color-text-secondary);
-    font-size: 0.86rem;
-    line-height: 1.35;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.skill-group li:hover {
+    background: var(--color-accent-glow);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
 }
 
 .skill-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1rem;
-    height: 1rem;
-    color: var(--color-accent);
+    font-size: 1.1rem;
     flex-shrink: 0;
 }
 
@@ -105,8 +118,6 @@
     padding: 0.45rem 0.75rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     color: var(--color-text-primary);
     font-size: 0.86rem;
 }
@@ -121,14 +132,9 @@
     gap: 1.5rem;
 }
 
-.repos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.2rem;
-}
+
 
 .project-card,
-.repo-card,
 .status-card {
     border-radius: 22px;
     background: var(--color-bg-surface);
@@ -145,16 +151,34 @@
     will-change: transform;
 }
 
-.project-card,
-.repo-card {
+.project-card {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-card:hover,
-.repo-card:hover {
+.project-role {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent-secondary);
+    margin-bottom: -0.2rem;
+}
+
+.tag-cloud span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tag-icon {
+    font-size: 0.9rem;
+}
+
+.project-card:hover {
     border-color: var(--color-accent);
     box-shadow: 0 0 0 1px var(--color-accent), 0 20px 40px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
@@ -168,11 +192,7 @@
     color: var(--color-text-primary);
 }
 
-.repo-card h3 {
-    color: var(--color-text-primary);
-    font-size: 1.2rem;
-    margin: 0;
-}
+
 
 .project-card p {
     font-size: 1.15rem;
@@ -180,10 +200,7 @@
     color: var(--color-text-secondary);
 }
 
-.repo-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-}
+
 
 .project-outcome {
     color: var(--color-accent-secondary);
@@ -197,32 +214,7 @@
     height: 0.88rem;
 }
 
-.repo-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.6rem;
-    color: var(--color-text-secondary);
-    font-size: 0.8rem;
-}
 
-.repo-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    padding: 0.18rem 0.5rem;
-}
-
-.repo-pill svg {
-    width: 0.75rem;
-    height: 0.75rem;
-}
 
 .project-links {
     display: flex;
@@ -243,7 +235,7 @@
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--color-border);
-    transition: all 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .github-link:hover {
