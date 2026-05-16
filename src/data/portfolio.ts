@@ -4,7 +4,7 @@ export const portfolioData: PortfolioData = {
     name: "Mahmoud Abdellah",
     role: "Software Engineer",
     location: "Ismailia, Egypt",
-    intro: "Software Engineer dedicated to building high-quality, impactful digital solutions.",
+    intro: "Software Engineer specializing in building scalable backend systems and high-quality frontend applications.",
     availability: "Available",
     heroBlurb: "",
     stats: [
@@ -14,12 +14,12 @@ export const portfolioData: PortfolioData = {
     ],
     education: [
         {
-            institution: "Suez Canal University",
+            institution: "Bachelor of Computer Science and Informatics",
             location: "Ismailia, Egypt",
-            degree: "Bachelor of Computer Science and Informatics",
+            degree: "Suez Canal University",
             period: "Sep 2022 – Jun 2026",
-            details: ""
-        }
+            details: "",
+        },
     ],
     skills: [
         "TypeScript",
@@ -54,15 +54,15 @@ export const portfolioData: PortfolioData = {
     ],
     skillGroups: [
         {
-            title: "Languages",
+            title: "Core Languages",
             items: [
                 "TypeScript",
                 "JavaScript (ES6+)",
                 "Python",
                 "C++",
                 "SQL",
-                "HTML",
-                "CSS",
+                "HTML5",
+                "CSS3",
             ],
         },
         {
@@ -71,46 +71,62 @@ export const portfolioData: PortfolioData = {
                 "Node.js",
                 "Express.js",
                 "NestJS",
-                "API Design",
-                "WebSockets (Socket.io)",
-                "Backend Architecture",
+                "RESTful API Design",
+                "Microservices",
+                "Real-time Systems (Socket.io)",
+                "Redis Caching",
+                "System Architecture",
+            ],
+        },
+        {
+            title: "Databases & Storage",
+            items: [
+                "PostgreSQL",
+                "MySQL",
+                "MongoDB",
+                "Redis",
+                "Database Design & Optimization",
+            ],
+        },
+        {
+            title: "DevOps & Cloud",
+            items: [
+                "Docker & Docker Compose",
+                "AWS",
+                "CI/CD Pipelines",
+                "Nginx",
+                "Linux",
+            ],
+        },
+        {
+            title: "Software Methodologies",
+            items: [
+                "System Design",
+                "Agile / Scrum",
+                "Clean Code & SOLID",
+                "Design Patterns",
+                "TDD / BDD",
             ],
         },
         {
             title: "Frontend Development",
             items: [
-                "React",
+                "React.js",
                 "Redux Toolkit",
-                "TypeScript",
-                "HTML",
-                "CSS",
+                "Responsive Web Design",
+                "State Management",
                 "Bootstrap",
             ],
         },
         {
-            title: "Database",
-            items: ["SQL", "NoSQL", "MongoDB", "MySQL"],
-        },
-        {
-            title: "DevOps & Infrastructure",
-            items: [
-                "Docker",
-                "Docker Compose",
-                "Nginx",
-                "SSL / HTTPS",
-                "Linux",
-                "AWS",
-            ],
-        },
-        {
-            title: "Tools & Platforms",
-            items: ["Git", "GitHub", "GitLab", "Postman", "Vercel"],
+            title: "Development Tools",
+            items: ["Git", "GitHub", "GitLab", "Jira", "Postman", "Vercel"],
         },
     ],
     focusAreas: [
-        "Software Engineer with a strong commitment to building resilient, distributed systems and managing high-scale data telemetry since 2022.",
-        "Focusing on architectural integrity and fault tolerance in large-scale services, leveraging rigorous algorithmic logic to solve complex structural problems in high-concurrency environments.",
-        "Bridging the gap between robust system design and user-centric delivery, ensuring that every layer—from identity security to front-end state management—is optimized for production stability.",
+        "Software Engineer with a comprehensive command of the full stack, engineering sophisticated backend architectures and high-performance frontend applications with a focus on massive scale.",
+        "A dedicated problem solver leveraging deep Data Structures and Algorithms expertise to architect efficient solutions for complex, high-concurrency technical challenges.",
+        "Bridging the divide between server-side stability and client-side excellence by integrating modern software engineering principles into resilient, end-to-end digital solutions.",
     ],
     timeline: [
         {
@@ -147,34 +163,53 @@ export const portfolioData: PortfolioData = {
     projects: [
         {
             title: "Minify Analytics Platform",
-            summary: "A high-throughput link management and real-time analytics platform built with NestJS and React 19.",
-            stack: ["NestJS", "React 19", "TypeScript", "Redux", "MongoDB", "GeoIP"],
-            outcome: "Architected scalable NoSQL schemas and engineered secure 2FA flows for rigorous identity verification.",
+            summary:
+                "A high-throughput link management and real-time analytics platform built with NestJS and React 19.",
+            stack: [
+                "NestJS",
+                "React.js",
+                "TypeScript",
+                "Redux Toolkit",
+                "MongoDB",
+            ],
+            outcome:
+                "Architected scalable NoSQL schemas and engineered secure 2FA flows for rigorous identity verification.",
             github: "https://github.com/Mahmoud142/minify-api",
-            live: "https://minifyapp.vercel.app"
+            live: "https://minifyapp.vercel.app",
         },
         {
             title: "MindMate Healthcare",
-            summary: "Real-time IoT telemetry platform for Alzheimer’s patients tracking with live GPS streaming.",
-            stack: ["React", "Redux Toolkit", "Socket.io", "Leaflet", "Node.js"],
-            outcome: "Spearheaded low-latency tracking and designed fault-tolerant state management for critical medical dashboards.",
+            summary:
+                "Real-time IoT telemetry platform for Alzheimer’s patients tracking with live GPS streaming.",
+            stack: [
+                "React.js",
+                "Redux Toolkit",
+                "Real-time Systems (Socket.io)",
+                "Node.js",
+            ],
+            outcome:
+                "Spearheaded low-latency tracking and designed fault-tolerant state management for critical medical dashboards.",
             github: "https://github.com/MindMate-Project/Web",
-            live: "https://web-mindmate.vercel.app"
+            live: "https://web-mindmate.vercel.app",
         },
         {
             title: "Enterprise E-Commerce API",
-            summary: "Production-ready RESTful API designed for high-volume product catalogs and secure financial transactions.",
-            stack: ["Node.js", "Express.js", "MongoDB", "Stripe", "RBAC"],
-            outcome: "Implemented rigorous RBAC and integrated Stripe for secure transactions and optimized image processing pipelines.",
-            github: "https://github.com/Mahmoud142/ECommerce-api"
+            summary:
+                "Production-ready RESTful API designed for high-volume product catalogs and secure financial transactions.",
+            stack: ["Node.js", "Express.js", "MongoDB", "RESTful API Design"],
+            outcome:
+                "Implemented rigorous RBAC and integrated Stripe for secure transactions and optimized image processing pipelines.",
+            github: "https://github.com/Mahmoud142/ECommerce-api",
         },
         {
             title: "Secure Todo API",
-            summary: "Advanced task management API with relational modeling and JWT-secured authentication flows.",
-            stack: ["Node.js", "Express.js", "Prisma", "MySQL", "JWT"],
-            outcome: "Demonstrated strong backend engineering with relational modeling and modern ORM-based development.",
-            github: "https://github.com/Mahmoud142/todo-api"
-        }
+            summary:
+                "Advanced task management API with relational modeling and JWT-secured authentication flows.",
+            stack: ["Node.js", "Express.js", "MySQL", "Database Design & Optimization"],
+            outcome:
+                "Demonstrated strong backend engineering with relational modeling and modern ORM-based development.",
+            github: "https://github.com/Mahmoud142/todo-api",
+        },
     ],
     contactLinks: [
         {
