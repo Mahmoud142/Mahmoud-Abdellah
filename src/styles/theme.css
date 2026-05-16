@@ -7,15 +7,24 @@
   --color-bg-surface: rgba(31, 40, 51, 0.45);
   --color-bg-surface-hover: rgba(45, 55, 72, 0.6);
   --color-border: rgba(255, 255, 255, 0.08);
-  --color-glass-blur: blur(14px);
+  --color-glass-blur: blur(8px);
 
   --color-accent: #00E5E5; /* Neon Cyan */
   --color-accent-secondary: #635BFF; /* Electric Blue */
   --color-accent-tertiary: #A855F7; /* Deep Orchid */
   
-  --color-accent-glow: rgba(0, 229, 229, 0.25);
-  --color-accent-glow-2: rgba(99, 91, 255, 0.25);
-  --color-accent-glow-3: rgba(168, 85, 247, 0.2);
+  --color-accent-glow: rgba(0, 229, 229, 0.15);
+  --color-accent-glow-2: rgba(99, 91, 255, 0.15);
+  --color-accent-glow-3: rgba(168, 85, 247, 0.12);
+
+  /* Brand Colors - Dark mode */
+  --brand-github: #ffffff;
+  --brand-twitter: #ffffff;
+  --brand-linkedin: #0A66C2;
+  --brand-facebook: #1877F2;
+  --brand-instagram: #E4405F;
+  --brand-whatsapp: #25D366;
+  --brand-email: #EA4335;
 
   /* Animation Tokens */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -24,7 +33,7 @@
 
   /* High-Voltage Accents */
   --color-disruptor: #00F5FF; /* High-Energy Cyan */
-  --color-disruptor-glow: rgba(0, 245, 255, 0.3);
+  --color-disruptor-glow: rgba(0, 245, 255, 0.2);
   --color-success: #39FF14; /* Acid Green */
   --color-glow-decorative: #8A2BE2; /* Plasma Purple */
   
@@ -50,45 +59,96 @@
 }
 
 [data-theme="light"] {
-  /* ☀️ Light Mode — Ultra-Soft "Paper & Ink" Aesthetic */
-  --color-bg-primary: #F1F3F5; /* Soft Fog Gray */
-  --color-bg-primary-alt: #E9ECEF;
+  /* ☀️ Light Mode — "Dusty Parchment & Sage" Eye Comfort Aesthetic */
+  --color-bg-primary: #EEECE1; /* Comforting Dusty Parchment / Warm Grey */
+  --color-bg-primary-alt: #E6E4D5; 
   
-  /* Surface Tokens — Softer Glass */
-  --color-bg-surface: rgba(255, 255, 255, 0.65);
-  --color-bg-surface-hover: rgba(255, 255, 255, 0.85);
-  --color-border: rgba(0, 0, 0, 0.06);
-  --color-glass-blur: blur(10px);
+  /* Surface Tokens — Soft Cream Ivory */
+  --color-bg-surface: #F9F7EF; /* Soft Ivory that stands out on parchment */
+  --color-bg-surface-hover: #FFFFFF;
+  --color-border: rgba(100, 90, 80, 0.08);
+  --color-glass-blur: none; /* Matte look is cleaner in light mode */
 
-  /* Muted Professional Accents */
-  --color-accent: #364FC7; /* Muted Royal Blue */
-  --color-accent-secondary: #4C6EF5; 
-  --color-accent-tertiary: #7048E8;
+  /* Earthy Editorial Accents */
+  --color-accent: #2D3436; /* Deep Onyx */
+  --color-accent-secondary: #7A8D75; /* Sage Green */
+  --color-accent-tertiary: #C08A74; /* Soft Terracotta */
   
-  --color-accent-glow: rgba(54, 79, 199, 0.05);
-  --color-accent-glow-2: rgba(76, 110, 245, 0.04);
-  --color-accent-glow-3: rgba(112, 72, 232, 0.04);
+  --color-accent-glow: rgba(122, 141, 117, 0.1);
+  --color-accent-glow-2: rgba(192, 138, 116, 0.08);
+  --color-accent-glow-3: rgba(45, 52, 54, 0.04);
+
+  /* Brand Colors - Organic Adaptation */
+  --brand-github: #2D3436;
+  --brand-twitter: #5A9BD5;
+  --brand-linkedin: #0077B5;
+  --brand-facebook: #4267B2;
+  --brand-instagram: #C13584;
+  --brand-whatsapp: #25D366;
+  --brand-email: #D44638;
 
   /* Low-Impact Accents */
-  --color-disruptor: #1C7ED6; /* Soft Blue */
-  --color-disruptor-glow: rgba(28, 126, 214, 0.08);
-  --color-success: #2B8A3E; /* Muted Forest Green */
+  --color-disruptor: #7A8D75; 
+  --color-disruptor-glow: rgba(122, 141, 117, 0.12);
+  --color-success: #5D725B;
   --color-glow-decorative: transparent;
 
-  /* Typography — Softer Black */
-  --color-text-primary: #343A40; /* Soft Charcoal */
-  --color-text-secondary: #495057; /* Medium Gray */
+  /* Typography — High-Contrast Charcoal */
+  --color-text-primary: #1E2122; /* High contrast charcoal */
+  --color-text-secondary: #5C6366; /* Stone Gray */
 
-  /* Section Backgrounds — Soft & Airy */
-  --color-hero-bg: linear-gradient(150deg, rgba(54, 79, 199, 0.04), rgba(28, 126, 214, 0.03));
-  --color-orb-opacity: 0.05;
+  /* Section Backgrounds — Subtle Texture */
+  --color-hero-bg: linear-gradient(150deg, rgba(122, 141, 117, 0.04), rgba(192, 138, 116, 0.03));
+  --color-orb-opacity: 0.01;
 
-  /* Gradients — Gentle Transitions */
-  --gradient-primary: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
-  --gradient-metallic: linear-gradient(180deg, #343A40 0%, #495057 100%);
+  /* Gradients — Matte Editorial Transitions */
+  --gradient-primary: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent-tertiary));
+  --gradient-metallic: linear-gradient(180deg, #1E2122 0%, #5C6366 100%);
 
   color-scheme: light;
 }
+
+/* --- Premium Custom Scrollbar (CSS-Only, High Performance) --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-secondary);
+}
+
+/* --- Staggered Reveal System --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s var(--ease-out-expo);
+  will-change: transform, opacity;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger logic for children */
+.stagger-container > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-container > *:nth-child(2) { transition-delay: 0.15s; }
+.stagger-container > *:nth-child(3) { transition-delay: 0.2s; }
+.stagger-container > *:nth-child(4) { transition-delay: 0.25s; }
+.stagger-container > *:nth-child(5) { transition-delay: 0.3s; }
+.stagger-container > *:nth-child(6) { transition-delay: 0.35s; }
+.stagger-container > *:nth-child(7) { transition-delay: 0.4s; }
+.stagger-container > *:nth-child(8) { transition-delay: 0.45s; }
 
 html, body {
   transition: background-color 0.3s ease, color 0.3s ease;

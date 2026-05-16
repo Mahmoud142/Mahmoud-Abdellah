@@ -1,30 +1,33 @@
 .background-orb {
     position: fixed;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 999px;
-    filter: blur(80px);
+    width: 40rem;
+    height: 40rem;
+    border-radius: 50%;
     opacity: var(--color-orb-opacity);
     pointer-events: none;
     z-index: -1;
+    will-change: transform;
+    contain: strict;
+    /* Use radial-gradient instead of filter: blur to avoid triggering a repaint layer */
+    background-size: 100% 100%;
 }
 
 .orb-one {
-    top: -5%;
-    right: 5%;
-    background: var(--color-accent);
+    top: -10%;
+    right: -5%;
+    background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
 }
 
 .orb-two {
-    bottom: 5%;
-    left: 2%;
-    background: var(--color-accent-secondary);
+    bottom: -5%;
+    left: -8%;
+    background: radial-gradient(circle, var(--color-accent-secondary) 0%, transparent 70%);
 }
 
 .orb-three {
-    top: 30%;
-    left: 10%;
-    background: var(--color-accent-tertiary);
-    width: 15rem;
-    height: 15rem;
+    top: 25%;
+    left: 5%;
+    width: 30rem;
+    height: 30rem;
+    background: radial-gradient(circle, var(--color-accent-tertiary) 0%, transparent 70%);
 }

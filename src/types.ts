@@ -25,15 +25,6 @@ export interface Education {
     details: string;
 }
 
-export interface GitHubRepo {
-    id: number;
-    name: string;
-    description: string;
-    url: string;
-    language: string;
-    stars: number;
-    updatedAt: string;
-}
 
 export interface TimelineItem {
     year: string;

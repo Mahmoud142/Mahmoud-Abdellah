@@ -2,9 +2,9 @@
     position: relative;
     width: min(1180px, calc(100% - 2rem));
     margin: 0 auto;
-    padding: 6.4rem 0 3rem;
+    padding: 6.4rem 0 6rem;
     display: grid;
-    gap: 1.15rem;
+    gap: 8rem;
 }
 
 .status-shell {
@@ -19,9 +19,8 @@
     border: 1px solid var(--color-border);
     border-radius: 24px;
     background: var(--color-bg-primary-alt);
-    backdrop-filter: blur(18px);
-    box-shadow: 0 24px 80px rgba(2, 6, 23, 0.34);
-    padding: 1.3rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    padding: clamp(1.5rem, 3.5vw, 3rem);
 }
 
 .panel::after {
@@ -32,16 +31,45 @@
     pointer-events: none;
 }
 
-.panel h2,
-.panel h3 {
-    margin: 0;
+.section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+}
+
+.section-icon {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+}
+
+.main-section-title {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 1.2rem 0 1.5rem;
+    width: 100%;
+    color: var(--color-text-primary);
+    display: block;
 }
 
 .panel h2 {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    margin-bottom: 1.4rem;
-    letter-spacing: -0.025em;
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    font-weight: 600;
     color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 3.5rem;
+    letter-spacing: -0.01em;
+    margin-top: 0;
+    text-transform: none;
+}
+
+.align-left {
+    text-align: left !important;
 }
 
 .about-paragraph {
@@ -72,7 +100,6 @@
     background: rgba(0, 229, 229, 0.08);
     border: 1px solid rgba(0, 229, 229, 0.15);
     border-radius: 999px;
-    backdrop-filter: blur(4px);
     width: fit-content;
 }
 
@@ -90,6 +117,8 @@
 
 .about-stack-layout {
     grid-template-columns: minmax(0, 1fr);
+    gap: 4rem;
+    /* Increase space specifically between About and Skills */
 }
 
 .nav-section {
@@ -98,12 +127,17 @@
 
 @media (max-width: 900px) {
     .nav-section {
-        scroll-margin-top: 1.5rem;
+        scroll-margin-top: 1rem;
+    }
+
+    .shell {
+        padding: 0.8rem 0 3rem;
+        gap: 3rem;
     }
 }
 
 @media (max-width: 480px) {
     .shell {
-        padding-top: 1rem;
+        padding: 0.6rem 0 2rem;
     }
 }

@@ -29,6 +29,8 @@ import {
     FaCode,
     FaRocket,
     FaLocationDot,
+    FaArrowDown,
+    FaNetworkWired,
 } from "react-icons/fa6";
 import {
     SiBootstrap,
@@ -53,12 +55,15 @@ import {
     SiSocketdotio,
     SiTypescript,
     SiVercel,
+    SiGitlab,
+    SiRedis,
+    SiGithubactions,
+    SiJira,
+    SiPostgresql,
 } from "react-icons/si";
 import { TbApi, TbDatabaseCog } from "react-icons/tb";
 
-import type { GitHubRepo } from "./types";
 import { portfolioData } from "./data/portfolio";
-import { getGitHubRepos } from "./data/github";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
 const NAV_LINKS = [
@@ -67,7 +72,6 @@ const NAV_LINKS = [
     { id: "about", label: "About" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
-    { id: "github", label: "GitHub" },
     { id: "contact", label: "Contact" },
 ] as const;
 
@@ -81,90 +85,110 @@ const SKILL_ICON_MAP: Record<string, IconType> = {
     Python: SiPython,
     "C++": SiCplusplus,
     SQL: FaDatabase,
-    HTML: SiHtml5,
-    CSS: SiCss,
+    HTML5: SiHtml5,
+    CSS3: SiCss,
     "Node.js": SiNodedotjs,
     "Express.js": SiExpress,
     NestJS: SiNestjs,
-    "WebSockets (Socket.io)": SiSocketdotio,
-    "API Design": TbApi,
-    "Backend Architecture": FaDiagramProject,
+    "RESTful API Design": TbApi,
+    Microservices: FaNetworkWired,
+    "Real-time Systems (Socket.io)": SiSocketdotio,
+    "Redis Caching": SiRedis,
+    "System Architecture": FaDiagramProject,
+    "React.js": SiReact,
     React: SiReact,
     "Redux Toolkit": SiRedux,
+    "Responsive Web Design": SiBootstrap,
+    "State Management": SiRedux,
     Bootstrap: SiBootstrap,
-    NoSQL: TbDatabaseCog,
-    MongoDB: SiMongodb,
-    MySQL: SiMysql,
-    Docker: SiDocker,
-    "Docker Compose": SiDocker,
+    "Database Design & Optimization": TbDatabaseCog,
+    "Docker & Docker Compose": SiDocker,
     Nginx: SiNginx,
-    "SSL / HTTPS": FaLock,
-    Linux: SiLinux,
     AWS: FaAws,
-    Postman: SiPostman,
+    "CI/CD Pipelines": SiGithubactions,
+    Linux: SiLinux,
+    "System Design": FaDiagramProject,
+    "Agile / Scrum": SiJira,
+    "Clean Code & SOLID": FaCode,
+    "Design Patterns": FaRocket,
+    "TDD / BDD": FaCircleCheck,
     Git: SiGit,
     GitHub: SiGithub,
+    GitLab: SiGitlab,
+    Jira: SiJira,
+    Postman: SiPostman,
     Vercel: SiVercel,
+    PostgreSQL: SiPostgresql,
+    MySQL: SiMysql,
+    MongoDB: SiMongodb,
+    Redis: SiRedis,
+};
+
+const SKILL_COLOR_MAP: Record<string, string> = {
+    "JavaScript (ES6+)": "#F7DF1E",
+    TypeScript: "#3178C6",
+    Python: "#3776AB",
+    "C++": "#00599C",
+    SQL: "#4479A1",
+    "SQL (PostgreSQL / MySQL)": "#4479A1",
+    HTML5: "#E34F26",
+    CSS3: "#1572B6",
+    "Node.js": "#339933",
+    "Express.js": "#ffffff",
+    NestJS: "#E0234E",
+    "RESTful API Design": "#00f5ff",
+    Microservices: "#FF9900",
+    "Real-time Systems (Socket.io)": "#ffffff",
+    "Redis Caching": "#DC382D",
+    "System Architecture": "#00f5ff",
+    "React.js": "#61DAFB",
+    React: "#61DAFB",
+    "Redux Toolkit": "#764ABC",
+    "Responsive Web Design": "#7952B3",
+    "State Management": "#764ABC",
+    Bootstrap: "#7952B3",
+    PostgreSQL: "#4169E1",
+    MySQL: "#4479A1",
+    MongoDB: "#47A248",
+    Redis: "#DC382D",
+    "Database Design & Optimization": "#4479A1",
+    "Docker & Docker Compose": "#2496ED",
+    AWS: "#FF9900",
+    "CI/CD Pipelines": "#2088FF",
+    Nginx: "#009639",
+    Linux: "#FCC624",
+    "System Design": "#00f5ff",
+    "Agile / Scrum": "#0052CC",
+    "Clean Code & SOLID": "#00f5ff",
+    "Design Patterns": "#FF9900",
+    "TDD / BDD": "#47A248",
+    Git: "#F05032",
+    GitHub: "#ffffff",
+    GitLab: "#FC6D26",
+    Jira: "#0052CC",
+    Postman: "#FF6C37",
+    Vercel: "#ffffff",
 };
 
 function getSkillIcon(skill: string): IconType {
     return SKILL_ICON_MAP[skill] ?? FaRegCircleDot;
 }
 
-function formatRepoDate(updatedAt: string): string {
-    const date = new Date(updatedAt);
-
-    if (Number.isNaN(date.getTime())) {
-        return "Updated just now";
-    }
-
-    const diffMs = Date.now() - date.getTime();
-    const diffMinutes = Math.floor(diffMs / (1000 * 60));
-
-    if (diffMinutes < 60) {
-        return `Updated ${Math.max(diffMinutes, 1)}m ago`;
-    }
-
-    const diffHours = Math.floor(diffMinutes / 60);
-
-    if (diffHours < 24) {
-        return `Updated ${diffHours}h ago`;
-    }
-
-    const diffDays = Math.floor(diffHours / 24);
-
-    if (diffDays < 30) {
-        return `Updated ${diffDays}d ago`;
-    }
-
-    const diffMonths = Math.floor(diffDays / 30);
-
-    if (diffMonths < 12) {
-        return `Updated ${diffMonths}mo ago`;
-    }
-
-    const diffYears = Math.floor(diffMonths / 12);
-
-    return `Updated ${diffYears}y ago`;
+function getSkillColor(skill: string): string {
+    return SKILL_COLOR_MAP[skill] ?? "var(--color-accent)";
 }
 
 function App() {
     useScrollReveal();
-    const [repos, setRepos] = useState<GitHubRepo[]>([]);
-    const [reposError, setReposError] = useState<string | null>(null);
-    const [showScrollTop, setShowScrollTop] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
-    const [isScrolled, setIsScrolled] = useState(false);
 
     // Theme toggle state logic
-    const [theme, setTheme] = useState<"dark" | "light">("dark");
+    const [theme, setTheme] = useState<"light" | "dark">("dark");
+
     useEffect(() => {
-        const savedTheme = localStorage.getItem("portfolio-theme") as
-            | "dark"
-            | "light"
-            | null;
-        if (savedTheme) {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
             setTheme(savedTheme);
             document.documentElement.setAttribute("data-theme", savedTheme);
         } else {
@@ -180,50 +204,6 @@ function App() {
     };
 
     const [activeSection, setActiveSection] = useState<NavSectionId>("home");
-    const showNavAvatar = activeSection !== "home";
-
-    // Fetch GitHub repos with caching (6-hour refresh)
-    useEffect(() => {
-        let active = true;
-
-        async function loadRepos() {
-            try {
-                const reposData = await getGitHubRepos();
-                if (active) {
-                    setRepos(reposData);
-                }
-            } catch {
-                if (active) {
-                    setReposError("Unable to load repositories at the moment.");
-                }
-            }
-        }
-
-        void loadRepos();
-
-        return () => {
-            active = false;
-        };
-    }, []);
-
-    useEffect(() => {
-        function handleScroll() {
-            setShowScrollTop(window.scrollY > 420);
-            setIsScrolled(window.scrollY > 20);
-            
-            const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-            if (totalScroll > 0) {
-                setScrollProgress((window.scrollY / totalScroll) * 100);
-            }
-        }
-
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll();
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
 
     useEffect(() => {
         const sectionIds = NAV_LINKS.map((link) => link.id);
@@ -232,34 +212,51 @@ function App() {
             .filter((section): section is HTMLElement => section !== null)
             .sort((first, second) => first.offsetTop - second.offsetTop);
 
-        if (sections.length === 0) {
-            return;
+        let ticking = false;
+
+        function updateScrollState() {
+            // 1. Update UI Scroll Progress
+
+            const totalScroll =
+                document.documentElement.scrollHeight - window.innerHeight;
+            if (totalScroll > 0) {
+                setScrollProgress((window.scrollY / totalScroll) * 100);
+            }
+
+            // 2. Update Active Section
+            if (sections.length > 0) {
+                const scrollMarker = window.scrollY + NAVBAR_SCROLL_OFFSET + 18;
+                let nextActive = sections[0].id as NavSectionId;
+
+                for (const section of sections) {
+                    // Caching offsetTop instead of getBoundingClientRect() to avoid forced reflows
+                    const sectionTop = section.offsetTop;
+
+                    if (sectionTop <= scrollMarker) {
+                        nextActive = section.id as NavSectionId;
+                    } else {
+                        break;
+                    }
+                }
+
+                const bottomEdge = window.scrollY + window.innerHeight;
+                const pageHeight = document.documentElement.scrollHeight;
+
+                if (bottomEdge >= pageHeight - 4) {
+                    nextActive = sections[sections.length - 1]
+                        .id as NavSectionId;
+                }
+
+                setActiveSection(nextActive);
+            }
+            ticking = false;
         }
 
-        function updateActiveSectionFromScroll() {
-            const scrollMarker = window.scrollY + NAVBAR_SCROLL_OFFSET + 18;
-            let nextActive = sections[0].id as NavSectionId;
-
-            for (const section of sections) {
-                const sectionTop =
-                    section.getBoundingClientRect().top + window.scrollY;
-
-                if (sectionTop <= scrollMarker) {
-                    nextActive = section.id as NavSectionId;
-                } else {
-                    break;
-                }
+        function handleScroll() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateScrollState);
+                ticking = true;
             }
-
-            // Ensure the last section is active near the bottom of the page.
-            const bottomEdge = window.scrollY + window.innerHeight;
-            const pageHeight = document.documentElement.scrollHeight;
-
-            if (bottomEdge >= pageHeight - 4) {
-                nextActive = sections[sections.length - 1].id as NavSectionId;
-            }
-
-            setActiveSection(nextActive);
         }
 
         function syncFromHash() {
@@ -270,17 +267,15 @@ function App() {
             }
         }
 
-        window.addEventListener("scroll", updateActiveSectionFromScroll, {
-            passive: true,
-        });
-        window.addEventListener("resize", updateActiveSectionFromScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("resize", handleScroll, { passive: true });
         syncFromHash();
-        updateActiveSectionFromScroll();
+        handleScroll();
         window.addEventListener("hashchange", syncFromHash);
 
         return () => {
-            window.removeEventListener("scroll", updateActiveSectionFromScroll);
-            window.removeEventListener("resize", updateActiveSectionFromScroll);
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleScroll);
             window.removeEventListener("hashchange", syncFromHash);
         };
     }, []);
@@ -307,8 +302,16 @@ function App() {
         window.scrollTo({ top: Math.max(targetTop, 0), behavior: "smooth" });
     }
 
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+    function getContactColor(label: string) {
+        const key = label.toLowerCase();
+        if (key.includes("mail") || key.includes("email")) return "var(--brand-email)";
+        if (key.includes("github")) return "var(--brand-github)";
+        if (key.includes("linkedin")) return "var(--brand-linkedin)";
+        if (key.includes("facebook")) return "var(--brand-facebook)";
+        if (key.includes("instagram")) return "var(--brand-instagram)";
+        if (key.includes("whatsapp")) return "var(--brand-whatsapp)";
+        if (key.includes("twitter") || key.includes("x")) return "var(--brand-twitter)";
+        return "var(--color-accent)";
     }
 
     function getContactIcon(label: string) {
@@ -364,20 +367,13 @@ function App() {
 
     return (
         <>
-            <nav className={`navbar ${isScrolled ? "is-scrolled" : ""}`}>
-                <div 
-                    className="scroll-progress-bar" 
-                    style={{ width: `${scrollProgress}%` }} 
+            <nav className="navbar">
+                <div
+                    className="scroll-progress-bar"
+                    style={{ width: `${scrollProgress}%` }}
                 />
                 <div className="navbar-brand">
-                    <div className="navbar-avatar-wrapper">
-                        <img
-                            src="/images/profile.jpg"
-                            alt="Mahmoud profile"
-                            className="navbar-avatar"
-                        />
-                    </div>
-                    <span className="navbar-name">{portfolioData.name}</span>
+                    <span className="navbar-name">MA</span>
                 </div>
                 <div className="navbar-links">
                     {NAV_LINKS.map((link) => (
@@ -403,7 +399,7 @@ function App() {
                         aria-label="Toggle Theme"
                         title="Toggle Theme"
                     >
-                        {theme === "dark" ? <FaSun /> : <FaMoon />}
+                        <FaMoon />
                     </button>
                     <button
                         className="mobile-menu-toggle"
@@ -454,18 +450,27 @@ function App() {
                                 <span className="status-dot"></span>
                                 {portfolioData.availability}
                             </div>
-                            <div className="location-badge">
-                                <FaLocationDot aria-hidden="true" />
-                                {portfolioData.location}
-                            </div>
+                            <a
+                                href="https://drive.google.com/file/d/1QopGpVKlf9oUcYkB3zBz4I2efCM5HQmL/view?usp=drive_link"
+                                className="resume-badge"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <FaArrowUpRightFromSquare aria-hidden="true" />
+                                <span>Resume</span>
+                            </a>
                         </div>
                         <h1 className="hero-animate hero-delay-1">
                             {portfolioData.name}
                             <span>{portfolioData.role}</span>
                         </h1>
-                        <p className="hero-intro hero-animate hero-delay-2">{portfolioData.intro}</p>
+                        <p className="hero-intro hero-animate hero-delay-2">
+                            {portfolioData.intro}
+                        </p>
                         {portfolioData.heroBlurb && (
-                            <p className="hero-blurb hero-animate hero-delay-2">{portfolioData.heroBlurb}</p>
+                            <p className="hero-blurb hero-animate hero-delay-2">
+                                {portfolioData.heroBlurb}
+                            </p>
                         )}
 
                         <div className="hero-social-icons hero-animate hero-delay-3">
@@ -478,6 +483,7 @@ function App() {
                                     className="hero-social-icon"
                                     aria-label={link.label}
                                     title={link.label}
+                                    style={{ color: getContactColor(link.label) }}
                                 >
                                     {getContactIcon(link.label)}
                                 </a>
@@ -490,242 +496,260 @@ function App() {
                             <img
                                 src="/images/profile.jpg"
                                 alt="Mahmoud profile"
-                                className={`hero-profile-image ${showNavAvatar ? "is-hidden" : "is-visible"}`}
+                                className="hero-profile-image"
+                                loading="lazy"
+                                decoding="async"
                             />
+                        </section>
+                    </div>
+
+                    <div className="hero-explore-container hero-animate hero-delay-4">
+                        <button
+                            className="hero-explore-btn"
+                            onClick={() =>
+                                document
+                                    .getElementById("education")
+                                    ?.scrollIntoView({ behavior: "smooth" })
+                            }
+                        >
+                            Explore Me
+                            <FaArrowDown />
+                        </button>
+                    </div>
+                </section>
+
+                <div id="education" className="nav-section">
+                    <div className="section-header reveal">
+                        <FaGraduationCap
+                            className="section-icon"
+                            aria-hidden="true"
+                        />
+                        <h1 className="main-section-title">Education</h1>
+                    </div>
+                    <section className="panel">
+                        <h2 className="align-center">Academic Background</h2>
+                        <div className="education-list stagger-container">
+                            {portfolioData.education.map((edu) => (
+                                <div
+                                    className="education-item reveal"
+                                    key={edu.institution}
+                                >
+                                    <div className="education-header">
+                                        <div>
+                                            <h3>{edu.institution}</h3>
+                                            <p className="education-degree">
+                                                {edu.degree}
+                                            </p>
+                                        </div>
+                                        <div className="education-meta">
+                                            <span className="education-period">
+                                                {edu.period}
+                                            </span>
+                                            <span className="education-location">
+                                                {edu.location}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {edu.details && (
+                                        <p className="education-details">
+                                            {edu.details}
+                                        </p>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                </div>
+
+                <section className="content-grid about-stack-layout">
+                    <div id="about" className="nav-section">
+                        <div className="section-header reveal">
+                            <FaUser
+                                className="section-icon"
+                                aria-hidden="true"
+                            />
+                            <h1 className="main-section-title">About Me</h1>
+                        </div>
+                        <section className="panel">
+                            <h2 className="align-left">Who am I?</h2>
+                            <div className="about-text stagger-container">
+                                {portfolioData.focusAreas.map((area) => (
+                                    <p
+                                        className="about-paragraph reveal"
+                                        key={area}
+                                    >
+                                        {area}
+                                    </p>
+                                ))}
+                            </div>
+                        </section>
+                    </div>
+
+                    <div id="skills" className="nav-section">
+                        <div className="section-header reveal">
+                            <FaCode
+                                className="section-icon"
+                                aria-hidden="true"
+                            />
+                            <h1 className="main-section-title">Skills</h1>
+                        </div>
+                        <section className="panel">
+                            <div className="skill-groups stagger-container">
+                                {portfolioData.skillGroups.map((group) => (
+                                    <article
+                                        className="skill-group reveal"
+                                        key={group.title}
+                                    >
+                                        <h3>{group.title}</h3>
+                                        <ul>
+                                            {group.items.map((item) => {
+                                                const SkillIcon =
+                                                    getSkillIcon(item);
+                                                const iconColor =
+                                                    getSkillColor(item);
+
+                                                return (
+                                                    <li key={item}>
+                                                        <span
+                                                            className="skill-icon"
+                                                            style={{
+                                                                color: iconColor,
+                                                            }}
+                                                            aria-hidden="true"
+                                                        >
+                                                            <SkillIcon />
+                                                        </span>
+                                                        <span>{item}</span>
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    </article>
+                                ))}
+                            </div>
                         </section>
                     </div>
                 </section>
 
-                <section className="panel nav-section" id="education">
-                    <p className="eyebrow">
-                        <FaGraduationCap aria-hidden="true" />
-                        Education
-                    </p>
-                    <h2>Academic Background</h2>
-                    <div className="education-list">
-                        {portfolioData.education.map((edu) => (
-                            <div className="education-item reveal" key={edu.institution}>
-                                <div className="education-header">
-                                    <div>
-                                        <h3>{edu.institution}</h3>
-                                        <p className="education-degree">{edu.degree}</p>
-                                    </div>
-                                    <div className="education-meta">
-                                        <span className="education-period">{edu.period}</span>
-                                        <span className="education-location">{edu.location}</span>
-                                    </div>
-                                </div>
-                                {edu.details && <p className="education-details">{edu.details}</p>}
-                            </div>
-                        ))}
+                <div id="projects" className="nav-section">
+                    <div className="section-header reveal">
+                        <FaRocket className="section-icon" aria-hidden="true" />
+                        <h1 className="main-section-title">Projects</h1>
                     </div>
-                </section>
-
-                <section className="content-grid about-stack-layout">
-                    <section className="panel nav-section" id="about">
-                        <p className="eyebrow">
-                            <FaUser aria-hidden="true" />
-                            About
-                        </p>
-                        <h2>Who am I?</h2>
-                        <div className="about-text">
-                            {portfolioData.focusAreas.map((area) => (
-                                <p className="about-paragraph reveal" key={area}>
-                                    {area}
-                                </p>
-                            ))}
-                        </div>
-                        <a
-                            href="https://drive.google.com/file/d/1QopGpVKlf9oUcYkB3zBz4I2efCM5HQmL/view?usp=drive_link"
-                            className="about-cv-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FaFileArrowDown aria-hidden="true" />
-                            View Resume
-                        </a>
-                    </section>
-
-                    <section className="panel nav-section" id="skills">
-                        <p className="eyebrow">
-                            <FaCode aria-hidden="true" />
-                            Skills
-                        </p>
-                        <h2>Technical capabilities</h2>
-                        <div className="skill-groups">
-                            {portfolioData.skillGroups.map((group) => (
+                    <section className="panel">
+                        <div className="projects-grid stagger-container">
+                            {portfolioData.projects.map((project) => (
                                 <article
-                                    className="skill-group reveal"
-                                    key={group.title}
+                                    className="project-card reveal"
+                                    key={project.title}
                                 >
-                                    <h3>{group.title}</h3>
-                                    <ul>
-                                        {group.items.map((item) => {
+                                    <h3>{project.title}</h3>
+                                    <p>{project.summary}</p>
+                                    <div className="tag-cloud compact">
+                                        {project.stack.map((item) => {
                                             const SkillIcon =
                                                 getSkillIcon(item);
-
+                                            const iconColor =
+                                                getSkillColor(item);
                                             return (
-                                                <li key={item}>
-                                                    <span
-                                                        className="skill-icon"
+                                                <span key={item}>
+                                                    <SkillIcon
+                                                        className="tag-icon"
+                                                        style={{
+                                                            color: iconColor,
+                                                        }}
                                                         aria-hidden="true"
-                                                    >
-                                                        <SkillIcon />
-                                                    </span>
-                                                    <span>{item}</span>
-                                                </li>
+                                                    />
+                                                    {item}
+                                                </span>
                                             );
                                         })}
-                                    </ul>
+                                    </div>
+                                    <p className="project-outcome">
+                                        <FaCircleCheck aria-hidden="true" />
+                                        <span>{project.outcome}</span>
+                                    </p>
+                                    <div className="project-links">
+                                        {project.github && (
+                                            <a
+                                                href={project.github}
+                                                className="github-link"
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                <FaCodeBranch aria-hidden="true" />
+                                                <span>GitHub</span>
+                                                <FaArrowUpRightFromSquare aria-hidden="true" />
+                                            </a>
+                                        )}
+                                        {project.live && (
+                                            <a
+                                                href={project.live}
+                                                className="github-link live-link"
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                <FaArrowUpRightFromSquare aria-hidden="true" />
+                                                <span>Live Demo</span>
+                                            </a>
+                                        )}
+                                    </div>
                                 </article>
                             ))}
                         </div>
                     </section>
-                </section>
+                </div>
 
-                <section className="panel nav-section" id="projects">
-                    <p className="eyebrow">
-                        <FaRocket aria-hidden="true" />
-                        Selected Work
-                    </p>
-                    <h2>Featured projects and real outcomes</h2>
-                    <div className="projects-grid">
-                        {portfolioData.projects.map((project) => (
-                            <article
-                                className="project-card reveal"
-                                key={project.title}
-                            >
-                                <h3>{project.title}</h3>
-                                <p>{project.summary}</p>
-                                <div className="tag-cloud compact">
-                                    {project.stack.map((item) => (
-                                        <span key={item}>{item}</span>
-                                    ))}
-                                </div>
-                                <p className="project-outcome">
-                                    <FaCircleCheck aria-hidden="true" />
-                                    <span>{project.outcome}</span>
-                                </p>
-                                <div className="project-links">
-                                    {project.github && (
-                                        <a
-                                            href={project.github}
-                                            className="github-link"
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        >
-                                            <FaCodeBranch aria-hidden="true" />
-                                            <span>GitHub</span>
-                                            <FaArrowUpRightFromSquare aria-hidden="true" />
-                                        </a>
-                                    )}
-                                    {project.live && (
-                                        <a
-                                            href={project.live}
-                                            className="github-link live-link"
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        >
-                                            <FaArrowUpRightFromSquare aria-hidden="true" />
-                                            <span>Live Demo</span>
-                                        </a>
-                                    )}
-                                </div>
-                            </article>
-                        ))}
+                <div id="contact" className="nav-section">
+                    <div className="section-header reveal">
+                        <FaEnvelope
+                            className="section-icon"
+                            aria-hidden="true"
+                        />
+                        <h1 className="main-section-title">
+                            Let&apos;s Connect
+                        </h1>
                     </div>
-                </section>
-
-                <section className="panel nav-section" id="github">
-                    <p className="eyebrow">
-                        <SiGithub aria-hidden="true" />
-                        GitHub Repositories
-                    </p>
-                    <h2>Latest repositories from GitHub</h2>
-                    {reposError ? (
-                        <p>{reposError}</p>
-                    ) : (
-                        <div className="repos-grid">
-                            {repos.map((repo) => (
-                                <article className="repo-card reveal" key={repo.id}>
-                                    <h3>{repo.name}</h3>
-                                    <p>{repo.description}</p>
-                                    <div className="repo-meta">
-                                        <span className="repo-pill">
-                                            <FaServer aria-hidden="true" />
-                                            <span>
-                                                {repo.language || "N/A"}
-                                            </span>
-                                        </span>
-                                        <span className="repo-pill">
-                                            <FaRegClock aria-hidden="true" />
-                                            <span>
-                                                {formatRepoDate(repo.updatedAt)}
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <a
-                                        href={repo.url}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="github-link"
-                                    >
-                                        <FaCodeBranch aria-hidden="true" />
-                                        <span>Open repository</span>
-                                        <FaArrowUpRightFromSquare aria-hidden="true" />
-                                    </a>
-                                </article>
+                    <section className="panel contact-strip">
+                        <div className="contact-info-row reveal">
+                            <div className="status-badge">
+                                <span className="status-dot"></span>
+                                <span>Available for opportunities</span>
+                            </div>
+                            <div className="location-badge">
+                                <FaLocationDot aria-hidden="true" />
+                                <span>{portfolioData.location}</span>
+                            </div>
+                        </div>
+                        <div className="contact-grid stagger-container">
+                            {portfolioData.contactLinks.map((link) => (
+                                <a
+                                    href={link.href}
+                                    key={link.label}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={`contact-card reveal ${getContactClass(link.label)}`}
+                                >
+                                    <span className="contact-icon">
+                                        {getContactIcon(link.label)}
+                                    </span>
+                                    <span>{link.label}</span>
+                                </a>
                             ))}
                         </div>
-                    )}
-                </section>
-
-                <section
-                    className="panel contact-strip nav-section"
-                    id="contact"
-                >
-                    <p className="eyebrow">
-                        <FaEnvelope aria-hidden="true" />
-                        Connect
-                    </p>
-                    <h2>Let&apos;s connect</h2>
-                    <div className="contact-grid">
-                        {portfolioData.contactLinks.map((link) => (
-                            <a
-                                href={link.href}
-                                key={link.label}
-                                target="_blank"
-                                rel="noreferrer"
-                                className={`contact-card reveal ${getContactClass(link.label)}`}
-                            >
-                                <span className="contact-icon">
-                                    {getContactIcon(link.label)}
-                                </span>
-                                <span>{link.label}</span>
-                            </a>
-                        ))}
-                    </div>
-                </section>
+                    </section>
+                </div>
 
                 <footer className="site-footer">
                     <div className="terminal-signature">
                         <span className="prompt-symbol">&gt;</span>
                         <span className="command-text">
-                            Built by Mahmoud Abdellah
+                            Built by {portfolioData.name}
                         </span>
-                        <span className="comment-text">/* &copy; 2026 */</span>
+                        <span className="comment-text">/* &copy; 2026 All Rights Reserved */</span>
                         <span className="cursor-blink">_</span>
                     </div>
                 </footer>
-
-                <button
-                    type="button"
-                    className={`scroll-top-btn ${showScrollTop ? "is-visible" : ""}`}
-                    onClick={scrollToTop}
-                    aria-label="Scroll to top"
-                >
-                    <FaArrowUp aria-hidden="true" />
-                </button>
             </main>
         </>
     );
