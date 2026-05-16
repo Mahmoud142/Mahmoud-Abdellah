@@ -7,7 +7,7 @@
   --color-bg-surface: rgba(31, 40, 51, 0.45);
   --color-bg-surface-hover: rgba(45, 55, 72, 0.6);
   --color-border: rgba(255, 255, 255, 0.08);
-  --color-glass-blur: blur(14px);
+  --color-glass-blur: blur(8px);
 
   --color-accent: #00E5E5; /* Neon Cyan */
   --color-accent-secondary: #635BFF; /* Electric Blue */
@@ -58,7 +58,7 @@
   --color-bg-surface: rgba(255, 255, 255, 0.65);
   --color-bg-surface-hover: rgba(255, 255, 255, 0.85);
   --color-border: rgba(0, 0, 0, 0.06);
-  --color-glass-blur: blur(10px);
+  --color-glass-blur: blur(8px);
 
   /* Muted Professional Accents */
   --color-accent: #364FC7; /* Muted Royal Blue */

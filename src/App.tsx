@@ -149,8 +149,8 @@ function formatRepoDate(updatedAt: string): string {
 }
 
 function App() {
-    useScrollReveal();
     const [repos, setRepos] = useState<GitHubRepo[]>([]);
+    useScrollReveal([repos]);
     const [reposError, setReposError] = useState<string | null>(null);
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -158,13 +158,11 @@ function App() {
     const [isScrolled, setIsScrolled] = useState(false);
 
     // Theme toggle state logic
-    const [theme, setTheme] = useState<"dark" | "light">("dark");
+    const [theme, setTheme] = useState<"light" | "dark">("dark");
+
     useEffect(() => {
-        const savedTheme = localStorage.getItem("portfolio-theme") as
-            | "dark"
-            | "light"
-            | null;
-        if (savedTheme) {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
             setTheme(savedTheme);
             document.documentElement.setAttribute("data-theme", savedTheme);
         } else {
@@ -207,7 +205,16 @@ function App() {
     }, []);
 
     useEffect(() => {
-        function handleScroll() {
+        const sectionIds = NAV_LINKS.map((link) => link.id);
+        const sections = sectionIds
+            .map((id) => document.getElementById(id))
+            .filter((section): section is HTMLElement => section !== null)
+            .sort((first, second) => first.offsetTop - second.offsetTop);
+
+        let ticking = false;
+
+        function updateScrollState() {
+            // 1. Update UI Scroll Progress
             setShowScrollTop(window.scrollY > 420);
             setIsScrolled(window.scrollY > 20);
             
@@ -215,51 +222,40 @@ function App() {
             if (totalScroll > 0) {
                 setScrollProgress((window.scrollY / totalScroll) * 100);
             }
-        }
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll();
+            // 2. Update Active Section
+            if (sections.length > 0) {
+                const scrollMarker = window.scrollY + NAVBAR_SCROLL_OFFSET + 18;
+                let nextActive = sections[0].id as NavSectionId;
 
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
+                for (const section of sections) {
+                    // Caching offsetTop instead of getBoundingClientRect() to avoid forced reflows
+                    const sectionTop = section.offsetTop;
 
-    useEffect(() => {
-        const sectionIds = NAV_LINKS.map((link) => link.id);
-        const sections = sectionIds
-            .map((id) => document.getElementById(id))
-            .filter((section): section is HTMLElement => section !== null)
-            .sort((first, second) => first.offsetTop - second.offsetTop);
-
-        if (sections.length === 0) {
-            return;
-        }
-
-        function updateActiveSectionFromScroll() {
-            const scrollMarker = window.scrollY + NAVBAR_SCROLL_OFFSET + 18;
-            let nextActive = sections[0].id as NavSectionId;
-
-            for (const section of sections) {
-                const sectionTop =
-                    section.getBoundingClientRect().top + window.scrollY;
-
-                if (sectionTop <= scrollMarker) {
-                    nextActive = section.id as NavSectionId;
-                } else {
-                    break;
+                    if (sectionTop <= scrollMarker) {
+                        nextActive = section.id as NavSectionId;
+                    } else {
+                        break;
+                    }
                 }
+
+                const bottomEdge = window.scrollY + window.innerHeight;
+                const pageHeight = document.documentElement.scrollHeight;
+
+                if (bottomEdge >= pageHeight - 4) {
+                    nextActive = sections[sections.length - 1].id as NavSectionId;
+                }
+
+                setActiveSection(nextActive);
             }
+            ticking = false;
+        }
 
-            // Ensure the last section is active near the bottom of the page.
-            const bottomEdge = window.scrollY + window.innerHeight;
-            const pageHeight = document.documentElement.scrollHeight;
-
-            if (bottomEdge >= pageHeight - 4) {
-                nextActive = sections[sections.length - 1].id as NavSectionId;
+        function handleScroll() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateScrollState);
+                ticking = true;
             }
-
-            setActiveSection(nextActive);
         }
 
         function syncFromHash() {
@@ -270,17 +266,15 @@ function App() {
             }
         }
 
-        window.addEventListener("scroll", updateActiveSectionFromScroll, {
-            passive: true,
-        });
-        window.addEventListener("resize", updateActiveSectionFromScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        window.addEventListener("resize", handleScroll, { passive: true });
         syncFromHash();
-        updateActiveSectionFromScroll();
+        handleScroll();
         window.addEventListener("hashchange", syncFromHash);
 
         return () => {
-            window.removeEventListener("scroll", updateActiveSectionFromScroll);
-            window.removeEventListener("resize", updateActiveSectionFromScroll);
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleScroll);
             window.removeEventListener("hashchange", syncFromHash);
         };
     }, []);

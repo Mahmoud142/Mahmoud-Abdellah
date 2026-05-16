@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export function useScrollReveal() {
+export function useScrollReveal(dependencies: React.DependencyList = []) {
     useEffect(() => {
         const observerOptions = {
             root: null,
@@ -18,27 +18,18 @@ export function useScrollReveal() {
         }, observerOptions);
 
         function observeElements() {
-            // Find all reveal elements that haven't been revealed yet
             const revealElements = document.querySelectorAll(".reveal:not(.is-revealed)");
             revealElements.forEach((el) => intersectionObserver.observe(el));
         }
 
-        // 1. Observe existing DOM elements on mount
         observeElements();
 
-        // 2. Observe future DOM mutations to catch asynchronously loaded content (like the GitHub API requests)
-        const mutationObserver = new MutationObserver(() => {
-            observeElements();
-        });
-
-        mutationObserver.observe(document.body, {
-            childList: true,
-            subtree: true,
-        });
+        // Use a simple timeout to catch elements rendered slightly after mount
+        const timeoutId = setTimeout(observeElements, 500);
 
         return () => {
-            mutationObserver.disconnect();
+            clearTimeout(timeoutId);
             intersectionObserver.disconnect();
         };
-    }, []);
+    }, dependencies);
 }
