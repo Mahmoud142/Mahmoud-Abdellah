@@ -54,8 +54,6 @@ button {
     background: linear-gradient(180deg, #635BFF 0%, #00E5E5 48%, #4F46E5 100%);
     border-radius: 999px;
     border: 2px solid #0B0C10;
-    box-shadow: 0 0 0 1px rgba(99, 91, 255, 0.06) inset,
-        0 0 18px rgba(99, 91, 255, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -65,9 +63,9 @@ button {
 /* --- Scroll Reveal Animations --- */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -103,17 +101,18 @@ button {
 
 .hero-animate {
     opacity: 0;
-    animation: slideUpFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: opacity, transform;
+    animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-delay-1 {
-    animation-delay: 150ms;
+    animation-delay: 100ms;
 }
 
 .hero-delay-2 {
-    animation-delay: 300ms;
+    animation-delay: 200ms;
 }
 
 .hero-delay-3 {
-    animation-delay: 450ms;
+    animation-delay: 300ms;
 }
