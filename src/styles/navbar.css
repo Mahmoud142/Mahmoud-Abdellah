@@ -14,16 +14,9 @@
     background: rgba(11, 12, 16, 0.72);
     backdrop-filter: blur(20px) saturate(180%);
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.3s ease, padding 0.3s ease;
 }
 
-.navbar.is-scrolled {
-    top: 0.6rem;
-    padding: 0.4rem 1.2rem;
-    background: rgba(11, 12, 16, 0.9);
-    width: min(920px, calc(100% - 2rem));
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-}
 
 .scroll-progress-bar {
     position: absolute;
@@ -42,50 +35,32 @@
     gap: 0.8rem;
 }
 
-.navbar-avatar-wrapper {
-    position: relative;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.navbar-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid var(--color-accent);
-    object-fit: cover;
-    box-shadow: 0 0 12px var(--color-accent-glow);
-    transition: transform 0.3s ease;
-}
-
-.navbar-avatar:hover {
-    transform: scale(1.1);
-}
 
 .navbar-name {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--color-text-primary);
-    letter-spacing: -0.01em;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .navbar-links {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1.1rem;
 }
 
 .navbar-links a {
     color: var(--color-text-secondary);
     text-decoration: none;
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     font-weight: 500;
     border-radius: 999px;
     padding: 0.35rem 0.75rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.2s ease, background 0.2s ease;
 }
 
 .navbar-links a:hover {
@@ -117,7 +92,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .theme-toggle:hover {
@@ -140,7 +115,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     font-size: 1rem;
 }
 
@@ -206,7 +181,7 @@
     font-size: 1rem;
     font-weight: 500;
     border: 1px solid transparent;
-    transition: all 200ms ease;
+    transition: color 0.2s ease, background 0.2s ease;
 }
 
 .mobile-drawer-links a:hover {
@@ -230,16 +205,22 @@
 
 @media (max-width: 900px) {
     .navbar {
-        position: relative;
-        top: 1rem;
-        margin-bottom: 1rem;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        border-radius: 0;
+        margin: 0;
+        padding: 0.6rem 1rem;
+        transition: none !important;
+        border-left: none;
+        border-right: none;
+        border-top: none;
     }
 
     .navbar-links {
-        display: none;
-    }
-    
-    .navbar-name {
         display: none;
     }
 
@@ -258,7 +239,7 @@
 
 @media (max-width: 480px) {
     .navbar {
-        top: 0.5rem;
-        padding: 0.45rem 0.9rem;
+        padding: 0.5rem 0.75rem;
+        transition: none !important;
     }
 }
