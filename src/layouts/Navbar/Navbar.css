@@ -243,3 +243,52 @@
         transition: none !important;
     }
 }
+/* Resume button styling in Navbar */
+.navbar-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-bg-base);
+    background: var(--color-accent);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar-resume-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--color-accent-glow);
+}
+
+.navbar-resume-btn svg {
+    font-size: 0.75rem;
+}
+
+.mobile-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-bg-base);
+    background: var(--color-accent);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.mobile-resume-btn:hover {
+    background: var(--color-accent-secondary);
+}
+
+@media (max-width: 900px) {
+    .navbar-resume-btn {
+        display: none; /* Hide on desktop navbar when switching to hamburger menu */
+    }
+}

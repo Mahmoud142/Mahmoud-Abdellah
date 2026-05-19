@@ -53,3 +53,16 @@ export interface PortfolioData {
     projects: Project[];
     contactLinks: ContactLink[];
 }
+
+export interface Project {
+    title: string;
+    summary: string;
+    stack: string[];
+    outcome: string;
+    github?: string;
+    live?: string;
+}
+export interface SkillGroup {
+    title: string;
+    items: string[];
+}

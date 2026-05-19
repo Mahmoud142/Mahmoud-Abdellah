@@ -1,4 +1,4 @@
-import type { PortfolioData } from "../types";
+import type { PortfolioData } from "../types/index";
 
 export const portfolioData: PortfolioData = {
     name: "Mahmoud Abdellah",
@@ -205,7 +205,12 @@ export const portfolioData: PortfolioData = {
             title: "Secure Todo API",
             summary:
                 "Advanced task management API with relational modeling and JWT-secured authentication flows.",
-            stack: ["Node.js", "Express.js", "MySQL", "Database Design & Optimization"],
+            stack: [
+                "Node.js",
+                "Express.js",
+                "MySQL",
+                "Database Design & Optimization",
+            ],
             outcome:
                 "Demonstrated strong backend engineering with relational modeling and modern ORM-based development.",
             github: "https://github.com/Mahmoud142/todo-api",
@@ -226,7 +231,7 @@ export const portfolioData: PortfolioData = {
             label: "Instagram",
             href: "https://www.instagram.com/mahmoud_abdellah_",
         },
-        { label: "WhatsApp", href: "https://wa.me/201090268143" },
+        { label: "WhatsApp", href: "https://wa.me/201145325772" },
         { label: "X / Twitter", href: "https://x.com/Abo_3bdellah" },
     ],
 };
