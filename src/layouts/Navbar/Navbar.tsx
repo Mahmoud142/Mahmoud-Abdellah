@@ -1,5 +1,10 @@
 import { MouseEvent } from "react";
-import { FaMoon, FaBars, FaXmark, FaArrowUpRightFromSquare } from "react-icons/fa6";
+import {
+    FaMoon,
+    FaBars,
+    FaXmark,
+    FaArrowUpRightFromSquare,
+} from "react-icons/fa6";
 import "./Navbar.css";
 
 interface NavLink {
@@ -19,13 +24,22 @@ interface NavbarProps {
 }
 
 export function Navbar({
-    navLinks, scrollProgress, activeSection, theme, toggleTheme,
-    mobileMenuOpen, setMobileMenuOpen, handleNavClick
+    navLinks,
+    scrollProgress,
+    activeSection,
+    theme,
+    toggleTheme,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    handleNavClick,
 }: NavbarProps) {
     return (
         <>
             <nav className="navbar">
-                <div className="scroll-progress-bar" style={{ width: `${scrollProgress}%` }} />
+                <div
+                    className="scroll-progress-bar"
+                    style={{ width: `${scrollProgress}%` }}
+                />
                 <div className="navbar-brand">
                     <span className="navbar-name">MA</span>
                 </div>
@@ -35,8 +49,12 @@ export function Navbar({
                             href={`#${link.id}`}
                             key={link.id}
                             onClick={(e) => handleNavClick(e, link.id)}
-                            className={activeSection === link.id ? "is-active" : ""}
-                            aria-current={activeSection === link.id ? "page" : undefined}
+                            className={
+                                activeSection === link.id ? "is-active" : ""
+                            }
+                            aria-current={
+                                activeSection === link.id ? "page" : undefined
+                            }
                         >
                             {link.label}
                         </a>
@@ -52,23 +70,42 @@ export function Navbar({
                         <span>Resume</span>
                         <FaArrowUpRightFromSquare aria-hidden="true" />
                     </a>
-                    <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme" title="Toggle Theme">
+                    <button
+                        className="theme-toggle"
+                        onClick={toggleTheme}
+                        aria-label="Toggle Theme"
+                        title="Toggle Theme"
+                    >
                         <FaMoon />
                     </button>
-                    <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={mobileMenuOpen ? "Close menu" : "Open menu"} aria-expanded={mobileMenuOpen}>
+                    <button
+                        className="mobile-menu-toggle"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={mobileMenuOpen}
+                    >
                         {mobileMenuOpen ? <FaXmark /> : <FaBars />}
                     </button>
                 </div>
             </nav>
-            <div className={`mobile-drawer-backdrop ${mobileMenuOpen ? "is-open" : ""}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true" />
-            <nav className={`mobile-drawer ${mobileMenuOpen ? "is-open" : ""}`} aria-label="Mobile navigation">
+            <div
+                className={`mobile-drawer-backdrop ${mobileMenuOpen ? "is-open" : ""}`}
+                onClick={() => setMobileMenuOpen(false)}
+                aria-hidden="true"
+            />
+            <nav
+                className={`mobile-drawer ${mobileMenuOpen ? "is-open" : ""}`}
+                aria-label="Mobile navigation"
+            >
                 <div className="mobile-drawer-links">
                     {navLinks.map((link) => (
                         <a
                             href={`#${link.id}`}
                             key={link.id}
                             onClick={(e) => handleNavClick(e, link.id)}
-                            className={activeSection === link.id ? "is-active" : ""}
+                            className={
+                                activeSection === link.id ? "is-active" : ""
+                            }
                         >
                             {link.label}
                         </a>
