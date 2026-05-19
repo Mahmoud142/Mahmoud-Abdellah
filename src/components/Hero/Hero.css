@@ -1,6 +1,6 @@
 .hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.8fr) minmax(260px, 1fr);
+    grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1.15fr);
     gap: clamp(1.1rem, 2.4vw, 1.9rem);
     padding: clamp(1.1rem, 2.2vw, 1.8rem);
     background: var(--color-hero-bg);
@@ -74,8 +74,15 @@
 }
 
 @keyframes status-pulse {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(2.5); opacity: 0; }
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
 }
 
 .hero-copy .eyebrow {
@@ -247,20 +254,56 @@
 }
 
 .hero-image-card {
+    position: relative;
     min-height: 15rem;
     display: grid;
     align-items: center;
-    padding: 0.82rem;
+    padding: 0;
+    perspective: 1000px;
+    animation: profile-float 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: transform;
+}
+
+
+@keyframes profile-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3%);
+    }
 }
 
 .hero-profile-image {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 18px;
-    border: 1px solid var(--color-accent);
+    border-radius: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 20px var(--color-accent-glow);
     display: block;
+    transform: rotateX(0) rotateY(0) scale(1);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.4s ease,
+        outline-offset 0.4s ease,
+        outline-color 0.4s ease,
+        border-color 0.4s ease;
+    will-change: transform, box-shadow, outline-offset;
+    cursor: pointer;
+}
+
+.hero-profile-image:hover {
+    transform: rotateX(4deg) rotateY(-8deg) scale(1.04);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 50px var(--color-accent);
+    outline-color: #ffffff;
+    outline-offset: 10px;
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .hero-explore-container {
@@ -298,12 +341,19 @@
 }
 
 @keyframes bounce-down {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(3px);
     }
+
     60% {
         transform: translateY(1.5px);
     }
@@ -313,9 +363,81 @@
     .hero-explore-container {
         margin-top: 1rem;
     }
-    
+
     .hero-explore-btn {
         padding: 0.65rem 1.5rem;
         font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    .hero-side {
+        order: -1;
+        /* Puts the image first */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-image-card {
+        width: 70%;
+        max-width: 260px;
+        min-height: auto;
+        animation: none;
+        /* Disable the desktop float to rely on mobile animation */
+    }
+
+    .hero-profile-image {
+        border-radius: 50%;
+        /* Make it a perfect circle */
+        animation: mobile-circle-pulse 4s ease-in-out infinite;
+        /* Performant continuous pulse */
+        outline-offset: 6px;
+    }
+
+    .hero-profile-image:hover {
+        /* Reset 3d hover effects for mobile screens */
+        transform: scale(1);
+        outline-offset: 6px;
+    }
+
+    .hero-status-row,
+    .hero-social-icons,
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+
+    .hero-intro,
+    .hero-blurb {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Zero-lag hardware-accelerated breathing pulse for mobile */
+@keyframes mobile-circle-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 15px var(--color-accent-glow);
+    }
+
+    50% {
+        transform: scale(1.04);
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6), 0 0 35px var(--color-accent);
     }
 }
