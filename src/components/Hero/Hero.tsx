@@ -11,7 +11,9 @@ import {
     FaRegCircleDot,
 } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
+import profileImg from "../../assets/images/Profile2.jpg";
 import "./Hero.css";
+
 
 export function getContactColor(label: string) {
     const key = label.toLowerCase();
@@ -91,7 +93,7 @@ export function Hero() {
             <div className="hero-side">
                 <section className="panel inset-panel hero-image-card hero-animate hero-delay-2">
                     <img
-                        src="/src/assets/images/Profile2.jpg"
+                        src={profileImg}
                         alt="Mahmoud profile"
                         className="hero-profile-image"
                         loading="lazy"
