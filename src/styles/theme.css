@@ -1,162 +1,319 @@
-:root, [data-theme="dark"] {
-  /* 🌑 Dark Mode — Refined Electric Pulse Glass Design */
-  --color-bg-primary: #0B0C10;
-  --color-bg-primary-alt: #111827;
-  
-  /* Glass Surfaces */
-  --color-bg-surface: rgba(31, 40, 51, 0.45);
-  --color-bg-surface-hover: rgba(45, 55, 72, 0.6);
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-glass-blur: blur(8px);
+:root,
+[data-theme="dark"] {
+    /* 🌑 Dark Mode — Refined Electric Pulse Glass Design */
+    --color-bg-primary: #0B0C10;
+    --color-bg-primary-alt: #111827;
 
-  --color-accent: #00E5E5; /* Neon Cyan */
-  --color-accent-secondary: #635BFF; /* Electric Blue */
-  --color-accent-tertiary: #A855F7; /* Deep Orchid */
-  
-  --color-accent-glow: rgba(0, 229, 229, 0.15);
-  --color-accent-glow-2: rgba(99, 91, 255, 0.15);
-  --color-accent-glow-3: rgba(168, 85, 247, 0.12);
+    /* Glass Surfaces */
+    --color-bg-surface: rgba(31, 40, 51, 0.45);
+    --color-bg-surface-hover: rgba(45, 55, 72, 0.6);
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-glass-blur: blur(8px);
 
-  /* Brand Colors - Dark mode */
-  --brand-github: #ffffff;
-  --brand-twitter: #ffffff;
-  --brand-linkedin: #0A66C2;
-  --brand-facebook: #1877F2;
-  --brand-instagram: #E4405F;
-  --brand-whatsapp: #25D366;
-  --brand-email: #EA4335;
+    --color-accent: #00E5E5;
+    /* Neon Cyan */
+    --color-accent-secondary: #635BFF;
+    /* Electric Blue */
+    --color-accent-tertiary: #A855F7;
+    /* Deep Orchid */
 
-  /* Animation Tokens */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
-  --transition-speed: 300ms;
+    --color-accent-glow: rgba(0, 229, 229, 0.15);
+    --color-accent-glow-2: rgba(99, 91, 255, 0.15);
+    --color-accent-glow-3: rgba(168, 85, 247, 0.12);
 
-  /* High-Voltage Accents */
-  --color-disruptor: #00F5FF; /* High-Energy Cyan */
-  --color-disruptor-glow: rgba(0, 245, 255, 0.2);
-  --color-success: #39FF14; /* Acid Green */
-  --color-glow-decorative: #8A2BE2; /* Plasma Purple */
-  
-  /* Rich Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
-  --gradient-metallic: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%);
-  --gradient-mesh: radial-gradient(at 0% 0%, var(--color-accent-glow) 0, transparent 50%),
-                   radial-gradient(at 100% 100%, var(--color-accent-glow-2) 0, transparent 50%);
+    /* Brand Colors - Dark mode */
+    --brand-github: #ffffff;
+    --brand-twitter: #ffffff;
+    --brand-linkedin: #0A66C2;
+    --brand-facebook: #1877F2;
+    --brand-instagram: #E4405F;
+    --brand-whatsapp: #25D366;
+    --brand-email: #EA4335;
 
-  /* Typography */
-  --color-text-primary: #F3F4F6; /* Ice White */
-  --color-text-secondary: #9CA3AF; /* Steel Slate */
+    /* Animation Tokens */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+    --transition-speed: 300ms;
 
-  /* Section Backgrounds */
-  --color-hero-bg: linear-gradient(150deg, rgba(99, 91, 255, 0.08), rgba(0, 229, 229, 0.04));
-  --color-orb-opacity: 0.15;
+    /* High-Voltage Accents */
+    --color-disruptor: #00F5FF;
+    /* High-Energy Cyan */
+    --color-disruptor-glow: rgba(0, 245, 255, 0.2);
+    --color-success: #39FF14;
+    /* Acid Green */
+    --color-glow-decorative: #8A2BE2;
+    /* Plasma Purple */
 
-  /* Semantic Colors */
-  --color-error: #FF2A2A;
-  --color-warning: #FACC15;
+    /* Rich Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+    --gradient-metallic: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%);
+    --gradient-mesh: radial-gradient(at 0% 0%, var(--color-accent-glow) 0, transparent 50%),
+        radial-gradient(at 100% 100%, var(--color-accent-glow-2) 0, transparent 50%);
 
-  color-scheme: dark;
+    /* Typography */
+    --color-text-primary: #F3F4F6;
+    /* Ice White */
+    --color-text-secondary: #9CA3AF;
+    /* Steel Slate */
+
+    /* Section Backgrounds */
+    --color-hero-bg: linear-gradient(150deg, rgba(99, 91, 255, 0.08), rgba(0, 229, 229, 0.04));
+    --color-orb-opacity: 0.15;
+
+    /* Semantic Colors */
+    --color-error: #FF2A2A;
+    --color-warning: #FACC15;
+
+    color-scheme: dark;
+
+    /* Dynamic Skill Brand Colors - Dark Mode (Bright, vibrant, neon) */
+    --skill-js: #F7DF1E;
+    --skill-ts: #3178C6;
+    --skill-python: #3776AB;
+    --skill-cpp: #00599C;
+    --skill-sql: #4479A1;
+    --skill-html: #E34F26;
+    --skill-css: #1572B6;
+    --skill-node: #339933;
+    --skill-express: #ffffff;
+    --skill-nestjs: #E0234E;
+    --skill-api: #00f5ff;
+    --skill-microservices: #FF9900;
+    --skill-socket: #ffffff;
+    --skill-redis: #DC382D;
+    --skill-arch: #00f5ff;
+    --skill-react: #61DAFB;
+    --skill-redux: #764ABC;
+    --skill-bootstrap: #7952B3;
+    --skill-postgres: #4169E1;
+    --skill-mysql: #4479A1;
+    --skill-mongodb: #47A248;
+    --skill-docker: #2496ED;
+    --skill-aws: #FF9900;
+    --skill-cicd: #2088FF;
+    --skill-nginx: #009639;
+    --skill-linux: #FCC624;
+    --skill-design: #00f5ff;
+    --skill-agile: #0052CC;
+    --skill-solid: #00f5ff;
+    --skill-patterns: #FF9900;
+    --skill-tdd: #47A248;
+    --skill-git: #F05032;
+    --skill-github: #ffffff;
+    --skill-gitlab: #FC6D26;
+    --skill-jira: #0052CC;
+    --skill-postman: #FF6C37;
+    --skill-vercel: #ffffff;
 }
 
 [data-theme="light"] {
-  /* ☀️ Light Mode — "Dusty Parchment & Sage" Eye Comfort Aesthetic */
-  --color-bg-primary: #EEECE1; /* Comforting Dusty Parchment / Warm Grey */
-  --color-bg-primary-alt: #E6E4D5; 
-  
-  /* Surface Tokens — Soft Cream Ivory */
-  --color-bg-surface: #F9F7EF; /* Soft Ivory that stands out on parchment */
-  --color-bg-surface-hover: #FFFFFF;
-  --color-border: rgba(100, 90, 80, 0.08);
-  --color-glass-blur: none; /* Matte look is cleaner in light mode */
+    /* ☀️ Light Mode — Premium Enterprise Slate & Electric Indigo Theme */
+    --color-bg-primary: #F9FAFB;
+    /* Crisp clean modern gray */
+    --color-bg-primary-alt: #F3F4F6;
+    /* Soft neutral gray */
 
-  /* Earthy Editorial Accents */
-  --color-accent: #2D3436; /* Deep Onyx */
-  --color-accent-secondary: #7A8D75; /* Sage Green */
-  --color-accent-tertiary: #C08A74; /* Soft Terracotta */
-  
-  --color-accent-glow: rgba(122, 141, 117, 0.1);
-  --color-accent-glow-2: rgba(192, 138, 116, 0.08);
-  --color-accent-glow-3: rgba(45, 52, 54, 0.04);
+    /* Surface Tokens — Elegant Raised White Cards */
+    --color-bg-surface: #FFFFFF;
+    --color-bg-surface-hover: #FFFFFF;
+    --color-border: rgba(15, 23, 42, 0.08);
+    /* High-precision slate border */
+    --color-glass-blur: blur(12px);
 
-  /* Brand Colors - Organic Adaptation */
-  --brand-github: #2D3436;
-  --brand-twitter: #5A9BD5;
-  --brand-linkedin: #0077B5;
-  --brand-facebook: #4267B2;
-  --brand-instagram: #C13584;
-  --brand-whatsapp: #25D366;
-  --brand-email: #D44638;
+    /* Modern High-Tech Accents */
+    --color-accent: #0F172A;
+    /* Deep Slate Slate-900 */
+    --color-accent-secondary: #4F46E5;
+    /* Electric Indigo */
+    --color-accent-tertiary: #7C3AED;
+    /* Royal Violet */
 
-  /* Low-Impact Accents */
-  --color-disruptor: #7A8D75; 
-  --color-disruptor-glow: rgba(122, 141, 117, 0.12);
-  --color-success: #5D725B;
-  --color-glow-decorative: transparent;
+    --color-accent-glow: rgba(15, 23, 42, 0.08);
+    --color-accent-glow-2: rgba(30, 27, 75, 0.08);
+    --color-accent-glow-3: rgba(2, 6, 23, 0.08);
 
-  /* Typography — High-Contrast Charcoal */
-  --color-text-primary: #1E2122; /* High contrast charcoal */
-  --color-text-secondary: #5C6366; /* Stone Gray */
+    /* Brand Colors - High-Tech Precise Adaptation */
+    --brand-github: #0F172A;
+    --brand-twitter: #1DA1F2;
+    --brand-linkedin: #0A66C2;
+    --brand-facebook: #1877F2;
+    --brand-instagram: #E4405F;
+    --brand-whatsapp: #25D366;
+    --brand-email: #EA4335;
 
-  /* Section Backgrounds — Subtle Texture */
-  --color-hero-bg: linear-gradient(150deg, rgba(122, 141, 117, 0.04), rgba(192, 138, 116, 0.03));
-  --color-orb-opacity: 0.01;
+    /* Low-Impact Accents */
+    --color-disruptor: #4F46E5;
+    --color-disruptor-glow: rgba(79, 70, 229, 0.12);
+    --color-success: #10B981;
+    /* Precise emerald green for status dot */
+    --color-glow-decorative: rgba(79, 70, 229, 0.1);
 
-  /* Gradients — Matte Editorial Transitions */
-  --gradient-primary: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent-tertiary));
-  --gradient-metallic: linear-gradient(180deg, #1E2122 0%, #5C6366 100%);
+    /* Typography — High-Contrast precise slate */
+    --color-text-primary: #0F172A;
+    /* Deep slate slate-900 */
+    --color-text-secondary: #4B5563;
+    /* Steel gray gray-600 */
 
-  color-scheme: light;
+    /* Section Backgrounds — Subtle Tech Gradients */
+    --color-hero-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.03), rgba(2, 6, 23, 0.04));
+    --color-orb-opacity: 0.03;
+
+    /* Gradients — Professional Matte Slate-to-Steel Transitions */
+    --gradient-primary: linear-gradient(135deg, #0F172A, #1E1B4B);
+    --gradient-metallic: linear-gradient(180deg, #020617 0%, #334155 100%);
+
+    color-scheme: light;
+
+    /* Dynamic Skill Brand Colors - Light Mode (High-contrast, up-to-date, rich, legible) */
+    --skill-js: #B45309;
+    /* Deep Gold / Amber-700 instead of faint yellow */
+    --skill-ts: #1E40AF;
+    /* Legible deep indigo/blue */
+    --skill-python: #1E3A8A;
+    /* Rich navy blue */
+    --skill-cpp: #0F52BA;
+    /* Sapphire blue */
+    --skill-sql: #115E59;
+    /* Dark teal */
+    --skill-html: #DC2626;
+    /* Rich crimson red */
+    --skill-css: #1D4ED8;
+    /* Royal blue */
+    --skill-node: #166534;
+    /* Deep forest green */
+    --skill-express: #0F172A;
+    /* Deep Slate */
+    --skill-nestjs: #BE123C;
+    /* Deep Cherry Red */
+    --skill-api: #0369A1;
+    /* Deep Ocean Blue instead of washed-out cyan */
+    --skill-microservices: #C2410C;
+    /* Legible burnt orange */
+    --skill-socket: #0F172A;
+    /* Deep Slate */
+    --skill-redis: #B91C1C;
+    /* Deeper Red */
+    --skill-arch: #0369A1;
+    /* Deep Ocean Blue */
+    --skill-react: #0284C7;
+    /* Rich cobalt React blue instead of neon blue */
+    --skill-redux: #6D28D9;
+    /* Rich royal purple */
+    --skill-bootstrap: #5B21B6;
+    /* Deeper violet */
+    --skill-postgres: #1E3A8A;
+    /* Navy blue */
+    --skill-mysql: #1E40AF;
+    /* Dark blue */
+    --skill-mongodb: #15803D;
+    /* Rich Leaf Green */
+    --skill-docker: #1D4ED8;
+    /* Rich docker blue */
+    --skill-aws: #C2410C;
+    /* Legible deep orange */
+    --skill-cicd: #1D4ED8;
+    /* Rich ocean blue */
+    --skill-nginx: #166534;
+    /* Rich forest green */
+    --skill-linux: #B45309;
+    /* Legible gold/amber */
+    --skill-design: #0369A1;
+    /* Deeper ocean blue */
+    --skill-agile: #1E3A8A;
+    /* Navy blue */
+    --skill-solid: #0369A1;
+    /* Deeper ocean blue */
+    --skill-patterns: #C2410C;
+    /* Legible deep orange */
+    --skill-tdd: #15803D;
+    /* Deep leaf green */
+    --skill-git: #C2410C;
+    /* Deeper coral red */
+    --skill-github: #0F172A;
+    /* Deep Slate */
+    --skill-gitlab: #C2410C;
+    /* Deeper orange-red */
+    --skill-jira: #1E3A8A;
+    /* Navy blue */
+    --skill-postman: #C2410C;
+    /* Deeper orange */
+    --skill-vercel: #0F172A;
+    /* Deep Slate */
 }
 
 /* --- Premium Custom Scrollbar (CSS-Only, High Performance) --- */
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-primary);
+    background: var(--color-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 999px;
-  border: 2px solid var(--color-bg-primary);
+    background: var(--color-border);
+    border-radius: 999px;
+    border: 2px solid var(--color-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-secondary);
+    background: var(--color-accent-secondary);
 }
 
 /* --- Staggered Reveal System --- */
 .reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s var(--ease-out-expo);
-  will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s var(--ease-out-expo);
+    will-change: transform, opacity;
 }
 
 .reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Stagger logic for children */
-.stagger-container > *:nth-child(1) { transition-delay: 0.1s; }
-.stagger-container > *:nth-child(2) { transition-delay: 0.15s; }
-.stagger-container > *:nth-child(3) { transition-delay: 0.2s; }
-.stagger-container > *:nth-child(4) { transition-delay: 0.25s; }
-.stagger-container > *:nth-child(5) { transition-delay: 0.3s; }
-.stagger-container > *:nth-child(6) { transition-delay: 0.35s; }
-.stagger-container > *:nth-child(7) { transition-delay: 0.4s; }
-.stagger-container > *:nth-child(8) { transition-delay: 0.45s; }
+.stagger-container>*:nth-child(1) {
+    transition-delay: 0.1s;
+}
 
-html, body {
-  transition: background-color 0.3s ease, color 0.3s ease;
+.stagger-container>*:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.stagger-container>*:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.stagger-container>*:nth-child(4) {
+    transition-delay: 0.25s;
+}
+
+.stagger-container>*:nth-child(5) {
+    transition-delay: 0.3s;
+}
+
+.stagger-container>*:nth-child(6) {
+    transition-delay: 0.35s;
+}
+
+.stagger-container>*:nth-child(7) {
+    transition-delay: 0.4s;
+}
+
+.stagger-container>*:nth-child(8) {
+    transition-delay: 0.45s;
+}
+
+html,
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 [data-theme="light"] {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
 }
 
 /* Make all panels match the Hero card vibe & use variables */
@@ -187,6 +344,7 @@ html, body {
 .panel::after {
     background: linear-gradient(145deg, rgba(0, 245, 255, 0.06), transparent 38%) !important;
 }
+
 [data-theme="light"] .panel::after {
     background: none !important;
 }
@@ -198,9 +356,7 @@ html, body {
 [data-theme="light"] .stat-label,
 [data-theme="light"] .nav-link,
 [data-theme="light"] .footer-text,
-[data-theme="light"] .timeline-date,
-[data-theme="light"] .hero-intro,
-[data-theme="light"] .hero-blurb {
+[data-theme="light"] .timeline-date {
     color: var(--color-text-secondary) !important;
 }
 
@@ -217,8 +373,39 @@ html, body {
     color: var(--color-text-primary) !important;
 }
 
+[data-theme="light"] .hero-copy h1 {
+    background: none;
+    -webkit-text-fill-color: #020617;
+    /* Darkest Slate / Near Black */
+    color: #020617 !important;
+}
+
 [data-theme="light"] .hero-copy h1 span {
-    color: var(--color-accent-secondary) !important;
+    background: none;
+    -webkit-text-fill-color: #1E1B4B;
+    /* Deepest Indigo */
+    color: #1E1B4B !important;
+}
+
+[data-theme="light"] .hero-intro,
+[data-theme="light"] .hero-blurb {
+    color: #334155 !important;
+    /* Slate 700 - Highly legible dark gray */
+    font-weight: 500;
+}
+
+[data-theme="light"] .hero-profile-image {
+    outline-color: #0F172A !important;
+    /* Deep Slate */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08), 0 0 30px rgba(15, 23, 42, 0.1) !important;
+    border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+[data-theme="light"] .hero-profile-image:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 0 60px rgba(30, 27, 75, 0.15) !important;
+    outline-color: #1E1B4B !important;
+    /* Deep Indigo hover */
+    border-color: rgba(30, 27, 75, 0.2) !important;
 }
 
 [data-theme="light"] .navbar-brand-text small {
@@ -296,6 +483,7 @@ html, body {
     color: var(--color-text-secondary) !important;
     border-color: var(--color-border) !important;
 }
+
 [data-theme="light"] .hero-cv-btn:hover,
 [data-theme="light"] .project-link:hover,
 [data-theme="light"] .social-link:hover {
@@ -312,10 +500,12 @@ html, body {
 [data-theme="light"] ::-webkit-scrollbar-track {
     background: var(--color-bg-primary) !important;
 }
+
 [data-theme="light"] ::-webkit-scrollbar-thumb {
     background: #93C5FD !important;
     border: 2px solid var(--color-bg-primary) !important;
 }
+
 [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
     background: var(--color-accent-secondary) !important;
 }
@@ -351,13 +541,8 @@ html, body {
     color: var(--color-accent-secondary) !important;
 }
 
-[data-theme="light"] .skill-group li,
-[data-theme="light"] .skill-group span {
+[data-theme="light"] .skill-group li {
     color: var(--color-text-primary) !important;
-}
-
-[data-theme="light"] .skill-icon {
-    color: var(--color-accent-secondary) !important;
 }
 
 /* Override GitHub Repository & Status Card colors for light mode */
@@ -385,6 +570,7 @@ html, body {
 [data-theme="light"] .github-link {
     color: var(--color-text-secondary) !important;
 }
+
 [data-theme="light"] .github-link:hover {
     color: var(--color-accent-secondary) !important;
     border-color: var(--color-accent-secondary) !important;
@@ -404,9 +590,9 @@ html, body {
 .project-card,
 .repo-card {
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                border-color 0.3s ease,
-                box-shadow 0.3s ease,
-                background-color 0.3s ease !important;
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease !important;
 }
 
 .skill-group:hover,
@@ -423,4 +609,246 @@ html, body {
 [data-theme="light"] .repo-card:hover {
     background: var(--color-bg-surface-hover) !important;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08), 0 0 15px var(--color-accent-glow-2) !important;
+}
+
+/* ==========================================================================
+   🌅 Editorial Light Mode ("White Mode") Component & Color Refinements
+   Prevents dark-mode translucent colors from leaking into light mode.
+   ========================================================================== */
+[data-theme="light"] {
+
+    /* --- 1. Let's Connect Status Badge --- */
+    .status-badge {
+        background: rgba(16, 185, 129, 0.06) !important;
+        border: 1px solid rgba(16, 185, 129, 0.16) !important;
+        color: var(--color-success) !important;
+    }
+
+    .status-dot,
+    .status-dot::after {
+        background: var(--color-success) !important;
+    }
+
+    /* --- 2. Let's Connect Brand Contact Cards --- */
+    .contact-card.contact-linkedin {
+        border-color: rgba(10, 102, 194, 0.15) !important;
+        background: rgba(10, 102, 194, 0.04) !important;
+        color: #0A66C2 !important;
+    }
+
+    .contact-card.contact-linkedin .contact-icon {
+        background: linear-gradient(135deg, #0077B5, #00A0DC) !important;
+    }
+
+    .contact-card.contact-facebook {
+        border-color: rgba(24, 119, 242, 0.15) !important;
+        background: rgba(24, 119, 242, 0.04) !important;
+        color: #1877F2 !important;
+    }
+
+    .contact-card.contact-facebook .contact-icon {
+        background: linear-gradient(135deg, #1877F2, #4F9DF8) !important;
+    }
+
+    .contact-card.contact-instagram {
+        border-color: rgba(193, 53, 132, 0.15) !important;
+        background: rgba(193, 53, 132, 0.04) !important;
+        color: #C13584 !important;
+    }
+
+    .contact-card.contact-instagram .contact-icon {
+        background: linear-gradient(135deg, #C13584, #E1306C) !important;
+    }
+
+    .contact-card.contact-whatsapp {
+        border-color: rgba(37, 211, 102, 0.18) !important;
+        background: rgba(37, 211, 102, 0.04) !important;
+        color: #20BA56 !important;
+    }
+
+    .contact-card.contact-whatsapp .contact-icon {
+        background: linear-gradient(135deg, #25D366, #4ADE80) !important;
+    }
+
+    .contact-card.contact-x {
+        border-color: rgba(15, 23, 42, 0.12) !important;
+        background: rgba(15, 23, 42, 0.04) !important;
+        color: var(--color-accent) !important;
+    }
+
+    .contact-card.contact-x .contact-icon {
+        background: linear-gradient(135deg, #0F172A, #4B5563) !important;
+    }
+
+    .contact-card.contact-email {
+        border-color: rgba(212, 70, 56, 0.15) !important;
+        background: rgba(212, 70, 56, 0.04) !important;
+        color: #D44638 !important;
+    }
+
+    .contact-card.contact-email .contact-icon {
+        background: linear-gradient(135deg, #D44638, #EA4335) !important;
+    }
+
+    .contact-card:hover {
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05) !important;
+    }
+
+    /* --- 3. Hero Section — Complete Premium Color System --- */
+
+    /* Hero panel background: warm cream-to-lavender gradient */
+    .hero {
+        background: linear-gradient(155deg, #FFFFFF 0%, #F0EDFF 40%, #EEF2FF 100%) !important;
+    }
+
+    /* Name gradient: deep slate-to-indigo metallic */
+    .hero-copy h1 {
+        background: linear-gradient(180deg, #1E1B4B 0%, #312E81 50%, #4F46E5 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    /* Role label: vivid indigo instead of invisible deep slate */
+    .hero-copy h1 span {
+        color: var(--color-accent-secondary) !important;
+        -webkit-text-fill-color: var(--color-accent-secondary) !important;
+    }
+
+    /* Rotating text gradient: indigo-to-violet */
+    .rotating-text-content {
+        background: linear-gradient(135deg, #4F46E5, #7C3AED) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    .rotating-text-cursor {
+        background-color: var(--color-accent-secondary) !important;
+    }
+
+    /* Intro and blurb: richer contrast */
+    .hero-intro,
+    .hero-blurb {
+        color: #334155 !important;
+    }
+
+    /* Social icon circles: show brand colors, matching hover */
+    .hero-social-icon {
+        border-color: rgba(79, 70, 229, 0.12) !important;
+        background: #FFFFFF !important;
+        color: inherit !important;
+    }
+
+    .hero-social-icon:hover {
+        border-color: currentColor !important;
+        background: rgba(79, 70, 229, 0.04) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* Profile image: elegant indigo outline + soft editorial shadow */
+    .hero-profile-image {
+        border-color: rgba(79, 70, 229, 0.12) !important;
+        outline-color: var(--color-accent-secondary) !important;
+        box-shadow: 0 20px 50px rgba(79, 70, 229, 0.1), 0 8px 20px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    .hero-profile-image:hover {
+        outline-color: var(--color-accent-tertiary) !important;
+        outline-offset: 10px !important;
+        border-color: rgba(124, 58, 237, 0.25) !important;
+        box-shadow: 0 30px 60px rgba(79, 70, 229, 0.18), 0 0 50px rgba(124, 58, 237, 0.12) !important;
+    }
+
+    /* Explore button: solid indigo with white text */
+    .hero-explore-btn {
+        background: linear-gradient(135deg, #4F46E5, #6D28D9) !important;
+        color: #FFFFFF !important;
+        box-shadow: 0 6px 20px rgba(79, 70, 229, 0.25) !important;
+    }
+
+    .hero-explore-btn:hover {
+        box-shadow: 0 10px 30px rgba(79, 70, 229, 0.35) !important;
+    }
+
+    /* CTA action buttons */
+    .action-contact {
+        border-color: rgba(79, 70, 229, 0.3) !important;
+        background: linear-gradient(135deg, rgba(79, 70, 229, 0.06), rgba(124, 58, 237, 0.04)) !important;
+        color: var(--color-accent-secondary) !important;
+    }
+
+    .action-contact:hover {
+        border-color: var(--color-accent-secondary) !important;
+        background: rgba(79, 70, 229, 0.08) !important;
+    }
+
+    .action-cv {
+        border-color: rgba(15, 23, 42, 0.12) !important;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0.01)) !important;
+        color: var(--color-text-primary) !important;
+    }
+
+    .action-cv:hover {
+        border-color: var(--color-accent-secondary) !important;
+        background: rgba(79, 70, 229, 0.06) !important;
+    }
+
+    .secondary-link {
+        border: 1px solid rgba(15, 23, 42, 0.12) !important;
+        background: rgba(15, 23, 42, 0.02) !important;
+        color: var(--color-text-primary) !important;
+    }
+
+    .secondary-link:hover {
+        border-color: var(--color-accent-secondary) !important;
+        background: rgba(79, 70, 229, 0.06) !important;
+    }
+
+    .inset-panel {
+        background: linear-gradient(155deg, rgba(79, 70, 229, 0.04), rgba(124, 58, 237, 0.01)) !important;
+    }
+
+    /* --- 4. Projects & Skills Section Overrides --- */
+    .about-cv-link {
+        background: rgba(79, 70, 229, 0.06) !important;
+        border-color: var(--color-accent-secondary) !important;
+        color: var(--color-accent-secondary) !important;
+    }
+
+    .about-cv-link:hover {
+        background: rgba(79, 70, 229, 0.1) !important;
+        box-shadow: 0 0 15px rgba(79, 70, 229, 0.1) !important;
+        color: var(--color-text-primary) !important;
+    }
+
+    .tag-cloud span {
+        background: rgba(15, 23, 42, 0.03) !important;
+        border-color: rgba(15, 23, 42, 0.06) !important;
+        color: var(--color-text-primary) !important;
+    }
+
+    .project-card {
+        background: rgba(15, 23, 42, 0.01) !important;
+        border-color: rgba(15, 23, 42, 0.04) !important;
+    }
+
+    .project-card:hover {
+        border-color: var(--color-accent-secondary) !important;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04), 0 0 15px rgba(79, 70, 229, 0.06) !important;
+    }
+
+    .github-link {
+        background: rgba(15, 23, 42, 0.02) !important;
+        border-color: var(--color-border) !important;
+        color: var(--color-accent-secondary) !important;
+    }
+
+    .github-link:hover {
+        background: rgba(79, 70, 229, 0.06) !important;
+        border-color: var(--color-accent-secondary) !important;
+    }
+
+    /* --- 5. Section Heading Icons --- */
+    .section-icon {
+        color: var(--color-accent-secondary) !important;
+    }
 }
