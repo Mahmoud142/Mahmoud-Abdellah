@@ -2,13 +2,17 @@
     display: grid;
     grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1.15fr);
     gap: clamp(1.1rem, 2.4vw, 1.9rem);
-    padding: clamp(1.1rem, 2.2vw, 1.8rem);
+    padding: clamp(1.5rem, 3.5vw, 3rem);
     background: var(--color-hero-bg);
 }
 
-.hero-copy,
 .status-card {
     padding: clamp(1.1rem, 2.2vw, 1.8rem);
+    position: relative;
+}
+
+.hero-copy {
+    padding: clamp(1.1rem, 2.2vw, 1.8rem) 0;
     position: relative;
 }
 
@@ -115,6 +119,13 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.07em;
+}
+
+.hero-rotating-wrapper {
+    margin-top: 0.8rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+    min-height: 1.6em;
 }
 
 .hero-intro {
@@ -278,7 +289,9 @@
 }
 
 .hero-profile-image {
-    width: 100%;
+    width: 92%;
+    max-width: 340px;
+    justify-self: center;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 24px;
@@ -310,8 +323,9 @@
     grid-column: 1 / -1;
     display: flex;
     justify-content: center;
-    margin-top: 1.5rem;
-    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
 }
 
 .hero-explore-btn {
@@ -322,7 +336,7 @@
     background: var(--gradient-primary);
     border: none;
     border-radius: 999px;
-    color: #0B0C10;
+    color: var(--color-bg-primary);
     font-weight: 700;
     font-size: 0.95rem;
     cursor: pointer;

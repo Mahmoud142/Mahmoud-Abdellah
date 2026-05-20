@@ -243,52 +243,82 @@
         transition: none !important;
     }
 }
+
 /* Resume button styling in Navbar */
-.navbar-resume-btn {
+.navbar-resume-btn,
+.mobile-resume-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 1rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--color-bg-base);
-    background: var(--color-accent);
+    justify-content: center;
+    font-weight: 700;
+    letter-spacing: 0.03em;
     border-radius: 999px;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    background: var(--color-accent-secondary);
+    /* Matches website theme: Electric Blue (Dark) / Electric Indigo (Light) */
+    color: #FFFFFF !important;
+    /* Always pristine white text */
+    border: none;
 }
 
-.navbar-resume-btn:hover {
+.navbar-resume-btn {
+    gap: 0.4rem;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.8rem;
+}
+
+.mobile-resume-btn {
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.navbar-resume-btn:hover,
+.mobile-resume-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px var(--color-accent-glow);
+    box-shadow: 0 4px 15px var(--color-accent-glow-2);
+    background: var(--color-accent);
+    /* Shifts to Cyan (Dark) / Deep Slate (Light) */
 }
 
 .navbar-resume-btn svg {
     font-size: 0.75rem;
 }
 
-.mobile-resume-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-bg-base);
-    background: var(--color-accent);
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s ease;
+/* Light Theme Explicit Override for Resume Button */
+[data-theme="light"] .navbar-resume-btn,
+[data-theme="light"] .mobile-resume-btn,
+[data-theme="light"] .navbar-resume-btn span,
+[data-theme="light"] .mobile-resume-btn span,
+[data-theme="light"] .navbar-resume-btn svg,
+[data-theme="light"] .mobile-resume-btn svg {
+    background: #4F46E5 !important;
+    /* Elegant Indigo Background */
+    color: #FFFFFF !important;
+    /* STRICTLY PURE WHITE TEXT */
+    fill: #FFFFFF !important;
+    /* Ensure SVG (if any) is also strictly white */
 }
 
-.mobile-resume-btn:hover {
-    background: var(--color-accent-secondary);
+[data-theme="light"] .navbar-resume-btn:hover,
+[data-theme="light"] .mobile-resume-btn:hover,
+[data-theme="light"] .navbar-resume-btn:hover span,
+[data-theme="light"] .mobile-resume-btn:hover span,
+[data-theme="light"] .navbar-resume-btn:hover svg,
+[data-theme="light"] .mobile-resume-btn:hover svg {
+    background: #020617 !important;
+    /* Pitch Dark Slate Background on Hover */
+    color: #FFFFFF !important;
+    /* Stay White */
+    fill: #FFFFFF !important;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2) !important;
 }
 
 @media (max-width: 900px) {
     .navbar-resume-btn {
-        display: none; /* Hide on desktop navbar when switching to hamburger menu */
+        display: none;
+        /* Hide on desktop navbar when switching to hamburger menu */
     }
 }

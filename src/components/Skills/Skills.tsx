@@ -32,20 +32,20 @@ const SKILL_ICON_MAP: Record<string, IconType> = {
 };
 
 const SKILL_COLOR_MAP: Record<string, string> = {
-    "JavaScript (ES6+)": "#F7DF1E", TypeScript: "#3178C6", Python: "#3776AB",
-    "C++": "#00599C", SQL: "#4479A1", HTML5: "#E34F26", CSS3: "#1572B6",
-    "Node.js": "#339933", "Express.js": "#ffffff", NestJS: "#E0234E",
-    "RESTful API Design": "#00f5ff", Microservices: "#FF9900",
-    "Real-time Systems (Socket.io)": "#ffffff", "Redis Caching": "#DC382D",
-    "System Architecture": "#00f5ff", "React.js": "#61DAFB", React: "#61DAFB",
-    "Redux Toolkit": "#764ABC", "Responsive Web Design": "#7952B3",
-    "State Management": "#764ABC", Bootstrap: "#7952B3", PostgreSQL: "#4169E1",
-    MySQL: "#4479A1", MongoDB: "#47A248", Redis: "#DC382D",
-    "Database Design & Optimization": "#4479A1", "Docker & Docker Compose": "#2496ED",
-    AWS: "#FF9900", "CI/CD Pipelines": "#2088FF", Nginx: "#009639", Linux: "#FCC624",
-    "System Design": "#00f5ff", "Agile / Scrum": "#0052CC", "Clean Code & SOLID": "#00f5ff",
-    "Design Patterns": "#FF9900", "TDD / BDD": "#47A248", Git: "#F05032", GitHub: "#ffffff",
-    GitLab: "#FC6D26", Jira: "#0052CC", Postman: "#FF6C37", Vercel: "#ffffff",
+    "JavaScript (ES6+)": "var(--skill-js)", TypeScript: "var(--skill-ts)", Python: "var(--skill-python)",
+    "C++": "var(--skill-cpp)", SQL: "var(--skill-sql)", HTML5: "var(--skill-html)", CSS3: "var(--skill-css)",
+    "Node.js": "var(--skill-node)", "Express.js": "var(--skill-express)", NestJS: "var(--skill-nestjs)",
+    "RESTful API Design": "var(--skill-api)", Microservices: "var(--skill-microservices)",
+    "Real-time Systems (Socket.io)": "var(--skill-socket)", "Redis Caching": "var(--skill-redis)",
+    "System Architecture": "var(--skill-arch)", "React.js": "var(--skill-react)", React: "var(--skill-react)",
+    "Redux Toolkit": "var(--skill-redux)", "Responsive Web Design": "var(--skill-bootstrap)",
+    "State Management": "var(--skill-redux)", Bootstrap: "var(--skill-bootstrap)", PostgreSQL: "var(--skill-postgres)",
+    MySQL: "var(--skill-mysql)", MongoDB: "var(--skill-mongodb)", Redis: "var(--skill-redis)",
+    "Database Design & Optimization": "var(--skill-mysql)", "Docker & Docker Compose": "var(--skill-docker)",
+    AWS: "var(--skill-aws)", "CI/CD Pipelines": "var(--skill-cicd)", Nginx: "var(--skill-nginx)", Linux: "var(--skill-linux)",
+    "System Design": "var(--skill-design)", "Agile / Scrum": "var(--skill-agile)", "Clean Code & SOLID": "var(--skill-solid)",
+    "Design Patterns": "var(--skill-patterns)", "TDD / BDD": "var(--skill-tdd)", Git: "var(--skill-git)", GitHub: "var(--skill-github)",
+    GitLab: "var(--skill-gitlab)", Jira: "var(--skill-jira)", Postman: "var(--skill-postman)", Vercel: "var(--skill-vercel)",
 };
 
 export function getSkillIcon(skill: string): IconType { return SKILL_ICON_MAP[skill] ?? FaRegCircleDot; }
@@ -65,7 +65,10 @@ export function Skills() {
                                     const SkillIcon = getSkillIcon(item);
                                     const iconColor = getSkillColor(item);
                                     return (
-                                        <li key={item}>
+                                        <li 
+                                            key={item}
+                                            style={{ "--skill-color": iconColor } as React.CSSProperties}
+                                        >
                                             <span className="skill-icon" style={{ color: iconColor }} aria-hidden="true">
                                                 <SkillIcon />
                                             </span>
