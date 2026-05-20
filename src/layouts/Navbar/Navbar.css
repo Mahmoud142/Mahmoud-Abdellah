@@ -248,19 +248,20 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.4rem 1rem;
+    padding: 0.45rem 1.1rem;
     font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--color-bg-base);
-    background: var(--color-accent);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--color-bg-primary); /* Dark text on high-energy gradient */
+    background: var(--gradient-primary); /* Neon Cyan to Electric Blue gradient */
     border-radius: 999px;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .navbar-resume-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px var(--color-accent-glow);
+    box-shadow: 0 4px 20px var(--color-accent-glow);
 }
 
 .navbar-resume-btn svg {
@@ -274,17 +275,40 @@
     gap: 0.5rem;
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-bg-base);
-    background: var(--color-accent);
-    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--color-bg-primary);
+    background: var(--gradient-primary);
+    border-radius: 999px; /* Symmetrical rounded pill */
     text-decoration: none;
-    transition: background 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mobile-resume-btn:hover {
-    background: var(--color-accent-secondary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px var(--color-accent-glow);
+}
+
+/* Light Theme Explicit Override for Resume Button */
+[data-theme="light"] .navbar-resume-btn {
+    background: var(--color-accent) !important; /* Deep Onyx */
+    color: var(--color-bg-surface) !important; /* Cream Ivory */
+}
+
+[data-theme="light"] .navbar-resume-btn:hover {
+    background: var(--color-accent-secondary) !important; /* Sage Green */
+    box-shadow: 0 4px 15px rgba(122, 141, 117, 0.25) !important;
+}
+
+[data-theme="light"] .mobile-resume-btn {
+    background: var(--color-accent) !important; /* Deep Onyx */
+    color: var(--color-bg-surface) !important; /* Cream Ivory */
+}
+
+[data-theme="light"] .mobile-resume-btn:hover {
+    background: var(--color-accent-secondary) !important; /* Sage Green */
+    box-shadow: 0 4px 15px rgba(122, 141, 117, 0.25) !important;
 }
 
 @media (max-width: 900px) {

@@ -1,6 +1,7 @@
 import { MouseEvent } from "react";
 import {
     FaMoon,
+    FaSun,
     FaBars,
     FaXmark,
     FaArrowUpRightFromSquare,
@@ -76,7 +77,7 @@ export function Navbar({
                         aria-label="Toggle Theme"
                         title="Toggle Theme"
                     >
-                        <FaMoon />
+                        {theme === "dark" ? <FaMoon /> : <FaSun />}
                     </button>
                     <button
                         className="mobile-menu-toggle"
