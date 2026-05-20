@@ -15,7 +15,10 @@ export function Contact() {
                         <span>Available for opportunities</span>
                     </div>
                     <div className="location-badge">
-                        <FaLocationDot aria-hidden="true" />
+                        <span className="location-ping-container">
+                            <span className="location-ping-ring"></span>
+                            <FaLocationDot aria-hidden="true" className="location-live-icon" />
+                        </span>
                         <span>{portfolioData.location}</span>
                     </div>
                 </div>

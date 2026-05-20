@@ -161,3 +161,87 @@
         flex: 1 1 100%;
     }
 }
+
+/* Live Location Badge - Symmetrical to Status Badge */
+.location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+    
+    background: rgba(0, 229, 229, 0.08); /* Neon Cyan glass */
+    border: 1px solid rgba(0, 229, 229, 0.2);
+    color: var(--color-accent); /* Neon Cyan */
+}
+
+/* Light mode support */
+[data-theme="light"] .location-badge {
+    background: rgba(122, 141, 117, 0.08); /* Sage Green glass */
+    border: 1px solid rgba(122, 141, 117, 0.2);
+    color: var(--color-accent-secondary); /* Sage Green */
+}
+
+/* Radar Ping Live Icon */
+.location-ping-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+}
+
+.location-live-icon {
+    font-size: 0.8rem;
+    color: var(--color-accent) !important;
+    z-index: 2;
+    filter: drop-shadow(0 0 3px var(--color-accent-glow));
+    animation: location-wobble 3s ease-in-out infinite;
+}
+
+[data-theme="light"] .location-live-icon {
+    color: var(--color-accent-secondary) !important;
+}
+
+.location-ping-ring {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-accent-glow);
+    animation: location-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+[data-theme="light"] .location-ping-ring {
+    background: rgba(122, 141, 117, 0.25);
+}
+
+@keyframes location-ping {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    90%, 100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+@keyframes location-wobble {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+}
