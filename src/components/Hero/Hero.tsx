@@ -11,9 +11,9 @@ import {
     FaRegCircleDot,
 } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
+import { RotatingText } from "../RotatingText/RotatingText";
 import profileImg from "../../assets/images/Profile2.jpg";
 import "./Hero.css";
-
 
 export function getContactColor(label: string) {
     const key = label.toLowerCase();
@@ -55,6 +55,14 @@ export function getContactClass(label: string) {
     return "contact-generic";
 }
 
+const ROTATING_PHRASES = [
+    "Clean Architecture Enthusiast",
+    "Full-Stack Builder",
+    "API Architecture Enthusiast",
+    "Open Source Contributor",
+    "Passionate Developer",
+];
+
 export function Hero() {
     return (
         <section className="hero panel nav-section" id="home">
@@ -63,6 +71,9 @@ export function Hero() {
                     {portfolioData.name}
                     <span>{portfolioData.role}</span>
                 </h1>
+                <div className="hero-rotating-wrapper hero-animate hero-delay-1">
+                    <RotatingText phrases={ROTATING_PHRASES} interval={2800} />
+                </div>
                 <p className="hero-intro hero-animate hero-delay-2">
                     {portfolioData.intro}
                 </p>
@@ -91,15 +102,13 @@ export function Hero() {
             </div>
 
             <div className="hero-side">
-                <section className="panel inset-panel hero-image-card hero-animate hero-delay-2">
-                    <img
-                        src={profileImg}
-                        alt="Mahmoud profile"
-                        className="hero-profile-image"
-                        loading="lazy"
-                        decoding="async"
-                    />
-                </section>
+                <img
+                    src={profileImg}
+                    alt="Mahmoud profile"
+                    className="hero-profile-image hero-animate hero-delay-2"
+                    loading="lazy"
+                    decoding="async"
+                />
             </div>
 
             <div className="hero-explore-container hero-animate hero-delay-4">
