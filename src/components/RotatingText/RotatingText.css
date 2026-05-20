@@ -1,0 +1,49 @@
+/* Rotating Text — Typewriter Effect */
+
+.rotating-text {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.6em;
+    vertical-align: baseline;
+}
+
+.rotating-text-content {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.rotating-text-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    margin-left: 2px;
+    background-color: var(--color-accent);
+    border-radius: 1px;
+    animation: cursor-blink 0.75s steps(1) infinite;
+    vertical-align: text-bottom;
+}
+
+@keyframes cursor-blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Light mode cursor color */
+[data-theme="light"] .rotating-text-content {
+    background: linear-gradient(135deg, var(--color-accent-secondary), #7C3AED);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="light"] .rotating-text-cursor {
+    background-color: var(--color-accent-secondary);
+}
