@@ -8,6 +8,9 @@
         content="Mahmoud Abdellah is a software engineer building full-stack web applications, scalable APIs, and user-focused digital products." />
     <title>Mahmoud Abdellah</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Signal dark color-scheme preference to browsers & in-app webviews -->
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0B0C10" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,12 +18,28 @@
         rel="stylesheet" />
     <script>
         (function () {
-            const savedTheme = localStorage.getItem('portfolio-theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
+            var DARK_BG = '#0B0C10';
+            var LIGHT_BG = '#F9FAFB';
+            var savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+            var bg = savedTheme === 'light' ? LIGHT_BG : DARK_BG;
+
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            // Force background immediately — prevents white flash in in-app browsers
+            document.documentElement.style.backgroundColor = bg;
+            document.documentElement.style.setProperty('background-color', bg, 'important');
+            // Also set on body as soon as it exists
+            if (document.body) {
+                document.body.style.setProperty('background-color', bg, 'important');
             } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
+                document.addEventListener('DOMContentLoaded', function () {
+                    document.body.style.setProperty('background-color',
+                        document.documentElement.getAttribute('data-theme') === 'light' ? LIGHT_BG : DARK_BG,
+                        'important');
+                });
             }
+            // Update the theme-color meta tag for address bar
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', bg);
         })();
     </script>
 </head>
