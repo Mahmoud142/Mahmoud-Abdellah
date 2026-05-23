@@ -32,9 +32,11 @@
                 document.body.style.setProperty('background-color', bg, 'important');
             } else {
                 document.addEventListener('DOMContentLoaded', function () {
-                    document.body.style.setProperty('background-color',
-                        document.documentElement.getAttribute('data-theme') === 'light' ? LIGHT_BG : DARK_BG,
-                        'important');
+                    if (document.body) {
+                        document.body.style.setProperty('background-color',
+                            document.documentElement.getAttribute('data-theme') === 'light' ? LIGHT_BG : DARK_BG,
+                            'important');
+                    }
                 });
             }
             // Update the theme-color meta tag for address bar
