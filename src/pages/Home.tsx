@@ -42,10 +42,20 @@ export function Home() {
     }, []);
 
     const toggleTheme = () => {
+        const DARK_BG = '#0B0C10';
+        const LIGHT_BG = '#F9FAFB';
         const newTheme = theme === "dark" ? "light" : "dark";
+        const bg = newTheme === "light" ? LIGHT_BG : DARK_BG;
         setTheme(newTheme);
         document.documentElement.setAttribute("data-theme", newTheme);
         localStorage.setItem("portfolio-theme", newTheme);
+        // Sync inline styles for in-app browser armor
+        document.documentElement.style.setProperty('background-color', bg, 'important');
+        if (document.body) {
+            document.body.style.setProperty('background-color', bg, 'important');
+        }
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', bg);
     };
 
     useEffect(() => {

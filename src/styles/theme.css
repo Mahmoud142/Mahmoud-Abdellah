@@ -66,6 +66,10 @@
 
     color-scheme: dark;
 
+    /* Explicit dark defaults — armored against in-app browser injection */
+    background-color: #0B0C10;
+    color: #F3F4F6;
+
     /* Dynamic Skill Brand Colors - Dark Mode (Bright, vibrant, neon) */
     --skill-js: #F7DF1E;
     --skill-ts: #3178C6;
@@ -311,9 +315,31 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-[data-theme="light"] {
-    background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
+/* ====================================================================
+   🛡️ Environment-Proof Theme Backgrounds
+   Forces background/color on html, body, AND #root so that in-app
+   browsers (Facebook Messenger, Instagram, LinkedIn, etc.) that inject
+   their own white background can never override the portfolio theme.
+   ==================================================================== */
+:root,
+[data-theme="dark"] {
+    background-color: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+html[data-theme="dark"] #root {
+    background-color: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
+}
+
+[data-theme="light"],
+html[data-theme="light"],
+html[data-theme="light"] body,
+html[data-theme="light"] #root {
+    background-color: var(--color-bg-primary) !important;
+    color: var(--color-text-primary) !important;
 }
 
 /* Make all panels match the Hero card vibe & use variables */
