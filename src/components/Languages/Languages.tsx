@@ -7,11 +7,6 @@ export function Languages() {
     return (
         <div id="languages" className="nav-section">
             <SectionHeading title="Languages" icon={<FaLanguage />} />
-            
-            {/* Sleek professional divider line in website colors */}
-            <div className="languages-decor reveal">
-                <span className="pro-divider-line" />
-            </div>
 
             <div className="languages-grid stagger-container">
                 {portfolioData.languages.map((lang) => {
