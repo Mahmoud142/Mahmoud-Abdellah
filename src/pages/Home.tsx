@@ -8,6 +8,7 @@ import { Education } from "../components/Education/Education";
 import { About } from "../components/About/About";
 import { Skills } from "../components/Skills/Skills";
 import { Projects } from "../components/Projects/Projects";
+import { Languages } from "../components/Languages/Languages";
 import { Contact } from "../components/Contact/Contact";
 
 import type { MouseEvent as ReactMouseEvent } from "react";
@@ -158,6 +159,7 @@ export function Home() {
                 </section>
 
                 <Projects />
+                <Languages />
                 <Contact />
 
                 <Footer />

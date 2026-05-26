@@ -32,9 +32,12 @@ export interface TimelineItem {
     description: string;
 }
 
-export interface SkillGroup {
-    title: string;
-    items: string[];
+export interface LanguageItem {
+    name: string;
+    proficiency: string;
+    level: string;
+    percentage: number;
+    code: string;
 }
 
 export interface PortfolioData {
@@ -52,6 +55,7 @@ export interface PortfolioData {
     timeline: TimelineItem[];
     projects: Project[];
     contactLinks: ContactLink[];
+    languages: LanguageItem[];
 }
 
 export interface Project {
@@ -66,3 +70,4 @@ export interface SkillGroup {
     title: string;
     items: string[];
 }
+
