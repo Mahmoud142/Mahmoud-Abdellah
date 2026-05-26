@@ -234,4 +234,20 @@ export const portfolioData: PortfolioData = {
         { label: "WhatsApp", href: "https://wa.me/201145325772" },
         { label: "X / Twitter", href: "https://x.com/Abo_3bdellah" },
     ],
+    languages: [
+        {
+            name: "Arabic",
+            proficiency: "MOTHER TONGUE",
+            level: "Native",
+            percentage: 100,
+            code: "Ar",
+        },
+        {
+            name: "English",
+            proficiency: "UPPER-INTERMEDIATE (B2)",
+            level: "Upper-Intermediate",
+            percentage: 75,
+            code: "En",
+        },
+    ],
 };
