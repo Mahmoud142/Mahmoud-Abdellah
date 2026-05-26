@@ -63,7 +63,7 @@ export function Navbar({
                 </div>
                 <div className="navbar-actions">
                     <a
-                        href="https://drive.google.com/file/d/1luMA6Bizkg707XrhVHRVbLF81qD3WBux/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1tg17b8bzl_S9asNIjiGg1Ru9E6c2Fuxe/view?usp=drive_link"
                         className="navbar-resume-btn"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -112,7 +112,7 @@ export function Navbar({
                         </a>
                     ))}
                     <a
-                        href="https://drive.google.com/file/d/1luMA6Bizkg707XrhVHRVbLF81qD3WBux/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1tg17b8bzl_S9asNIjiGg1Ru9E6c2Fuxe/view?usp=drive_link"
                         className="mobile-resume-btn"
                         target="_blank"
                         rel="noopener noreferrer"
