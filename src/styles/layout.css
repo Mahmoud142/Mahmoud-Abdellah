@@ -51,10 +51,40 @@
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin: 1.2rem 0 1.5rem;
+    margin: 1.2rem 0 0.6rem;
     width: 100%;
     color: var(--color-text-primary);
     display: block;
+}
+
+.section-decor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1.5rem;
+    width: 100%;
+}
+
+.pro-divider-line {
+    width: 80px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+    box-shadow: 0 1px 12px var(--color-accent-glow);
+    animation: pulse-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+    0% {
+        transform: scaleX(0.95);
+        opacity: 0.85;
+        filter: drop-shadow(0 0 1px var(--color-accent));
+    }
+    100% {
+        transform: scaleX(1.05);
+        opacity: 1;
+        filter: drop-shadow(0 0 5px var(--color-accent));
+    }
 }
 
 .panel h2 {
