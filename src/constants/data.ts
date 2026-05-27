@@ -162,6 +162,23 @@ export const portfolioData: PortfolioData = {
     ],
     projects: [
         {
+            title: "Shopply – Full-Stack E-Commerce",
+            summary:
+                "Production-grade e-commerce platform with a React 19 storefront, Express REST API, Stripe payments, and a full admin dashboard.",
+            stack: [
+                "React.js",
+                "Redux Toolkit",
+                "Node.js",
+                "Express.js",
+                "MongoDB",
+                "Docker",
+            ],
+            outcome:
+                "Engineered end-to-end auth flows, RBAC-protected admin system, Stripe checkout integration, and Dockerized deployment with Swagger-documented APIs.",
+            github: "https://github.com/Mahmoud142/Shopply",
+            live: "https://shopplywebapp.vercel.app",
+        },
+        {
             title: "Minify Analytics Platform",
             summary:
                 "A high-throughput link management and real-time analytics platform built with NestJS and React 19.",
@@ -180,7 +197,7 @@ export const portfolioData: PortfolioData = {
         {
             title: "MindMate Healthcare",
             summary:
-                "Real-time IoT telemetry platform for Alzheimer’s patients tracking with live GPS streaming.",
+                "Real-time IoT telemetry platform for Alzheimer's patients tracking with live GPS streaming.",
             stack: [
                 "React.js",
                 "Redux Toolkit",
@@ -193,13 +210,32 @@ export const portfolioData: PortfolioData = {
             live: "https://web-mindmate.vercel.app",
         },
         {
-            title: "Enterprise E-Commerce API",
+            title: "Personal Portfolio Website",
             summary:
-                "Production-ready RESTful API designed for high-volume product catalogs and secure financial transactions.",
-            stack: ["Node.js", "Express.js", "MongoDB", "RESTful API Design"],
+                "Modern developer portfolio built with React and TypeScript, featuring dynamic theme switching, scroll animations, and live GitHub integration.",
+            stack: [
+                "React.js",
+                "TypeScript",
+                "CSS3",
+            ],
             outcome:
-                "Implemented rigorous RBAC and integrated Stripe for secure transactions and optimized image processing pipelines.",
-            github: "https://github.com/Mahmoud142/ECommerce-api",
+                "Crafted a responsive, theme-aware portfolio with custom CSS design system, scroll-reveal animations, and automated GitHub repo fetching.",
+            github: "https://github.com/Mahmoud142/Mahmoud-Abdellah",
+            live: "https://www.mahmoudabdellah.tech",
+        },
+        {
+            title: "Project Management API",
+            summary:
+                "Backend system for project and task management featuring authentication, REST APIs, workflow tracking, and scalable database architecture.",
+            stack: [
+                "Node.js",
+                "Express.js",
+                "MongoDB",
+                "RESTful API Design",
+            ],
+            outcome:
+                "Engineered secure auth flows, task lifecycle endpoints, and modular middleware architecture for team-based project workflows.",
+            github: "https://github.com/Mahmoud142/Project-Management",
         },
         {
             title: "Secure Todo API",

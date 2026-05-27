@@ -12,13 +12,17 @@ interface Project {
 
 interface ProjectCardProps {
     project: Project;
+    index: number;
     getSkillIcon: (skill: string) => IconType;
     getSkillColor: (skill: string) => string;
 }
 
-export function ProjectCard({ project, getSkillIcon, getSkillColor }: ProjectCardProps) {
+export function ProjectCard({ project, index, getSkillIcon, getSkillColor }: ProjectCardProps) {
     return (
         <article className="project-card reveal">
+            {/* Project number */}
+            <span className="project-index">{String(index).padStart(2, '0')}</span>
+
             <h3>{project.title}</h3>
             <p>{project.summary}</p>
             <div className="tag-cloud compact">
