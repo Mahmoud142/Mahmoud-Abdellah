@@ -149,11 +149,32 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     will-change: transform;
-    overflow: hidden;
+    /* overflow: hidden; Removed so 3D effect works fully */
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.project-card-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        circle at var(--glare-x, 50%) var(--glare-y, 50%),
+        rgba(255, 255, 255, 0.15),
+        transparent 60%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    mix-blend-mode: overlay;
+}
+
+.project-card-glare.active {
+    opacity: 1;
 }
 
 /* --- Project Index Number --- */
