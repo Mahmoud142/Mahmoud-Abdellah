@@ -1,0 +1,165 @@
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-accent-secondary);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease-out-expo), 
+                transform 0.4s var(--ease-out-expo);
+    /* Dynamic glow based on inline variable */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1),
+                0 0 calc(20px * var(--glow-opacity, 0)) rgba(99, 91, 255, calc(0.5 * var(--glow-opacity, 0)));
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Footer awareness - nudge it up and make slightly translucent */
+.scroll-to-top.near-footer {
+    transform: translateY(-20px) scale(1);
+    opacity: 0.8;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px) scale(1.05);
+    opacity: 1;
+    box-shadow: 0 10px 25px var(--color-accent-glow-2), 
+                0 0 20px rgba(99, 91, 255, 0.5);
+}
+
+.scroll-to-top.near-footer:hover {
+    transform: translateY(-25px) scale(1.05);
+}
+
+/* SVG Progress Ring Styles */
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); /* Start at top */
+    pointer-events: none;
+    z-index: 1;
+}
+
+.progress-ring-circle-bg {
+    stroke: var(--color-border);
+}
+
+.progress-ring-circle {
+    stroke: var(--color-accent); /* Changed to Cyan */
+    transition: stroke-dashoffset 0.1s linear;
+    stroke-linecap: round;
+}
+
+.scroll-icon-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-surface);
+    backdrop-filter: var(--color-glass-blur);
+    -webkit-backdrop-filter: var(--color-glass-blur);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.scroll-icon {
+    font-size: 1rem;
+    transition: transform 0.3s var(--ease-out-expo);
+}
+
+.scroll-to-top:hover .scroll-icon-wrapper {
+    background: var(--color-accent); /* Changed to Cyan */
+    color: var(--color-bg-primary);
+}
+
+.scroll-to-top:hover .scroll-icon {
+    transform: translateY(-2px);
+}
+
+/* Light mode specific hover enhancements */
+[data-theme="light"] .scroll-to-top:hover .scroll-icon-wrapper {
+    color: #FFFFFF;
+}
+
+[data-theme="light"] .scroll-to-top {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05),
+                0 0 calc(20px * var(--glow-opacity, 0)) rgba(79, 70, 229, calc(0.3 * var(--glow-opacity, 0)));
+}
+
+/* Completion Animation */
+@keyframes pulse-ring {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 229, 229, 0.6); /* Cyan pulse */
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 229, 229, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 229, 229, 0);
+    }
+}
+
+.scroll-to-top.scroll-complete .scroll-icon-wrapper {
+    background: var(--color-accent);
+    color: var(--color-bg-primary);
+    animation: pulse-ring 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.scroll-to-top.scroll-complete .progress-ring-circle {
+    stroke: var(--color-accent);
+    filter: drop-shadow(0 0 6px var(--color-accent));
+}
+
+[data-theme="light"] .scroll-to-top.scroll-complete .scroll-icon-wrapper {
+    background: var(--color-accent);
+    animation: pulse-ring-light 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes pulse-ring-light {
+    0% {
+        box-shadow: 0 0 0 0 rgba(15, 23, 42, 0.4); /* Slate pulse */
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(15, 23, 42, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(15, 23, 42, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 3rem;
+        height: 3rem;
+    }
+    .scroll-icon-wrapper {
+        width: 2rem;
+        height: 2rem;
+    }
+    .scroll-icon {
+        font-size: 0.9rem;
+    }
+}

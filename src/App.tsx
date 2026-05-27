@@ -1,11 +1,13 @@
 import { Home } from "./pages/Home";
-import { CursorFollower } from "./components/CursorFollower/CursorFollower";
+import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
+import { BackgroundNetwork } from "./components/BackgroundNetwork/BackgroundNetwork";
 import "./styles.css"; // The original global css
 
 function App() {
     return (
         <>
-            <CursorFollower />
+            <BackgroundNetwork />
+            <ScrollToTop />
             <Home />
         </>
     );
