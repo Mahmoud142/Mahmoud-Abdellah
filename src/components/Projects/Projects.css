@@ -111,57 +111,91 @@
 .tag-cloud {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.55rem;
+    gap: 0.4rem;
 }
 
 .tag-cloud span {
     border-radius: 999px;
-    padding: 0.45rem 0.75rem;
+    padding: 0.35rem 0.6rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--color-text-primary);
-    font-size: 0.86rem;
+    font-size: 0.78rem;
 }
 
 .tag-cloud.compact span {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
+    padding: 0.25rem 0.5rem;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.2rem;
 }
-
-
 
 .project-card,
 .status-card {
-    border-radius: 22px;
+    border-radius: 16px;
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border);
-    padding: 1.4rem;
+    padding: 1.2rem;
 }
 
 .project-card {
-    padding: 1.8rem;
-    min-height: 300px;
+    position: relative;
+    padding: 1.3rem 1.4rem;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 18px;
+    border-radius: 16px;
     will-change: transform;
-}
-
-.project-card {
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.55rem;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Project Index Number --- */
+.project-index {
+    font-size: 0.65rem;
+    font-weight: 800;
+    font-family: 'Inter', monospace;
+    letter-spacing: 0.06em;
+    color: var(--color-text-secondary);
+    opacity: 0.3;
+    user-select: none;
+    margin-bottom: -0.3rem;
+}
+
+/* --- Hover Gradient Mesh --- */
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        radial-gradient(circle at 15% 15%, var(--color-accent-glow), transparent 45%),
+        radial-gradient(circle at 85% 85%, var(--color-accent-glow-2), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* Ensure content sits above the mesh */
+.project-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .project-role {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -172,71 +206,71 @@
 .tag-cloud span {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.35rem;
 }
 
 .tag-icon {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .project-card:hover {
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 1px var(--color-accent), 0 20px 40px rgba(0, 0, 0, 0.4);
-    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px var(--color-accent), 0 12px 28px rgba(0, 0, 0, 0.35);
+    transform: translateY(-3px);
 }
 
-.project-card h3,
 .project-card h3 {
-    font-size: 1.45rem;
+    font-size: 1.2rem;
     letter-spacing: -0.02em;
-    margin-bottom: 0.4rem;
+    margin: 0;
     color: var(--color-text-primary);
 }
 
-
-
 .project-card p {
-    font-size: 1.15rem;
-    line-height: 1.7;
+    font-size: 0.92rem;
+    line-height: 1.55;
     color: var(--color-text-secondary);
+    margin: 0;
 }
-
-
 
 .project-outcome {
     color: var(--color-accent-secondary);
     display: flex;
-    align-items: center;
-    gap: 0.42rem;
+    align-items: flex-start;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    opacity: 0.85;
 }
 
 .project-outcome svg {
-    width: 0.88rem;
-    height: 0.88rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
 }
-
-
 
 .project-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.6rem;
     margin-top: auto;
+    padding-top: 0.3rem;
 }
 
 .github-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.35rem;
     color: var(--color-accent-secondary);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    padding: 0.4rem 0.8rem;
+    padding: 0.35rem 0.7rem;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--color-border);
-    transition: color 0.2s ease, transform 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .github-link:hover {
@@ -245,18 +279,33 @@
     transform: translateY(-1px);
 }
 
+/* --- Live Demo Button — Gradient CTA --- */
 .live-link {
-    color: var(--color-accent);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary)) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 2px 8px var(--color-accent-glow);
+    font-weight: 700;
 }
 
 .live-link:hover {
-    background: var(--color-accent-glow);
-    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px var(--color-accent-glow), 0 0 12px var(--color-accent-glow-2) !important;
+    transform: translateY(-2px);
+    filter: brightness(1.1);
 }
 
 .github-link svg {
-    width: 0.85rem;
-    height: 0.85rem;
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+/* --- Light Mode Overrides --- */
+[data-theme="light"] .live-link {
+    background: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent-tertiary)) !important;
+}
+
+[data-theme="light"] .project-index {
+    opacity: 0.2;
 }
 
 @media (max-width: 760px) {
