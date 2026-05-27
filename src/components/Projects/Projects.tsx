@@ -11,12 +11,13 @@ export function Projects() {
             <SectionHeading title="Projects" icon={<FaRocket />} />
             <section className="panel">
                 <div className="projects-grid stagger-container">
-                    {portfolioData.projects.map((project) => (
-                        <ProjectCard 
-                            key={project.title} 
-                            project={project as any} 
-                            getSkillIcon={getSkillIcon} 
-                            getSkillColor={getSkillColor} 
+                    {portfolioData.projects.map((project, i) => (
+                        <ProjectCard
+                            key={project.title}
+                            project={project as any}
+                            index={i + 1}
+                            getSkillIcon={getSkillIcon}
+                            getSkillColor={getSkillColor}
                         />
                     ))}
                 </div>
