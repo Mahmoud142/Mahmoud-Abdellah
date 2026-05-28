@@ -9,11 +9,21 @@ interface ResumeModalProps {
 
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     const [isFrameLoading, setIsFrameLoading] = useState(true);
+    const [shouldPrefetch, setShouldPrefetch] = useState(false);
+
+    useEffect(() => {
+        // Wait 2.5 seconds after page loads to silently start prefetching the Google Drive preview
+        const timer = setTimeout(() => {
+            setShouldPrefetch(true);
+        }, 2500);
+        return () => clearTimeout(timer);
+    }, []);
 
     useEffect(() => {
         if (isOpen) {
+            // Force immediate prefetching if user clicks button before 2.5 seconds pass
+            setShouldPrefetch(true);
             document.body.style.overflow = "hidden";
-            setIsFrameLoading(true); // Reset loading spinner every time modal is opened
         } else {
             document.body.style.overflow = "";
         }
@@ -22,14 +32,17 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         };
     }, [isOpen]);
 
-    if (!isOpen) return null;
-
     const previewUrl = "https://drive.google.com/file/d/1tg17b8bzl_S9asNIjiGg1Ru9E6c2Fuxe/preview";
     const downloadUrl = "https://drive.google.com/uc?export=download&id=1tg17b8bzl_S9asNIjiGg1Ru9E6c2Fuxe";
     const newTabUrl = "https://drive.google.com/file/d/1tg17b8bzl_S9asNIjiGg1Ru9E6c2Fuxe/view?usp=drive_link";
 
     return (
-        <div className="resume-modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
+        <div 
+            className={`resume-modal-overlay ${isOpen ? "is-visible" : ""}`} 
+            onClick={onClose} 
+            role="dialog" 
+            aria-modal="true"
+        >
             <div className="resume-modal-container" onClick={(e) => e.stopPropagation()}>
                 <header className="resume-modal-header">
                     <div className="resume-modal-title-wrapper">
@@ -37,7 +50,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                             <h2>Mahmoud Abdellah – Resume</h2>
                             <span className="resume-modal-subtitle">Software Engineer</span>
                         </div>
-                        {isFrameLoading && (
+                        {isFrameLoading && shouldPrefetch && (
                             <div className="resume-header-loading-badge">
                                 <div className="resume-header-spinner" />
                                 <span className="resume-header-loading-text">Fetching from Drive...</span>
@@ -69,15 +82,17 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     </div>
                 </header>
                 <div className="resume-modal-body">
-                    <iframe
-                        src={previewUrl}
-                        width="100%"
-                        height="100%"
-                        title="Mahmoud Abdellah Resume Preview"
-                        className="resume-iframe"
-                        allow="autoplay"
-                        onLoad={() => setIsFrameLoading(false)}
-                    />
+                    {shouldPrefetch && (
+                        <iframe
+                            src={previewUrl}
+                            width="100%"
+                            height="100%"
+                            title="Mahmoud Abdellah Resume Preview"
+                            className="resume-iframe"
+                            allow="autoplay"
+                            onLoad={() => setIsFrameLoading(false)}
+                        />
+                    )}
                 </div>
             </div>
         </div>
