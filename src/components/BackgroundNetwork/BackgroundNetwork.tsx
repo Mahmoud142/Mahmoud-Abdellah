@@ -81,7 +81,7 @@ export function BackgroundNetwork() {
             // Determine theme colors dynamically from CSS variables or attributes
             const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
             // Cyan/Blue theme mapping:
-            const particleColor = isLightMode ? 'rgba(79, 70, 229, 0.3)' : 'rgba(0, 229, 229, 0.25)';
+            const particleColor = isLightMode ? 'rgba(79, 70, 229, 0.45)' : 'rgba(0, 229, 229, 0.4)';
             const lineColorRGB = isLightMode ? '79, 70, 229' : '0, 229, 229';
 
             particles.forEach((p) => {
@@ -107,9 +107,9 @@ export function BackgroundNetwork() {
 
                     if (distance < 120) {
                         ctx.beginPath();
-                        // Opacity fades as distance increases
-                        ctx.strokeStyle = `rgba(${lineColorRGB}, ${0.15 - (distance / 120) * 0.15})`;
-                        ctx.lineWidth = 0.8;
+                        // Opacity fades as distance increases - boosted max opacity to 0.28 for clearer luminous links
+                        ctx.strokeStyle = `rgba(${lineColorRGB}, ${0.28 - (distance / 120) * 0.28})`;
+                        ctx.lineWidth = 0.95;
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
                         ctx.stroke();
