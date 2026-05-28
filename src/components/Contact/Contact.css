@@ -245,3 +245,66 @@
         transform: rotate(10deg);
     }
 }
+
+/* Mobile-only Resume Button inside Contact section */
+.mobile-resume-container {
+    display: none; /* Hidden on Desktop by default */
+}
+
+@media (max-width: 768px) {
+    .mobile-resume-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .mobile-connect-resume-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 0.85rem 1.75rem;
+        width: 100%;
+        max-width: 280px;
+        border-radius: 16px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        /* Dark mode - sleek glow */
+        background: rgba(0, 229, 229, 0.08); /* neon cyan tint */
+        border: 1px solid rgba(0, 229, 229, 0.25);
+        color: var(--color-accent);
+        box-shadow: 0 4px 15px rgba(0, 229, 229, 0.05);
+    }
+
+    .mobile-connect-resume-btn:hover,
+    .mobile-connect-resume-btn:active {
+        background: rgba(0, 229, 229, 0.16);
+        border-color: var(--color-accent);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 229, 229, 0.15);
+    }
+
+    .mobile-connect-resume-btn svg {
+        font-size: 1.15rem;
+    }
+
+    /* Light Theme override */
+    [data-theme="light"] .mobile-connect-resume-btn {
+        background: rgba(99, 91, 255, 0.08); /* premium indigo tint */
+        border: 1px solid rgba(99, 91, 255, 0.25);
+        color: var(--color-accent);
+        box-shadow: 0 4px 15px rgba(99, 91, 255, 0.05);
+    }
+
+    [data-theme="light"] .mobile-connect-resume-btn:hover,
+    [data-theme="light"] .mobile-connect-resume-btn:active {
+        background: rgba(99, 91, 255, 0.16);
+        border-color: var(--color-accent);
+        box-shadow: 0 6px 20px rgba(99, 91, 255, 0.15);
+    }
+}

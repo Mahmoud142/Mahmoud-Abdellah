@@ -1,10 +1,14 @@
-import { FaEnvelope, FaLocationDot } from "react-icons/fa6";
+import { FaEnvelope, FaLocationDot, FaFilePdf } from "react-icons/fa6";
 import { portfolioData } from "../../constants/data";
 import { SectionHeading } from "../SectionHeading/SectionHeading";
 import { getContactClass, getContactIcon } from "../Hero/Hero";
 import "./Contact.css";
 
-export function Contact() {
+interface ContactProps {
+    onResumeClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+}
+
+export function Contact({ onResumeClick }: ContactProps) {
     return (
         <div id="contact" className="nav-section">
             <SectionHeading title="Let's Connect" icon={<FaEnvelope />} />
@@ -37,6 +41,20 @@ export function Contact() {
                             <span>{link.label}</span>
                         </a>
                     ))}
+                </div>
+
+                {/* Mobile-Only Resume Button */}
+                <div className="mobile-resume-container reveal">
+                    <a
+                        href="https://drive.google.com/file/d/1tg17b8bzl_S9asNIjiGg1Ru9E6c2Fuxe/view?usp=drive_link"
+                        className="mobile-connect-resume-btn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={onResumeClick}
+                    >
+                        <span>View Resume</span>
+                        <FaFilePdf aria-hidden="true" />
+                    </a>
                 </div>
             </section>
         </div>
