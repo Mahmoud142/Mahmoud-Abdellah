@@ -1,0 +1,330 @@
+/* Section Grid Layout */
+.coding-stats-section {
+    width: 100%;
+}
+
+.coding-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+/* Symmetrical Glassmorphism Coding Cards */
+.coding-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid var(--color-border) !important;
+    background: var(--color-bg-surface) !important;
+    backdrop-filter: var(--color-glass-blur) !important;
+    -webkit-backdrop-filter: var(--color-glass-blur) !important;
+    padding: 1.25rem 1.5rem !important;
+    min-height: 165px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease !important;
+}
+
+[data-theme="light"] .coding-card {
+    background: #FFFFFF !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+    backdrop-filter: none !important;
+}
+
+.coding-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: var(--color-accent-secondary) !important;
+    box-shadow: 0 12px 30px var(--color-accent-glow-2) !important;
+}
+
+/* 🌟 SUBCONSCIOUS LEETCODE HIGHLIGHTS 🌟 */
+.leetcode-card {
+    border-color: rgba(255, 161, 22, 0.22) !important;
+}
+
+.leetcode-card:hover {
+    border-color: #FFA116 !important;
+    box-shadow: 0 12px 30px rgba(255, 161, 22, 0.18) !important;
+}
+
+.leetcode-card .coding-card-bg-glow {
+    background: radial-gradient(circle, rgba(255, 161, 22, 0.12) 0%, transparent 70%) !important;
+}
+
+/* Soft Hover Shadows on Other Platforms */
+.codeforces-card:hover { border-color: rgba(255, 94, 94, 0.5) !important; box-shadow: 0 12px 30px rgba(255, 94, 94, 0.12) !important; }
+.codechef-card:hover { border-color: rgba(76, 175, 80, 0.5) !important; box-shadow: 0 12px 30px rgba(76, 175, 80, 0.12) !important; }
+.atcoder-card:hover { border-color: rgba(160, 82, 45, 0.5) !important; box-shadow: 0 12px 30px rgba(160, 82, 45, 0.12) !important; }
+
+/* Internal Card Ambient Glow */
+.coding-card-bg-glow {
+    position: absolute;
+    top: -30%;
+    right: -30%;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-accent-glow-2) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Card Header Layout */
+.coding-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.5rem;
+}
+
+.brand-title {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.brand-title h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+[data-theme="light"] .brand-title h3 {
+    color: #0F172A !important;
+}
+
+/* Platform Logo Brand Colors */
+.leetcode-brand-icon {
+    font-size: 1.4rem;
+    color: #FFA116;
+}
+
+.codeforces-brand-icon {
+    font-size: 1.4rem;
+    color: #FF5E5E;
+}
+
+.codechef-brand-icon {
+    font-size: 1.4rem;
+    color: #9B7653;
+}
+
+.atcoder-brand-icon {
+    color: var(--color-text-primary);
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+[data-theme="light"] .atcoder-brand-icon {
+    color: #0F172A !important;
+}
+
+/* Profile Action Links */
+.profile-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--color-text-secondary);
+    transition: all 0.2s ease;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+[data-theme="light"] .profile-link-btn {
+    background: rgba(15, 23, 42, 0.03);
+    color: #4B5563 !important;
+}
+
+.profile-link-btn:hover {
+    color: var(--color-accent) !important;
+    border-color: var(--color-accent);
+    background: var(--color-accent-glow);
+    transform: scale(1.1);
+}
+
+[data-theme="light"] .profile-link-btn:hover {
+    color: #4F46E5 !important;
+    border-color: #4F46E5;
+    background: rgba(79, 70, 229, 0.05) !important;
+}
+
+/* Card Bodies (Dual-Panel layout) */
+.card-dashboard-body {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    position: relative;
+    z-index: 1;
+    margin-top: 0.25rem;
+}
+
+/* Left Circular Dial Progress Tracker */
+.progress-visualizer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.progress-circle-svg {
+    transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.04);
+    stroke-width: 8;
+}
+
+[data-theme="light"] .progress-circle-bg {
+    stroke: rgba(15, 23, 42, 0.04);
+}
+
+.progress-circle-bar {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.2s ease-in-out;
+}
+
+/* Custom Platform Dial Strokes */
+.leetcode-bar { stroke: #FFA116; }
+.codeforces-bar { stroke: #FF5E5E; }
+.codechef-bar { stroke: #4CAF50; }
+.atcoder-bar { stroke: #CD853F; }
+
+.progress-circle-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.solved-count {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+[data-theme="light"] .solved-count {
+    color: #0F172A !important;
+}
+
+.solved-label {
+    font-size: 0.58rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-top: 0.15rem;
+}
+
+/* Right Stats detail list */
+.card-stats-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.stat-pill-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.compact-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.detail-label {
+    font-size: 0.68rem;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.detail-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+[data-theme="light"] .detail-value {
+    color: #0F172A !important;
+}
+
+.highlight-value {
+    color: var(--color-accent) !important;
+}
+
+[data-theme="light"] .highlight-value {
+    color: #4F46E5 !important;
+}
+
+/* Platform Badges */
+.platform-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.18rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Platform Specific Badge Colors */
+.rank-top-badge {
+    background: rgba(255, 161, 22, 0.08);
+    color: #FFA116;
+    border: 1px solid rgba(255, 161, 22, 0.2);
+}
+
+.rank-newbie-badge {
+    background: rgba(128, 128, 128, 0.08);
+    color: #9E9E9E;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.rank-stars-badge {
+    background: rgba(76, 175, 80, 0.08);
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.rank-kyu-badge {
+    background: rgba(160, 82, 45, 0.08);
+    color: #CD853F;
+    border: 1px solid rgba(160, 82, 45, 0.2);
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 992px) {
+    .coding-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
