@@ -4,7 +4,7 @@ import {
     FaSun,
     FaBars,
     FaXmark,
-    FaArrowUpRightFromSquare,
+    FaFilePdf,
 } from "react-icons/fa6";
 import "./Navbar.css";
 
@@ -22,6 +22,7 @@ interface NavbarProps {
     mobileMenuOpen: boolean;
     setMobileMenuOpen: (open: boolean) => void;
     handleNavClick: (e: MouseEvent<HTMLAnchorElement>, id: string) => void;
+    onResumeClick: (e: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export function Navbar({
@@ -33,6 +34,7 @@ export function Navbar({
     mobileMenuOpen,
     setMobileMenuOpen,
     handleNavClick,
+    onResumeClick,
 }: NavbarProps) {
     return (
         <>
@@ -67,9 +69,10 @@ export function Navbar({
                         className="navbar-resume-btn"
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={onResumeClick}
                     >
                         <span>Resume</span>
-                        <FaArrowUpRightFromSquare aria-hidden="true" />
+                        <FaFilePdf aria-hidden="true" />
                     </a>
                     <button
                         className="theme-toggle"
@@ -116,10 +119,13 @@ export function Navbar({
                         className="mobile-resume-btn"
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={(e) => {
+                            setMobileMenuOpen(false);
+                            onResumeClick(e);
+                        }}
                     >
                         <span>Resume</span>
-                        <FaArrowUpRightFromSquare aria-hidden="true" />
+                        <FaFilePdf aria-hidden="true" />
                     </a>
                 </div>
             </nav>
