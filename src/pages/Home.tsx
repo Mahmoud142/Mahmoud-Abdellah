@@ -7,9 +7,11 @@ import { Hero } from "../components/Hero/Hero";
 import { Education } from "../components/Education/Education";
 import { About } from "../components/About/About";
 import { Skills } from "../components/Skills/Skills";
+import { CodingStats } from "../components/CodingStats/CodingStats";
 import { Projects } from "../components/Projects/Projects";
 import { Languages } from "../components/Languages/Languages";
 import { Contact } from "../components/Contact/Contact";
+import { ResumeModal } from "../components/ResumeModal/ResumeModal";
 
 import type { MouseEvent as ReactMouseEvent } from "react";
 
@@ -31,6 +33,7 @@ export function Home() {
     const [scrollProgress, setScrollProgress] = useState(0);
     const [theme, setTheme] = useState<"light" | "dark">("dark");
     const [activeSection, setActiveSection] = useState<NavSectionId>("home");
+    const [isResumeOpen, setIsResumeOpen] = useState(false);
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("portfolio-theme");
@@ -93,6 +96,7 @@ export function Home() {
             ticking = false;
         }
 
+        // Add visual scroll reveals on section change or init
         function handleScroll() {
             if (!ticking) {
                 window.requestAnimationFrame(updateScrollState);
@@ -132,6 +136,11 @@ export function Home() {
         window.scrollTo({ top: Math.max(targetTop, 0), behavior: "smooth" });
     }
 
+    const handleResumeClick = (e: ReactMouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        setIsResumeOpen(true);
+    };
+
     return (
         <>
             <Navbar 
@@ -143,6 +152,7 @@ export function Home() {
                 mobileMenuOpen={mobileMenuOpen}
                 setMobileMenuOpen={setMobileMenuOpen}
                 handleNavClick={handleNavClick}
+                onResumeClick={handleResumeClick}
             />
 
             <main className="shell">
@@ -158,12 +168,16 @@ export function Home() {
                     <Skills />
                 </section>
 
+                <CodingStats />
+
                 <Projects />
                 <Languages />
-                <Contact />
+                <Contact onResumeClick={handleResumeClick} />
 
                 <Footer />
             </main>
+
+            <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
         </>
     );
 }
