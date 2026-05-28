@@ -33,7 +33,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     }, [isOpen]);
 
     const previewUrl = "https://drive.google.com/file/d/1tg17b8bzl_S9asNIjiGg1Ru9E6c2Fuxe/preview";
-    const downloadUrl = "https://drive.google.com/uc?export=download&id=1tg17b8bzl_S9asNIjiGg1Ru9E6c2Fuxe";
+    const downloadUrl = "/Mahmoud_Abdellah_Resume.pdf";
     const newTabUrl = "https://drive.google.com/file/d/1tg17b8bzl_S9asNIjiGg1Ru9E6c2Fuxe/view?usp=drive_link";
 
     return (
@@ -60,6 +60,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     <div className="resume-modal-actions">
                         <a
                             href={downloadUrl}
+                            download="Mahmoud_Abdellah_Resume.pdf"
                             className="resume-action-btn download-btn"
                             title="Download PDF"
                         >
