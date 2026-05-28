@@ -3,6 +3,7 @@
     /* 🌑 Dark Mode — Refined Electric Pulse Glass Design */
     --color-bg-primary: #0B0C10;
     --color-bg-primary-alt: #111827;
+    --color-panel-bg: rgba(17, 24, 39, 0.2);
 
     /* Glass Surfaces */
     --color-bg-surface: rgba(31, 40, 51, 0.45);
@@ -116,6 +117,7 @@
     /* Crisp clean modern gray */
     --color-bg-primary-alt: #F3F4F6;
     /* Soft neutral gray */
+    --color-panel-bg: rgba(243, 244, 246, 0.2);
 
     /* Surface Tokens — Elegant Raised White Cards */
     --color-bg-surface: #FFFFFF;
