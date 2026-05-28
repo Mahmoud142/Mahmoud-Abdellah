@@ -153,7 +153,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
-    transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.35s ease, box-shadow 0.35s ease;
     transform-style: preserve-3d;
 }
 
@@ -236,8 +236,12 @@
 
 .project-card:hover {
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 1px var(--color-accent), 0 12px 28px rgba(0, 0, 0, 0.35);
-    transform: translateY(-3px);
+    box-shadow: 
+        0 0 0 1px var(--color-accent), 
+        0 20px 40px rgba(0, 0, 0, 0.45), 
+        0 0 25px var(--color-accent-glow);
+    /* Slow, cinematic magnetic float transition on hover */
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card h3 {
