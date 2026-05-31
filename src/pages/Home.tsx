@@ -46,20 +46,28 @@ export function Home() {
     }, []);
 
     const toggleTheme = () => {
-        const DARK_BG = '#0B0C10';
-        const LIGHT_BG = '#F9FAFB';
+        const DARK_BG = "#0B0C10";
+        const LIGHT_BG = "#F9FAFB";
         const newTheme = theme === "dark" ? "light" : "dark";
         const bg = newTheme === "light" ? LIGHT_BG : DARK_BG;
         setTheme(newTheme);
         document.documentElement.setAttribute("data-theme", newTheme);
         localStorage.setItem("portfolio-theme", newTheme);
         // Sync inline styles for in-app browser armor
-        document.documentElement.style.setProperty('background-color', bg, 'important');
+        document.documentElement.style.setProperty(
+            "background-color",
+            bg,
+            "important",
+        );
         if (document.body) {
-            document.body.style.setProperty('background-color', bg, 'important');
+            document.body.style.setProperty(
+                "background-color",
+                bg,
+                "important",
+            );
         }
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', bg);
+        if (meta) meta.setAttribute("content", bg);
     };
 
     useEffect(() => {
@@ -72,8 +80,10 @@ export function Home() {
         let ticking = false;
 
         function updateScrollState() {
-            const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-            if (totalScroll > 0) setScrollProgress((window.scrollY / totalScroll) * 100);
+            const totalScroll =
+                document.documentElement.scrollHeight - window.innerHeight;
+            if (totalScroll > 0)
+                setScrollProgress((window.scrollY / totalScroll) * 100);
 
             if (sections.length > 0) {
                 const scrollMarker = window.scrollY + NAVBAR_SCROLL_OFFSET + 18;
@@ -89,7 +99,8 @@ export function Home() {
                 const bottomEdge = window.scrollY + window.innerHeight;
                 const pageHeight = document.documentElement.scrollHeight;
                 if (bottomEdge >= pageHeight - 4) {
-                    nextActive = sections[sections.length - 1].id as NavSectionId;
+                    nextActive = sections[sections.length - 1]
+                        .id as NavSectionId;
                 }
                 setActiveSection(nextActive);
             }
@@ -124,12 +135,18 @@ export function Home() {
         };
     }, []);
 
-    function handleNavClick(event: ReactMouseEvent<HTMLAnchorElement>, sectionId: string) {
+    function handleNavClick(
+        event: ReactMouseEvent<HTMLAnchorElement>,
+        sectionId: string,
+    ) {
         event.preventDefault();
         const target = document.getElementById(sectionId);
         if (!target) return;
 
-        const targetTop = target.getBoundingClientRect().top + window.scrollY - NAVBAR_SCROLL_OFFSET;
+        const targetTop =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            NAVBAR_SCROLL_OFFSET;
         setActiveSection(sectionId as NavSectionId);
         setMobileMenuOpen(false);
         window.history.replaceState(null, "", `#${sectionId}`);
@@ -143,7 +160,7 @@ export function Home() {
 
     return (
         <>
-            <Navbar 
+            <Navbar
                 navLinks={NAV_LINKS}
                 scrollProgress={scrollProgress}
                 activeSection={activeSection}
@@ -162,7 +179,7 @@ export function Home() {
 
                 <Hero />
                 <Education />
-                
+
                 <section className="content-grid about-stack-layout">
                     <About />
                     <Skills />
@@ -177,7 +194,10 @@ export function Home() {
                 <Footer />
             </main>
 
-            <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+            <ResumeModal
+                isOpen={isResumeOpen}
+                onClose={() => setIsResumeOpen(false)}
+            />
         </>
     );
 }

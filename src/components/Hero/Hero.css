@@ -4,6 +4,26 @@
     gap: clamp(1.1rem, 2.4vw, 1.9rem);
     padding: clamp(1.5rem, 3.5vw, 3rem);
     background: var(--color-hero-bg);
+    position: relative;
+    /* Subtle dot-matrix pattern */
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, var(--color-hero-bg) 0%, transparent 20%, transparent 80%, var(--color-hero-bg) 100%),
+        radial-gradient(ellipse at center, transparent 0%, var(--color-hero-bg) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero>* {
+    position: relative;
+    z-index: 1;
 }
 
 .status-card {
@@ -99,10 +119,12 @@
 .hero-copy h1,
 .status-card h1 {
     margin: 0;
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(2.2rem, 7.2vw, 4.7rem);
-    line-height: 0.92;
-    letter-spacing: -0.03em;
+    /* Changed to a clean, simple tech font */
+    font-family: 'Space Grotesk', 'Fira Code', 'Roboto Mono', monospace;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     color: var(--color-text-primary);
     text-wrap: balance;
     background: var(--gradient-metallic);
@@ -155,35 +177,49 @@
 .hero-social-icons {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.55rem;
-    margin-top: 0.82rem;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
 }
 
 .hero-social-icon {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50%;
+    width: auto;
+    min-width: 2.6rem;
+    height: 2.6rem;
+    padding: 0 0.8rem;
+    border-radius: 12px;
+    /* Smooth rounded rectangle instead of circle */
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: var(--color-accent);
-    border: 1px solid rgba(0, 229, 229, 0.2);
-    background: var(--color-bg-surface);
+    /* Frosted glass effect */
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Minimalist thin border */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     text-decoration: none;
-    transition: transform 160ms ease, border-color 180ms ease;
-    will-change: transform;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, box-shadow;
 }
 
 .hero-social-icon svg {
-    width: 1rem;
-    height: 1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    transition: transform 0.3s ease;
 }
 
 .hero-social-icon:hover {
-    transform: translateY(-3px);
-    border-color: var(--color-accent);
-    background: var(--color-accent-glow);
-    box-shadow: 0 8px 24px var(--color-accent-glow);
+    transform: translateY(-4px);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    /* Use the inherent color (if set via inline style) for the border, or fallback to glowing white */
+    border-color: currentColor;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px currentColor;
+}
+
+.hero-social-icon:hover svg {
+    transform: scale(1.15);
 }
 
 .primary-link,
@@ -276,7 +312,21 @@
 }
 
 
-@keyframes profile-float {
+@keyframes frame-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes float-wrapper {
 
     0%,
     100% {
@@ -284,39 +334,75 @@
     }
 
     50% {
-        transform: translateY(-3%);
+        transform: translateY(-15px);
     }
 }
 
-.hero-profile-image {
-    width: 92%;
-    max-width: 340px;
-    justify-self: center;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 24px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 20px var(--color-accent-glow);
-    display: block;
-    transform: rotateX(0) rotateY(0) scale(1);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-        box-shadow 0.4s ease,
-        outline-offset 0.4s ease,
-        outline-color 0.4s ease,
-        border-color 0.4s ease;
-    will-change: transform, box-shadow, outline-offset;
-    cursor: pointer;
+/* Organic pro morphing shape */
+@keyframes morph-frame {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
 }
 
-.hero-profile-image:hover {
-    transform: rotateX(4deg) rotateY(-8deg) scale(1.04);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
-        0 0 50px var(--color-accent);
-    outline-color: #ffffff;
-    outline-offset: 10px;
-    border-color: rgba(255, 255, 255, 0.3);
+.hero-image-wrapper {
+    position: relative;
+    width: 92%;
+    max-width: 320px;
+    justify-self: center;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Wrapper handles the float natively without hover conflict */
+    animation: float-wrapper 6s ease-in-out infinite;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* The fluid moving frame behind the image */
+.hero-moving-frame {
+    position: absolute;
+    inset: -6px;
+    /* extends slightly beyond the image to act as a frame */
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary), var(--color-accent-tertiary));
+    background-size: 200% 200%;
+    /* The core of the "pro ease movement": a morphing organic bubble */
+    animation: morph-frame 8s ease-in-out infinite, frame-flow 6s ease-in-out infinite;
+    z-index: -1;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+}
+
+.hero-image-wrapper:hover .hero-moving-frame {
+    inset: -12px;
+    /* Expands gracefully on hover */
+    filter: blur(12px);
+    /* Glows intensely on hover */
+    opacity: 0.9;
+}
+
+.hero-profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+    display: block;
+    background: var(--color-bg-surface);
+}
+
+.hero-image-wrapper:hover .hero-profile-image {
+    transform: scale(1.04);
 }
 
 .hero-explore-container {
