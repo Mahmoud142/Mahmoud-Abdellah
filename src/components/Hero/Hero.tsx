@@ -69,7 +69,7 @@ export function Hero() {
             <div className="hero-copy">
                 <h1 className="hero-animate hero-delay-1">
                     {portfolioData.name}
-                    <span>{portfolioData.role}</span>
+                    <span className="hero-role-text">{portfolioData.role}</span>
                 </h1>
                 <div className="hero-rotating-wrapper hero-animate hero-delay-1">
                     <RotatingText phrases={ROTATING_PHRASES} interval={2800} />
@@ -102,13 +102,16 @@ export function Hero() {
             </div>
 
             <div className="hero-side">
-                <img
-                    src={profileImg}
-                    alt="Mahmoud profile"
-                    className="hero-profile-image hero-animate hero-delay-2"
-                    loading="lazy"
-                    decoding="async"
-                />
+                <div className="hero-image-wrapper hero-animate hero-delay-2">
+                    <div className="hero-moving-frame"></div>
+                    <img
+                        src={profileImg}
+                        alt="Mahmoud profile"
+                        className="hero-profile-image"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </div>
             </div>
 
             <div className="hero-explore-container hero-animate hero-delay-4">
@@ -120,7 +123,7 @@ export function Hero() {
                             ?.scrollIntoView({ behavior: "smooth" })
                     }
                 >
-                    Explore Me
+                    Explore My Work
                     <FaArrowDown />
                 </button>
             </div>
