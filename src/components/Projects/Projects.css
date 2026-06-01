@@ -240,8 +240,8 @@
         0 0 0 1px var(--color-accent), 
         0 20px 40px rgba(0, 0, 0, 0.45), 
         0 0 25px var(--color-accent-glow);
-    /* Slow, cinematic magnetic float transition on hover */
-    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    /* Exclude transform from the hover state transition to prevent conflicts with high-frequency JS cursor coordinate updates */
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-card h3 {

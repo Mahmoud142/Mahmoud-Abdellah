@@ -13,7 +13,8 @@ export const ScrollToTop = () => {
         const winHeight = window.innerHeight;
         
         // Visibility
-        setIsVisible(scrollTop > 300);
+        const visible = scrollTop > 300;
+        setIsVisible((prev) => (prev !== visible ? visible : prev));
         
         // Progress (0 to 100)
         const totalDocScrollLength = docHeight - winHeight;
@@ -21,7 +22,8 @@ export const ScrollToTop = () => {
         setScrollProgress(progress);
 
         // Footer Awareness (if within 150px of bottom)
-        setIsNearFooter(scrollTop + winHeight >= docHeight - 150);
+        const nearFooter = scrollTop + winHeight >= docHeight - 150;
+        setIsNearFooter((prev) => (prev !== nearFooter ? nearFooter : prev));
     };
 
     const scrollToTop = () => {

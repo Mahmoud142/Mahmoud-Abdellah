@@ -51,7 +51,7 @@ export function RotatingText({ phrases, interval = 3200 }: RotatingTextProps) {
 
     return (
         <span className="rotating-text" aria-label={currentPhrase}>
-            <span className="rotating-text-content">{displayText}</span>
+            <span className="rotating-text-content">{displayText || "\u200b"}</span>
             <span className="rotating-text-cursor" aria-hidden="true" />
         </span>
     );

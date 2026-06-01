@@ -5,6 +5,7 @@
     align-items: center;
     min-height: 1.6em;
     vertical-align: baseline;
+    white-space: nowrap; /* Prevent layout shifting and line-wrapping vibrations on scroll/sizing */
 }
 
 .rotating-text-content {

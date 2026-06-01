@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import {
     FaMoon,
     FaSun,
@@ -36,6 +36,30 @@ export function Navbar({
     handleNavClick,
     onResumeClick,
 }: NavbarProps) {
+    const [indicatorStyle, setIndicatorStyle] = useState({
+        left: 0,
+        width: 0,
+        opacity: 0,
+    });
+    const navLinksRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!navLinksRef.current) return;
+
+        // Find the active link
+        const activeLink = navLinksRef.current.querySelector(
+            "a.is-active",
+        ) as HTMLAnchorElement;
+
+        if (activeLink) {
+            setIndicatorStyle({
+                left: activeLink.offsetLeft,
+                width: activeLink.offsetWidth,
+                opacity: 1,
+            });
+        }
+    }, [activeSection, navLinks]);
+
     return (
         <>
             <nav className="navbar">
@@ -46,7 +70,16 @@ export function Navbar({
                 <div className="navbar-brand">
                     <span className="navbar-name">MA</span>
                 </div>
-                <div className="navbar-links">
+                <div className="navbar-links" ref={navLinksRef}>
+                    <div
+                        className="nav-indicator"
+                        style={{
+                            left: indicatorStyle.left,
+                            width: indicatorStyle.width,
+                            opacity: indicatorStyle.opacity,
+                        }}
+                        aria-hidden="true"
+                    />
                     {navLinks.map((link) => (
                         <a
                             href={`#${link.id}`}
