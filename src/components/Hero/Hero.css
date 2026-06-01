@@ -493,11 +493,14 @@
         max-width: 260px;
         min-height: auto;
         animation: none;
-        /* Disable the desktop float to rely on mobile animation */
     }
+}
 
+@media (max-width: 980px) {
     .hero-profile-image {
-        border-radius: 50%;
+        aspect-ratio: 1 / 1; /* Force square box dimensions to guarantee a perfect circle on all non-desktop screen widths */
+        object-fit: cover; /* Prevent image compression or distortion */
+        border-radius: 50% !important;
         /* Make it a perfect circle */
         animation: mobile-circle-pulse 4s ease-in-out infinite;
         /* Performant continuous pulse */
@@ -505,10 +508,13 @@
     }
 
     .hero-profile-image:hover {
-        /* Reset 3d hover effects for mobile screens */
-        transform: scale(1);
+        /* Reset 3d hover effects for non-desktop screens */
+        transform: scale(1) !important;
         outline-offset: 6px;
     }
+}
+
+@media (max-width: 768px) {
 
     .hero-status-row,
     .hero-social-icons,
