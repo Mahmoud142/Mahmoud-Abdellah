@@ -26,7 +26,7 @@
     background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
     box-shadow: 0 0 10px var(--color-accent-glow);
     z-index: 1001;
-    transition: width 0.1s ease-out;
+    /* Transition excluded to keep scroll updates completely smooth and unlagged */
 }
 
 .navbar-brand {

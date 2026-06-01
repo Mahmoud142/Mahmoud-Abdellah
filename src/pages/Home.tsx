@@ -102,7 +102,10 @@ export function Home() {
                     nextActive = sections[sections.length - 1]
                         .id as NavSectionId;
                 }
-                setActiveSection(nextActive);
+                setActiveSection((prev) => {
+                    if (prev !== nextActive) return nextActive;
+                    return prev;
+                });
             }
             ticking = false;
         }
