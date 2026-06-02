@@ -23,13 +23,15 @@
         justify-items: center;
     }
 
-    .hero-image-card {
+    .hero-image-wrapper {
         min-height: auto;
-        width: min(100%, 22rem);
+        width: min(92%, 20rem);
+        aspect-ratio: 1 / 1;
     }
 
     .hero-profile-image {
-        width: min(100%, 20rem);
+        width: 100% !important;
+        height: 100% !important;
         justify-self: center;
     }
 
@@ -119,12 +121,13 @@
         margin-top: 1rem;
     }
 
-    .hero-image-card {
-        width: min(100%, 16rem);
+    .hero-image-wrapper {
+        width: min(92%, 14rem);
     }
 
     .hero-profile-image {
-        width: min(100%, 14rem);
+        width: 100% !important;
+        height: 100% !important;
     }
 
     .primary-link,
@@ -197,14 +200,14 @@
         padding: 0.8rem;
     }
 
-    .hero-image-card {
-        width: min(100%, 13.5rem);
-        padding: 0.5rem;
+    .hero-image-wrapper {
+        width: min(92%, 12.5rem);
     }
 
     .hero-profile-image {
-        width: min(100%, 12.5rem);
-        border-radius: 14px;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 50% !important;
     }
 
     .contact-card {
