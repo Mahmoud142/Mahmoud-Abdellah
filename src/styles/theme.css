@@ -124,6 +124,14 @@
     --cat-methodologies: #EC4899;
     --cat-frontend: #06B6D4;
     --cat-tools: #F97316;
+
+    /* Heading Icon Colors - Dark Theme */
+    --heading-about: #FF8C00;
+    --heading-skills: #8B5CF6;
+    --heading-projects: #FF4D4D;
+    --heading-education: #3B82F6;
+    --heading-languages: #10B981;
+    --heading-contact: #EC4899;
 }
 
 [data-theme="light"] {
@@ -277,6 +285,14 @@
     --cat-methodologies: #DB2777;
     --cat-frontend: #0891B2;
     --cat-tools: #EA580C;
+
+    /* Heading Icon Colors - Light Theme */
+    --heading-about: #D97706;
+    --heading-skills: #6D28D9;
+    --heading-projects: #DC2626;
+    --heading-education: #2563EB;
+    --heading-languages: #059669;
+    --heading-contact: #DB2777;
 }
 
 /* --- Premium Custom Scrollbar (CSS-Only, High Performance) --- */
