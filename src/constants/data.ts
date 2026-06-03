@@ -59,7 +59,9 @@ export const portfolioData: PortfolioData = {
                 "TypeScript",
                 "JavaScript (ES6+)",
                 "Python",
+                "Java",
                 "C++",
+                "C",
                 "SQL",
                 "HTML5",
                 "CSS3",
@@ -72,6 +74,7 @@ export const portfolioData: PortfolioData = {
                 "Express.js",
                 "NestJS",
                 "RESTful API Design",
+                "Swagger (OpenAPI)",
                 "Microservices",
                 "Real-time Systems (Socket.io)",
                 "Redis Caching",
@@ -91,21 +94,11 @@ export const portfolioData: PortfolioData = {
         {
             title: "DevOps & Cloud",
             items: [
+                "Linux",
                 "Docker & Docker Compose",
                 "AWS",
                 "CI/CD Pipelines",
                 "Nginx",
-                "Linux",
-            ],
-        },
-        {
-            title: "Software Methodologies",
-            items: [
-                "System Design",
-                "Agile / Scrum",
-                "Clean Code & SOLID",
-                "Design Patterns",
-                "TDD / BDD",
             ],
         },
         {
@@ -113,14 +106,38 @@ export const portfolioData: PortfolioData = {
             items: [
                 "React.js",
                 "Redux Toolkit",
-                "Responsive Web Design",
                 "State Management",
+                "Responsive Web Design",
                 "Bootstrap",
             ],
         },
         {
+            title: "Core CS & Engineering",
+            items: [
+                "Data Structures & Algorithms (DSA)",
+                "Object-Oriented Programming (OOP)",
+                "System Design",
+                "Design Patterns",
+            ],
+        },
+        {
+            title: "Software Methodologies",
+            items: [
+                "Clean Code & SOLID",
+                "TDD / BDD",
+                "Agile / Scrum",
+            ],
+        },
+        {
             title: "Development Tools",
-            items: ["Git", "GitHub", "GitLab", "Jira", "Postman", "Vercel"],
+            items: [
+                "Git",
+                "GitHub",
+                "GitLab",
+                "Postman",
+                "Vercel",
+                "Jira",
+            ],
         },
     ],
     focusAreas: [
