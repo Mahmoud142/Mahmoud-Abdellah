@@ -3,13 +3,18 @@ import { ReactNode } from "react";
 interface SectionHeaderProps {
     title: string;
     icon?: ReactNode;
+    iconColor?: string;
 }
 
-export function SectionHeading({ title, icon }: SectionHeaderProps) {
+export function SectionHeading({ title, icon, iconColor }: SectionHeaderProps) {
     return (
         <div className="section-header reveal">
             {icon && (
-                <span className="section-icon" aria-hidden="true">
+                <span 
+                    className="section-icon" 
+                    style={iconColor ? { color: iconColor } : undefined} 
+                    aria-hidden="true"
+                >
                     {icon}
                 </span>
             )}

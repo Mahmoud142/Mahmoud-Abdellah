@@ -11,7 +11,7 @@ interface ContactProps {
 export function Contact({ onResumeClick }: ContactProps) {
     return (
         <div id="contact" className="nav-section">
-            <SectionHeading title="Let's Connect" icon={<FaEnvelope />} />
+            <SectionHeading title="Let's Connect" icon={<FaEnvelope />} iconColor="var(--heading-contact)" />
             <section className="panel contact-strip">
                 <div className="contact-info-row reveal">
                     <div className="status-badge">

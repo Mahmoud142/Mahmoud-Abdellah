@@ -73,26 +73,29 @@
 
     /* Dynamic Skill Brand Colors - Dark Mode (Bright, vibrant, neon) */
     --skill-js: #F7DF1E;
-    --skill-ts: #3178C6;
-    --skill-python: #3776AB;
-    --skill-cpp: #00599C;
-    --skill-sql: #4479A1;
+    --skill-ts: #007ACC;
+    --skill-python: #F7DF1E;
+    --skill-java: #ED8B00;
+    --skill-c: #A8B9CC;
+    --skill-cpp: #5184C1;
+    --skill-sql: #3884C2;
     --skill-html: #E34F26;
     --skill-css: #1572B6;
     --skill-node: #339933;
     --skill-express: #ffffff;
-    --skill-nestjs: #E0234E;
+    --skill-nestjs: #EA284E;
     --skill-api: #00f5ff;
     --skill-microservices: #FF9900;
     --skill-socket: #ffffff;
-    --skill-redis: #DC382D;
+    --skill-redis: #FF3E30;
+    --skill-swagger: #85EA2D;
     --skill-arch: #00f5ff;
     --skill-react: #61DAFB;
     --skill-redux: #764ABC;
     --skill-bootstrap: #7952B3;
     --skill-postgres: #4169E1;
-    --skill-mysql: #4479A1;
-    --skill-mongodb: #47A248;
+    --skill-mysql: #00758F;
+    --skill-mongodb: #13AA52;
     --skill-docker: #2496ED;
     --skill-aws: #FF9900;
     --skill-cicd: #2088FF;
@@ -101,6 +104,8 @@
     --skill-design: #00f5ff;
     --skill-agile: #0052CC;
     --skill-solid: #00f5ff;
+    --skill-dsa: #F472B6;
+    --skill-oop: #60A5FA;
     --skill-patterns: #FF9900;
     --skill-tdd: #47A248;
     --skill-git: #F05032;
@@ -109,6 +114,24 @@
     --skill-jira: #0052CC;
     --skill-postman: #FF6C37;
     --skill-vercel: #ffffff;
+
+    /* Category Colors - Dark Theme */
+    --cat-languages: #10B981;
+    --cat-concepts: #A78BFA;
+    --cat-backend: #635BFF;
+    --cat-database: #F59E0B;
+    --cat-devops: #0EA5E9;
+    --cat-methodologies: #EC4899;
+    --cat-frontend: #06B6D4;
+    --cat-tools: #F97316;
+
+    /* Heading Icon Colors - Dark Theme */
+    --heading-about: #00f5ff;
+    --heading-skills: #8B5CF6;
+    --heading-projects: #FF4D4D;
+    --heading-education: #3B82F6;
+    --heading-languages: #10B981;
+    --heading-contact: #EC4899;
 }
 
 [data-theme="light"] {
@@ -170,13 +193,16 @@
 
     color-scheme: light;
 
-    /* Dynamic Skill Brand Colors - Light Mode (High-contrast, up-to-date, rich, legible) */
     --skill-js: #B45309;
     /* Deep Gold / Amber-700 instead of faint yellow */
     --skill-ts: #1E40AF;
     /* Legible deep indigo/blue */
-    --skill-python: #1E3A8A;
-    /* Rich navy blue */
+    --skill-python: #B45309;
+    /* Aligned to JS gold-yellow */
+    --skill-java: #A33B00;
+    /* Java Dark Orange */
+    --skill-c: #475569;
+    /* C Slate Gray */
     --skill-cpp: #0F52BA;
     /* Sapphire blue */
     --skill-sql: #115E59;
@@ -199,6 +225,7 @@
     /* Deep Slate */
     --skill-redis: #B91C1C;
     /* Deeper Red */
+    --skill-swagger: #4F930D;
     --skill-arch: #0369A1;
     /* Deep Ocean Blue */
     --skill-react: #0284C7;
@@ -229,6 +256,10 @@
     /* Navy blue */
     --skill-solid: #0369A1;
     /* Deeper ocean blue */
+    --skill-dsa: #DB2777;
+    /* Deep rose pink */
+    --skill-oop: #2563EB;
+    /* Rich cobalt blue */
     --skill-patterns: #C2410C;
     /* Legible deep orange */
     --skill-tdd: #15803D;
@@ -242,9 +273,26 @@
     --skill-jira: #1E3A8A;
     /* Navy blue */
     --skill-postman: #C2410C;
-    /* Deeper orange */
     --skill-vercel: #0F172A;
     /* Deep Slate */
+
+    /* Category Colors - Light Theme */
+    --cat-languages: #059669;
+    --cat-concepts: #6D28D9;
+    --cat-backend: #4F46E5;
+    --cat-database: #D97706;
+    --cat-devops: #0284C7;
+    --cat-methodologies: #DB2777;
+    --cat-frontend: #0891B2;
+    --cat-tools: #EA580C;
+
+    /* Heading Icon Colors - Light Theme */
+    --heading-about: #0284C7;
+    --heading-skills: #6D28D9;
+    --heading-projects: #DC2626;
+    --heading-education: #2563EB;
+    --heading-languages: #059669;
+    --heading-contact: #DB2777;
 }
 
 /* --- Premium Custom Scrollbar (CSS-Only, High Performance) --- */
@@ -561,12 +609,17 @@ html[data-theme="light"] #root {
 
 /* Override Skill Group colors for light mode */
 [data-theme="light"] .skill-group {
-    background: var(--color-bg-primary) !important;
+    background: rgba(0, 0, 0, 0.01) !important;
     border-color: var(--color-border) !important;
 }
 
 [data-theme="light"] .skill-group h3 {
-    color: var(--color-accent-secondary) !important;
+    color: var(--color-text-primary) !important;
+    transition: color 0.3s ease;
+}
+
+[data-theme="light"] .skill-group:hover h3 {
+    color: var(--group-color) !important;
 }
 
 [data-theme="light"] .skill-group li {

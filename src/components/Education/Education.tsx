@@ -6,7 +6,7 @@ import "./Education.css";
 export function Education() {
     return (
         <div id="education" className="nav-section">
-            <SectionHeading title="Education" icon={<FaGraduationCap />} />
+            <SectionHeading title="Education" icon={<FaGraduationCap />} iconColor="var(--heading-education)" />
             <section className="panel">
                 <h2 className="align-center">Academic Background</h2>
                 <div className="education-list stagger-container">

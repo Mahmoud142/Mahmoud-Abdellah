@@ -8,7 +8,7 @@ import "./Projects.css";
 export function Projects() {
     return (
         <div id="projects" className="nav-section">
-            <SectionHeading title="Projects" icon={<FaRocket />} />
+            <SectionHeading title="Projects" icon={<FaRocket />} iconColor="var(--heading-projects)" />
             <section className="panel">
                 <div className="projects-grid stagger-container">
                     {portfolioData.projects.map((project, i) => (
