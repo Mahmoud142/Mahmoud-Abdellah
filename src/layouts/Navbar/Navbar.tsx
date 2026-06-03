@@ -41,6 +41,7 @@ export function Navbar({
         width: 0,
         opacity: 0,
     });
+    const [isMounted, setIsMounted] = useState(false);
     const navLinksRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -57,8 +58,15 @@ export function Navbar({
                 width: activeLink.offsetWidth,
                 opacity: 1,
             });
+            if (!isMounted) {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        setIsMounted(true);
+                    });
+                });
+            }
         }
-    }, [activeSection, navLinks]);
+    }, [activeSection, navLinks, isMounted]);
 
     return (
         <>
@@ -72,7 +80,7 @@ export function Navbar({
                 </div>
                 <div className="navbar-links" ref={navLinksRef}>
                     <div
-                        className="nav-indicator"
+                        className={`nav-indicator ${isMounted ? "has-transition" : ""}`}
                         style={{
                             left: indicatorStyle.left,
                             width: indicatorStyle.width,

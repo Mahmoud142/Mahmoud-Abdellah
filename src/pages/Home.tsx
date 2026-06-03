@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, lazy, Suspense } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
 import { Navbar } from "../layouts/Navbar/Navbar";
@@ -11,7 +11,12 @@ import { CodingStats } from "../components/CodingStats/CodingStats";
 import { Projects } from "../components/Projects/Projects";
 import { Languages } from "../components/Languages/Languages";
 import { Contact } from "../components/Contact/Contact";
-import { ResumeModal } from "../components/ResumeModal/ResumeModal";
+
+const ResumeModal = lazy(() =>
+    import("../components/ResumeModal/ResumeModal").then((module) => ({
+        default: module.ResumeModal,
+    })),
+);
 
 import type { MouseEvent as ReactMouseEvent } from "react";
 
@@ -34,6 +39,9 @@ export function Home() {
     const [theme, setTheme] = useState<"light" | "dark">("dark");
     const [activeSection, setActiveSection] = useState<NavSectionId>("home");
     const [isResumeOpen, setIsResumeOpen] = useState(false);
+
+    const isScrollingToRef = useRef<NavSectionId | null>(null);
+    const scrollTimeoutRef = useRef<number | null>(null);
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("portfolio-theme");
@@ -102,6 +110,18 @@ export function Home() {
                     nextActive = sections[sections.length - 1]
                         .id as NavSectionId;
                 }
+
+                // If we are currently scrolling programmatically to a specific section:
+                if (isScrollingToRef.current) {
+                    if (nextActive === isScrollingToRef.current) {
+                        // The scroll spy has naturally caught up to the target, so clear override
+                        isScrollingToRef.current = null;
+                    } else {
+                        // Force the active section to remain the clicked target section
+                        nextActive = isScrollingToRef.current;
+                    }
+                }
+
                 setActiveSection((prev) => {
                     if (prev !== nextActive) return nextActive;
                     return prev;
@@ -125,8 +145,14 @@ export function Home() {
             }
         }
 
+        const handleManualScroll = () => {
+            isScrollingToRef.current = null;
+        };
+
         window.addEventListener("scroll", handleScroll, { passive: true });
         window.addEventListener("resize", handleScroll, { passive: true });
+        window.addEventListener("wheel", handleManualScroll, { passive: true });
+        window.addEventListener("touchstart", handleManualScroll, { passive: true });
         syncFromHash();
         handleScroll();
         window.addEventListener("hashchange", syncFromHash);
@@ -134,7 +160,12 @@ export function Home() {
         return () => {
             window.removeEventListener("scroll", handleScroll);
             window.removeEventListener("resize", handleScroll);
+            window.removeEventListener("wheel", handleManualScroll);
+            window.removeEventListener("touchstart", handleManualScroll);
             window.removeEventListener("hashchange", syncFromHash);
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
         };
     }, []);
 
@@ -150,10 +181,19 @@ export function Home() {
             target.getBoundingClientRect().top +
             window.scrollY -
             NAVBAR_SCROLL_OFFSET;
+        
+        isScrollingToRef.current = sectionId as NavSectionId;
         setActiveSection(sectionId as NavSectionId);
         setMobileMenuOpen(false);
         window.history.replaceState(null, "", `#${sectionId}`);
         window.scrollTo({ top: Math.max(targetTop, 0), behavior: "smooth" });
+
+        if (scrollTimeoutRef.current) {
+            clearTimeout(scrollTimeoutRef.current);
+        }
+        scrollTimeoutRef.current = window.setTimeout(() => {
+            isScrollingToRef.current = null;
+        }, 1000);
     }
 
     const handleResumeClick = (e: ReactMouseEvent<HTMLAnchorElement>) => {
@@ -189,7 +229,6 @@ export function Home() {
                 </section>
 
                 <CodingStats />
-
                 <Projects />
                 <Languages />
                 <Contact onResumeClick={handleResumeClick} />
@@ -197,10 +236,14 @@ export function Home() {
                 <Footer />
             </main>
 
-            <ResumeModal
-                isOpen={isResumeOpen}
-                onClose={() => setIsResumeOpen(false)}
-            />
+            <Suspense fallback={null}>
+                {isResumeOpen && (
+                    <ResumeModal
+                        isOpen={isResumeOpen}
+                        onClose={() => setIsResumeOpen(false)}
+                    />
+                )}
+            </Suspense>
         </>
     );
 }
