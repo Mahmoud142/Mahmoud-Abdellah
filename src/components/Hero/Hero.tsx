@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
 import { RotatingText } from "../RotatingText/RotatingText";
-import profileImg from "../../assets/images/Profile2.jpg";
+import profileImg from "../../assets/images/Profile2.webp";
 import "./Hero.css";
 
 export function getContactColor(label: string) {
@@ -108,7 +108,7 @@ export function Hero() {
                         src={profileImg}
                         alt="Mahmoud profile"
                         className="hero-profile-image"
-                        loading="lazy"
+                        fetchPriority="high"
                         decoding="async"
                     />
                 </div>
