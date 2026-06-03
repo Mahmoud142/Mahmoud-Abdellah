@@ -195,7 +195,7 @@ export function getSkillColor(skill: string): string {
 export function Skills() {
     return (
         <div id="skills" className="nav-section">
-            <SectionHeading title="Skills" icon={<FaCode />} />
+            <SectionHeading title="Skills" icon={<FaCode />} iconColor="var(--heading-skills)" />
             <section className="panel">
                 <div className="skill-groups stagger-container">
                     {portfolioData.skillGroups.map((group) => {
