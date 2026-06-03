@@ -6,7 +6,7 @@ import "./Languages.css";
 export function Languages() {
     return (
         <div id="languages" className="nav-section">
-            <SectionHeading title="Languages" icon={<FaLanguage />} />
+            <SectionHeading title="Languages" icon={<FaLanguage />} iconColor="var(--heading-languages)" />
 
             <div className="languages-grid stagger-container">
                 {portfolioData.languages.map((lang) => {
