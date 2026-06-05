@@ -14,7 +14,23 @@
     background: rgba(11, 12, 16, 0.72);
     backdrop-filter: blur(20px) saturate(180%);
     overflow: hidden;
-    transition: width 0.3s ease, padding 0.3s ease;
+    transition: top 0.3s ease, border-radius 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    will-change: top, background;
+}
+
+.navbar.is-scrolled {
+    top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-color: transparent;
+    background: rgba(11, 12, 16, 0.85);
+}
+
+[data-theme="light"] .navbar.is-scrolled {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-top-color: transparent !important;
 }
 
 

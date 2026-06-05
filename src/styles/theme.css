@@ -677,9 +677,13 @@ html[data-theme="light"] #root {
 }
 
 .skill-group:hover,
-.project-card:hover,
 .repo-card:hover {
     transform: translateY(-5px) !important;
+    border-color: var(--color-accent-secondary) !important;
+    box-shadow: 0 10px 30px var(--color-accent-glow-2) !important;
+}
+
+.project-card:hover {
     border-color: var(--color-accent-secondary) !important;
     box-shadow: 0 10px 30px var(--color-accent-glow-2) !important;
 }

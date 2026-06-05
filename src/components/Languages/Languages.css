@@ -19,9 +19,12 @@
     min-height: 240px;
     transition: transform 0.5s var(--ease-out-expo), 
                 box-shadow 0.5s var(--ease-out-expo), 
-                border-color 0.5s var(--ease-out-expo);
+                border-color 0.5s var(--ease-out-expo),
+                background-color 0.5s var(--ease-out-expo);
     will-change: transform, box-shadow;
     border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* --- Watermark Giant Background Letters --- */
@@ -139,7 +142,7 @@
 [data-theme="dark"] {
     /* Arabic Card Dark Theme - Neon Cyan to Electric Blue glows */
     .card-arabic {
-        background: linear-gradient(135deg, #005E72 0%, #1A3E8A 50%, #2A1B6C 100%);
+        background: linear-gradient(135deg, rgba(0, 94, 114, 0.25) 0%, rgba(26, 62, 138, 0.25) 50%, rgba(42, 27, 108, 0.25) 100%);
         box-shadow: 0 16px 36px rgba(0, 229, 229, 0.2), 
                     0 4px 16px rgba(99, 91, 255, 0.12),
                     inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -147,6 +150,7 @@
     }
 
     .card-arabic:hover {
+        background: linear-gradient(135deg, rgba(0, 94, 114, 0.35) 0%, rgba(26, 62, 138, 0.35) 50%, rgba(42, 27, 108, 0.35) 100%);
         box-shadow: 0 24px 50px rgba(0, 229, 229, 0.35), 
                     0 8px 24px rgba(99, 91, 255, 0.25),
                     inset 0 1px 1px rgba(255, 255, 255, 0.25);
@@ -185,7 +189,7 @@
 
     /* English Card Dark Theme - Electric Blue to Purple glows */
     .card-english {
-        background: linear-gradient(135deg, #3B1C6E 0%, #761655 50%, #9C1445 100%);
+        background: linear-gradient(135deg, rgba(59, 28, 110, 0.25) 0%, rgba(118, 22, 85, 0.25) 50%, rgba(156, 20, 69, 0.25) 100%);
         box-shadow: 0 16px 36px rgba(99, 91, 255, 0.15), 
                     0 4px 16px rgba(168, 85, 247, 0.12),
                     inset 0 1px 1px rgba(255, 255, 255, 0.15);
@@ -193,6 +197,7 @@
     }
 
     .card-english:hover {
+        background: linear-gradient(135deg, rgba(59, 28, 110, 0.35) 0%, rgba(118, 22, 85, 0.35) 50%, rgba(156, 20, 69, 0.35) 100%);
         box-shadow: 0 24px 50px rgba(99, 91, 255, 0.3), 
                     0 8px 24px rgba(168, 85, 247, 0.25),
                     inset 0 1px 1px rgba(255, 255, 255, 0.25);

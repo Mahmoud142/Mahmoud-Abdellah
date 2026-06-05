@@ -8,6 +8,7 @@ import {
     FaFacebook,
     FaInstagram,
     FaWhatsapp,
+    FaTelegram,
     FaRegCircleDot,
 } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
@@ -24,6 +25,7 @@ export function getContactColor(label: string) {
     if (key.includes("facebook")) return "var(--brand-facebook)";
     if (key.includes("instagram")) return "var(--brand-instagram)";
     if (key.includes("whatsapp")) return "var(--brand-whatsapp)";
+    if (key.includes("telegram")) return "#24A1DE";
     if (key.includes("twitter") || key.includes("x"))
         return "var(--brand-twitter)";
     return "var(--color-accent)";
@@ -38,6 +40,7 @@ export function getContactIcon(label: string) {
     if (key.includes("facebook")) return <FaFacebook aria-hidden="true" />;
     if (key.includes("instagram")) return <FaInstagram aria-hidden="true" />;
     if (key.includes("whatsapp")) return <FaWhatsapp aria-hidden="true" />;
+    if (key.includes("telegram")) return <FaTelegram aria-hidden="true" />;
     if (key.includes("twitter") || key.includes("x"))
         return <FaXTwitter aria-hidden="true" />;
     return <FaRegCircleDot aria-hidden="true" />;
@@ -51,6 +54,7 @@ export function getContactClass(label: string) {
     if (key.includes("facebook")) return "contact-facebook";
     if (key.includes("instagram")) return "contact-instagram";
     if (key.includes("whatsapp")) return "contact-whatsapp";
+    if (key.includes("telegram")) return "contact-telegram";
     if (key.includes("twitter") || key.includes("x")) return "contact-x";
     return "contact-generic";
 }
@@ -106,7 +110,7 @@ export function Hero() {
                     <div className="hero-moving-frame"></div>
                     <img
                         src={profileImg}
-                        alt="Mahmoud profile"
+                        alt="Mahmoud Abdellah - Full-Stack Software Engineer &amp; Backend Developer"
                         className="hero-profile-image"
                         fetchPriority="high"
                         decoding="async"

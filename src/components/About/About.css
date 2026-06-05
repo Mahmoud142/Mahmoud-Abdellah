@@ -1,0 +1,141 @@
+/* Remove the outer container panel styling to match the skills design system */
+#about .panel {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+#about .panel::after {
+    display: none !important;
+}
+
+/* About Cards Layout */
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.about-card {
+    position: relative;
+    padding: 2.2rem 2rem;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--color-border);
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background-color 0.3s ease !important;
+}
+
+.about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--card-color), transparent);
+    opacity: 0.8;
+}
+
+/* Hover State */
+.about-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: var(--card-color) !important;
+    box-shadow: 0 10px 30px rgba(0, 229, 229, 0.03), 0 0 15px rgba(99, 91, 255, 0.05) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Card Heading */
+.about-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+}
+
+.about-card:hover h3 {
+    color: var(--card-color);
+}
+
+.about-card-icon {
+    font-size: 1.4rem;
+    color: var(--card-color);
+    transition: transform 0.3s ease;
+}
+
+.about-card:hover .about-card-icon {
+    transform: scale(1.15) rotate(3deg);
+}
+
+/* Paragraph Text styling */
+.about-card p.about-paragraph {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem !important;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] .about-card {
+    background: rgba(0, 0, 0, 0.01) !important;
+    border-color: var(--color-border) !important;
+}
+
+[data-theme="light"] .about-card:hover {
+    background: var(--color-bg-surface-hover) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05), 0 0 15px var(--color-accent-glow-2) !important;
+}
+
+[data-theme="light"] .about-card h3 {
+    color: var(--color-text-primary) !important;
+}
+
+[data-theme="light"] .about-card:hover h3 {
+    color: var(--card-color) !important;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 640px) {
+    .about-cards {
+        gap: 1.2rem;
+    }
+    
+    .about-card {
+        padding: 1.8rem 1.5rem;
+        border-radius: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-card {
+        padding: 1.3rem 1.1rem;
+        gap: 0.8rem;
+        border-radius: 18px;
+    }
+    
+    .about-card h3 {
+        font-size: 1.15rem;
+    }
+    
+    .about-card p.about-paragraph {
+        font-size: 0.88rem !important;
+        line-height: 1.55;
+    }
+}

@@ -19,140 +19,285 @@
     flex-wrap: wrap;
 }
 
+/* --- New Premium Contact Grid Layout --- */
 .contact-grid {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 .contact-card {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 0.8rem;
-    min-height: 2.6rem;
+    gap: 1rem;
+    padding: 0.85rem 1.25rem;
     border-radius: 18px;
-    border: 1px solid var(--color-border);
-    color: var(--color-text-primary);
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border) !important;
+    color: var(--color-text-primary) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
     will-change: transform;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease, 
+                background-color 0.3s ease, 
+                border-color 0.3s ease !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .contact-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
     z-index: 10;
 }
 
 .contact-icon {
-    width: 1.7rem;
-    height: 1.7rem;
-    border-radius: 50%;
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 12px; /* Squircle design */
     display: grid;
     place-items: center;
-    font-size: 0.72rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent));
-    color: #fff;
+    font-size: 1.25rem;
+    color: #fff !important;
     flex-shrink: 0;
-    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 250ms ease;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
 }
 
 .contact-card:hover .contact-icon {
-    transform: scale(1.12);
-    box-shadow: 0 0 15px var(--color-accent-glow);
+    transform: scale(1.08) rotate(5deg);
 }
 
 .contact-icon svg {
-    width: 0.95rem;
-    height: 0.95rem;
+    width: 1.2rem;
+    height: 1.2rem;
     display: block;
 }
 
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    text-align: left;
+}
+
+.contact-label {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+}
+
+/* --- Dark/Default Mode Glass & Hover Colors --- */
+/* GitHub */
 .contact-card.contact-github {
-    border-color: var(--color-border);
-    background: var(--color-bg-surface-hover);
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
 }
-
+.contact-card.contact-github:hover {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.08) !important;
+}
 .contact-card.contact-github .contact-icon {
-    background: linear-gradient(135deg, var(--color-bg-primary), var(--color-bg-primary-alt));
+    background: linear-gradient(135deg, #1E293B, #0F172A) !important;
 }
 
+/* LinkedIn */
 .contact-card.contact-linkedin {
-    border-color: rgba(99, 91, 255, 0.45);
-    background: rgba(99, 91, 255, 0.12);
+    border-color: rgba(0, 119, 182, 0.15) !important;
+    background: rgba(0, 119, 182, 0.03) !important;
 }
-
+.contact-card.contact-linkedin:hover {
+    border-color: rgba(0, 119, 182, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(0, 119, 182, 0.18) !important;
+}
 .contact-card.contact-linkedin .contact-icon {
-    background: linear-gradient(135deg, #0077B6, #00B4D8);
+    background: linear-gradient(135deg, #0077B6, #00B4D8) !important;
 }
 
+/* Facebook */
 .contact-card.contact-facebook {
-    border-color: rgba(99, 102, 241, 0.42);
-    background: rgba(99, 102, 241, 0.12);
+    border-color: rgba(24, 119, 242, 0.15) !important;
+    background: rgba(24, 119, 242, 0.03) !important;
 }
-
+.contact-card.contact-facebook:hover {
+    border-color: rgba(24, 119, 242, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(24, 119, 242, 0.18) !important;
+}
 .contact-card.contact-facebook .contact-icon {
-    background: linear-gradient(135deg, #6366F1, #818CF8);
+    background: linear-gradient(135deg, #1877F2, #4E95FF) !important;
 }
 
+/* Instagram */
 .contact-card.contact-instagram {
-    border-color: rgba(99, 91, 255, 0.42);
-    background: rgba(99, 91, 255, 0.12);
+    border-color: rgba(225, 48, 108, 0.15) !important;
+    background: rgba(225, 48, 108, 0.03) !important;
 }
-
+.contact-card.contact-instagram:hover {
+    border-color: rgba(225, 48, 108, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(225, 48, 108, 0.18) !important;
+}
 .contact-card.contact-instagram .contact-icon {
-    background: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent));
+    background: linear-gradient(135deg, #F09433 0%, #E6683C 25%, #DC2743 50%, #CC2366 75%, #BC1888 100%) !important;
 }
 
+/* WhatsApp */
 .contact-card.contact-whatsapp {
-    border-color: rgba(34, 197, 94, 0.42);
-    background: rgba(34, 197, 94, 0.11);
+    border-color: rgba(37, 211, 102, 0.15) !important;
+    background: rgba(37, 211, 102, 0.03) !important;
 }
-
+.contact-card.contact-whatsapp:hover {
+    border-color: rgba(37, 211, 102, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.18) !important;
+}
 .contact-card.contact-whatsapp .contact-icon {
-    background: linear-gradient(135deg, #22C55E, #4ADE80);
+    background: linear-gradient(135deg, #25D366, #128C7E) !important;
 }
 
+/* Telegram */
+.contact-card.contact-telegram {
+    border-color: rgba(36, 161, 222, 0.15) !important;
+    background: rgba(36, 161, 222, 0.03) !important;
+}
+.contact-card.contact-telegram:hover {
+    border-color: rgba(36, 161, 222, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(36, 161, 222, 0.18) !important;
+}
+.contact-card.contact-telegram .contact-icon {
+    background: linear-gradient(135deg, #24A1DE, #0088CC) !important;
+}
+
+/* X / Twitter */
 .contact-card.contact-x {
-    border-color: rgba(99, 91, 255, 0.35);
-    background: rgba(99, 91, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
 }
-
+.contact-card.contact-x:hover {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.08) !important;
+}
 .contact-card.contact-x .contact-icon {
-    background: linear-gradient(135deg, var(--color-bg-primary), var(--color-bg-primary-alt));
+    background: linear-gradient(135deg, #0F1419, #272C30) !important;
 }
 
+/* Email */
 .contact-card.contact-email {
-    border-color: rgba(99, 91, 255, 0.4);
-    background: rgba(99, 91, 255, 0.12);
+    border-color: rgba(139, 92, 246, 0.15) !important;
+    background: rgba(139, 92, 246, 0.03) !important;
+}
+.contact-card.contact-email:hover {
+    border-color: rgba(139, 92, 246, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(139, 92, 246, 0.18) !important;
+}
+.contact-card.contact-email .contact-icon {
+    background: linear-gradient(135deg, #8B5CF6, #635BFF) !important;
 }
 
-.contact-card.contact-email .contact-icon {
-    background: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent));
+/* --- ☀️ LIGHT MODE PREMIUM CONTACT CARDS --- */
+[data-theme="light"] .contact-card {
+    background: rgba(0, 0, 0, 0.01) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Light Mode Hover Shadow Override */
+[data-theme="light"] .contact-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .contact-card.contact-github {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    background: rgba(0, 0, 0, 0.02) !important;
+}
+[data-theme="light"] .contact-card.contact-github:hover {
+    border-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="light"] .contact-card.contact-linkedin {
+    border-color: rgba(10, 102, 194, 0.15) !important;
+    background: rgba(10, 102, 194, 0.03) !important;
+    color: #0A66C2 !important;
+}
+[data-theme="light"] .contact-card.contact-linkedin:hover {
+    border-color: rgba(10, 102, 194, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(10, 102, 194, 0.12) !important;
+}
+
+[data-theme="light"] .contact-card.contact-facebook {
+    border-color: rgba(24, 119, 242, 0.15) !important;
+    background: rgba(24, 119, 242, 0.03) !important;
+    color: #1877F2 !important;
+}
+[data-theme="light"] .contact-card.contact-facebook:hover {
+    border-color: rgba(24, 119, 242, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(24, 119, 242, 0.12) !important;
+}
+
+[data-theme="light"] .contact-card.contact-instagram {
+    border-color: rgba(193, 53, 132, 0.15) !important;
+    background: rgba(193, 53, 132, 0.03) !important;
+    color: #C13584 !important;
+}
+[data-theme="light"] .contact-card.contact-instagram:hover {
+    border-color: rgba(193, 53, 132, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(193, 53, 132, 0.12) !important;
+}
+
+[data-theme="light"] .contact-card.contact-whatsapp {
+    border-color: rgba(37, 211, 102, 0.15) !important;
+    background: rgba(37, 211, 102, 0.03) !important;
+    color: #20BA56 !important;
+}
+[data-theme="light"] .contact-card.contact-whatsapp:hover {
+    border-color: rgba(37, 211, 102, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.12) !important;
+}
+
+[data-theme="light"] .contact-card.contact-telegram {
+    border-color: rgba(36, 161, 222, 0.15) !important;
+    background: rgba(36, 161, 222, 0.03) !important;
+    color: #0088CC !important;
+}
+[data-theme="light"] .contact-card.contact-telegram:hover {
+    border-color: rgba(36, 161, 222, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(36, 161, 222, 0.12) !important;
+}
+
+[data-theme="light"] .contact-card.contact-x {
+    border-color: rgba(15, 23, 42, 0.12) !important;
+    background: rgba(15, 23, 42, 0.03) !important;
+    color: var(--color-text-primary) !important;
+}
+[data-theme="light"] .contact-card.contact-x:hover {
+    border-color: rgba(15, 23, 42, 0.4) !important;
+}
+
+[data-theme="light"] .contact-card.contact-email {
+    border-color: rgba(212, 70, 56, 0.15) !important;
+    background: rgba(212, 70, 56, 0.03) !important;
+    color: #D44638 !important;
+}
+[data-theme="light"] .contact-card.contact-email:hover {
+    border-color: rgba(212, 70, 56, 0.5) !important;
+    box-shadow: 0 12px 30px rgba(212, 70, 56, 0.12) !important;
 }
 
 @media (max-width: 640px) {
     .contact-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 0.6rem;
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
     }
 
     .contact-card {
-        padding: 0.6rem 1rem;
-        min-height: 2.8rem;
-        border-radius: 14px;
-        font-size: 0.85rem;
-        flex: 1 1 auto;
-        width: auto;
+        padding: 0.9rem 1.1rem;
+        border-radius: 16px;
+    }
+
+    .contact-icon {
+        width: 2.8rem;
+        height: 2.8rem;
+        font-size: 1.25rem;
+        border-radius: 12px;
     }
 }
 
@@ -162,65 +307,114 @@
     }
 }
 
-/* Live Location Badge - Symmetrical to Status Badge */
-.location-badge {
+/* Live Location & Status Badges in Contact Section */
+/* Live Location & Status Badges in Contact Section */
+#contact .status-badge,
+#contact .location-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 999px;
+    gap: 0.75rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 10px; /* Rectangular squircle instead of rounded pill */
+    font-family: 'Space Grotesk', 'Fira Code', monospace;
     font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.02em;
-    transition: all 0.2s ease;
-    
-    background: rgba(0, 229, 229, 0.08); /* Neon Cyan glass */
-    border: 1px solid rgba(0, 229, 229, 0.2);
-    color: var(--color-accent); /* Neon Cyan */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Light mode support */
-[data-theme="light"] .location-badge {
-    background: rgba(122, 141, 117, 0.08); /* Sage Green glass */
-    border: 1px solid rgba(122, 141, 117, 0.2);
-    color: var(--color-accent-secondary); /* Sage Green */
+/* Status Badge - Sleek Green Cyber Card */
+#contact .status-badge {
+    background: rgba(16, 185, 129, 0.03) !important;
+    border: 1px solid rgba(16, 185, 129, 0.12) !important;
+    border-left: 3px solid #10B981 !important; /* Left accent highlight bar */
+    color: #10B981 !important;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
 }
 
-/* Radar Ping Live Icon */
-.location-ping-container {
+#contact .status-badge:hover {
+    background: rgba(16, 185, 129, 0.06) !important;
+    border-color: rgba(16, 185, 129, 0.25) !important;
+    border-left-color: #10B981 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.08) !important;
+}
+
+#contact .status-dot {
+    width: 7px;
+    height: 7px;
+    background: #10B981 !important;
+    border-radius: 2px; /* Square status indicator */
     position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 12px;
-    height: 12px;
 }
 
-.location-live-icon {
-    font-size: 0.8rem;
-    color: var(--color-accent) !important;
-    z-index: 2;
-    filter: drop-shadow(0 0 3px var(--color-accent-glow));
-    animation: location-wobble 3s ease-in-out infinite;
-}
-
-[data-theme="light"] .location-live-icon {
-    color: var(--color-accent-secondary) !important;
-}
-
-.location-ping-ring {
+#contact .status-dot::after {
+    content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--color-accent-glow);
-    animation: location-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    z-index: 1;
-    pointer-events: none;
+    inset: -3px;
+    border-radius: 3px;
+    background: #10B981 !important;
+    animation: status-pulse 2s infinite;
 }
 
-[data-theme="light"] .location-ping-ring {
-    background: rgba(122, 141, 117, 0.25);
+/* Location Badge - Sleek Purple Cyber Card */
+#contact .location-badge {
+    background: rgba(139, 92, 246, 0.03) !important;
+    border: 1px solid rgba(139, 92, 246, 0.12) !important;
+    border-left: 3px solid #8B5CF6 !important; /* Left accent highlight bar */
+    color: #8B5CF6 !important;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+#contact .location-badge:hover {
+    background: rgba(139, 92, 246, 0.06) !important;
+    border-color: rgba(139, 92, 246, 0.25) !important;
+    border-left-color: #8B5CF6 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.08) !important;
+}
+
+#contact .location-live-icon {
+    color: #8B5CF6 !important;
+    font-size: 0.78rem;
+    filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.5));
+}
+
+#contact .location-ping-ring {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px; /* Matches square status indicator */
+    background: rgba(139, 92, 246, 0.3) !important;
+}
+
+/* Light mode overrides for the info row badges */
+[data-theme="light"] #contact .status-badge {
+    background: rgba(5, 150, 105, 0.02) !important;
+    border: 1px solid rgba(5, 150, 105, 0.1) !important;
+    border-left: 3px solid #059669 !important;
+    color: #059669 !important;
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.02) !important;
+}
+
+[data-theme="light"] #contact .status-badge:hover {
+    background: rgba(5, 150, 105, 0.04) !important;
+    border-color: rgba(5, 150, 105, 0.18) !important;
+}
+
+[data-theme="light"] #contact .location-badge {
+    background: rgba(109, 40, 217, 0.02) !important;
+    border: 1px solid rgba(109, 40, 217, 0.1) !important;
+    border-left: 3px solid #6D28D9 !important;
+    color: #6D28D9 !important;
+    box-shadow: 0 4px 15px rgba(109, 40, 217, 0.02) !important;
+}
+
+[data-theme="light"] #contact .location-badge:hover {
+    background: rgba(109, 40, 217, 0.04) !important;
+    border-color: rgba(109, 40, 217, 0.18) !important;
 }
 
 @keyframes location-ping {
@@ -307,4 +501,27 @@
         border-color: var(--color-accent);
         box-shadow: 0 6px 20px rgba(99, 91, 255, 0.15);
     }
+}
+
+/* Container Color Glass for Let's Connect Section */
+#contact .panel {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.04) 0%, rgba(99, 91, 255, 0.04) 100%) !important;
+    border: 1px solid rgba(139, 92, 246, 0.15) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow: 0 16px 40px rgba(139, 92, 246, 0.06), 0 0 20px rgba(99, 91, 255, 0.04) !important;
+    padding: clamp(1.5rem, 3.5vw, 3rem) !important; /* Restores standard padding */
+    overflow: visible !important;
+    border-radius: 24px;
+}
+
+#contact .panel::after {
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.08), transparent 38%) !important;
+    display: block !important;
+}
+
+[data-theme="light"] #contact .panel {
+    background: linear-gradient(135deg, rgba(109, 40, 217, 0.05) 0%, rgba(79, 70, 229, 0.04) 100%) !important;
+    border: 1px solid rgba(109, 40, 217, 0.12) !important;
+    box-shadow: 0 10px 30px rgba(109, 40, 217, 0.03), 0 2px 8px rgba(0, 0, 0, 0.02) !important;
 }
