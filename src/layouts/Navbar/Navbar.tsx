@@ -42,7 +42,29 @@ export function Navbar({
         opacity: 0,
     });
     const [isMounted, setIsMounted] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const navLinksRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        let lastScrolled = false;
+        const handleScroll = () => {
+            const scrolled = window.scrollY > 20;
+            if (scrolled !== lastScrolled) {
+                lastScrolled = scrolled;
+                setIsScrolled(scrolled);
+            }
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        
+        // Initialize state on mount
+        const initialScrolled = window.scrollY > 20;
+        lastScrolled = initialScrolled;
+        setIsScrolled(initialScrolled);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         if (!navLinksRef.current) return;
@@ -70,7 +92,7 @@ export function Navbar({
 
     return (
         <>
-            <nav className="navbar">
+            <nav className={`navbar ${isScrolled ? "is-scrolled" : ""}`}>
                 <div
                     className="scroll-progress-bar"
                     style={{ width: `${scrollProgress}%` }}
