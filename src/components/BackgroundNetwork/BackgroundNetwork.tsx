@@ -77,16 +77,19 @@ export function BackgroundNetwork() {
 
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             // Determine theme colors dynamically from CSS variables or attributes
-            const isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+            const isLightMode =
+                document.documentElement.getAttribute("data-theme") === "light";
             // Cyan/Blue theme mapping:
-            const particleColor = isLightMode ? 'rgba(79, 70, 229, 0.45)' : 'rgba(0, 229, 229, 0.4)';
-            const lineColorRGB = isLightMode ? '79, 70, 229' : '0, 229, 229';
+            const particleColor = isLightMode
+                ? "rgba(79, 70, 229, 0.45)"
+                : "rgba(0, 229, 229, 0.4)";
+            const lineColorRGB = isLightMode ? "79, 70, 229" : "0, 229, 229";
 
             particles.forEach((p) => {
                 p.update(canvas.width, canvas.height);
-                
+
                 // Mouse interaction - slight repel to create a magnetic feel
                 const dx = p.x - mouseX;
                 const dy = p.y - mouseY;
