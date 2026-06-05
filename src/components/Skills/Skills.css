@@ -1,0 +1,14 @@
+/* Remove the outer container panel styling to let subcards flow on the background network */
+#skills .panel {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    padding: 0 !important; /* Aligns subcards with the section heading */
+    overflow: visible !important; /* Prevents cards from getting cut off at the top when hovering/translating */
+}
+
+#skills .panel::after {
+    display: none !important;
+}
