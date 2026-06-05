@@ -200,7 +200,7 @@
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
     gap: 1.2rem;
 }
 
@@ -218,33 +218,10 @@
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
-    will-change: transform;
-    /* overflow: hidden; Removed so 3D effect works fully */
     display: flex;
     flex-direction: column;
     gap: 0.55rem;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.35s ease, box-shadow 0.35s ease;
-    transform-style: preserve-3d;
-}
-
-.project-card-glare {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(
-        circle at var(--glare-x, 50%) var(--glare-y, 50%),
-        rgba(255, 255, 255, 0.15),
-        transparent 60%
-    );
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-    mix-blend-mode: overlay;
-}
-
-.project-card-glare.active {
-    opacity: 1;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* --- Project Index Number --- */
@@ -305,13 +282,11 @@
 }
 
 .project-card:hover {
-    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    border-color: var(--color-accent-secondary);
     box-shadow: 
-        0 0 0 1px var(--color-accent), 
-        0 20px 40px rgba(0, 0, 0, 0.45), 
-        0 0 25px var(--color-accent-glow);
-    /* Exclude transform from the hover state transition to prevent conflicts with high-frequency JS cursor coordinate updates */
-    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        0 10px 30px rgba(0, 0, 0, 0.35), 
+        0 0 20px var(--color-accent-glow-2);
 }
 
 .project-card h3 {
@@ -376,15 +351,15 @@
 
 /* --- Live Demo Button — Gradient CTA --- */
 .live-link {
-    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary)) !important;
+    background: linear-gradient(135deg, #10B981, #059669) !important;
     color: #fff !important;
     border: none !important;
-    box-shadow: 0 2px 8px var(--color-accent-glow);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
     font-weight: 700;
 }
 
 .live-link:hover {
-    box-shadow: 0 4px 16px var(--color-accent-glow), 0 0 12px var(--color-accent-glow-2) !important;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35), 0 0 12px rgba(16, 185, 129, 0.2) !important;
     transform: translateY(-2px);
     filter: brightness(1.1);
 }
@@ -396,9 +371,56 @@
 
 /* --- Light Mode Overrides --- */
 [data-theme="light"] .live-link {
-    background: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent-tertiary)) !important;
+    background: linear-gradient(135deg, #10B981, #047857) !important;
 }
 
 [data-theme="light"] .project-index {
     opacity: 0.2;
+}
+
+/* Remove the outer container panel styling to let project cards flow on the background network */
+#projects .panel {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    padding: 0 !important; /* Aligns project cards with the section heading */
+    overflow: visible !important; /* Prevents 3D tilt hover effects from getting cut off */
+}
+
+#projects .panel::after {
+    display: none !important;
+}
+
+/* Align project cards glass style to match skill groups (more transparent & higher blur) */
+#projects .project-card {
+    background: rgba(255, 255, 255, 0.015) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid var(--color-border) !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease !important;
+}
+
+#projects .project-card:hover {
+    background: rgba(255, 255, 255, 0.025) !important;
+    border-color: var(--color-accent-secondary) !important;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.35), 
+        0 0 20px var(--color-accent-glow-2) !important;
+    transform: translateY(-5px) !important;
+}
+
+[data-theme="light"] #projects .project-card {
+    background: rgba(0, 0, 0, 0.01) !important;
+    border: 1px solid var(--color-border) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+[data-theme="light"] #projects .project-card:hover {
+    background: rgba(0, 0, 0, 0.02) !important;
+    border-color: #6D28D9 !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05), 0 0 15px rgba(109, 40, 217, 0.15) !important;
+    transform: translateY(-5px) !important;
 }

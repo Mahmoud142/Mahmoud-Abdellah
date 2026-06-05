@@ -1,4 +1,3 @@
-import { useState, useRef, MouseEvent, useCallback } from "react";
 import { FaCircleCheck, FaCodeBranch, FaArrowUpRightFromSquare } from "react-icons/fa6";
 import type { IconType } from "react-icons";
 
@@ -19,57 +18,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, index, getSkillIcon, getSkillColor }: ProjectCardProps) {
-    const cardRef = useRef<HTMLDivElement>(null);
-    const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});
-    const [isHovered, setIsHovered] = useState(false);
-
-    const handleMouseMove = useCallback((e: MouseEvent<HTMLElement>) => {
-        if (!cardRef.current) return;
-        
-        const rect = cardRef.current.getBoundingClientRect();
-        
-        // Calculate mouse position relative to card
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        // Calculate rotation (max 10 degrees)
-        const rotateX = ((y - centerY) / centerY) * -10;
-        const rotateY = ((x - centerX) / centerX) * 10;
-        
-        // Calculate glare position
-        const glareX = (x / rect.width) * 100;
-        const glareY = (y / rect.height) * 100;
-
-        setIsHovered(true);
-        setTiltStyle({
-            transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`,
-            "--glare-x": `${glareX}%`,
-            "--glare-y": `${glareY}%`,
-        } as React.CSSProperties);
-    }, []);
-
-    const handleMouseLeave = useCallback(() => {
-        setIsHovered(false);
-        setTiltStyle({
-            transform: `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`,
-            "--glare-x": "50%",
-            "--glare-y": "50%",
-        } as React.CSSProperties);
-    }, []);
-
     return (
-        <article 
-            className="project-card reveal"
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={tiltStyle}
-        >
-            <div className={`project-card-glare ${isHovered ? 'active' : ''}`} aria-hidden="true" />
-            
+        <article className="project-card reveal">
             {/* Project number */}
             <span className="project-index">{String(index).padStart(2, '0')}</span>
 
