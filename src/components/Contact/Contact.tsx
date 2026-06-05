@@ -38,7 +38,9 @@ export function Contact({ onResumeClick }: ContactProps) {
                             <span className="contact-icon">
                                 {getContactIcon(link.label)}
                             </span>
-                            <span>{link.label}</span>
+                            <div className="contact-details">
+                                <h4 className="contact-label">{link.label}</h4>
+                            </div>
                         </a>
                     ))}
                 </div>
