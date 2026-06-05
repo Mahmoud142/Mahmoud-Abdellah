@@ -17,7 +17,7 @@ export const portfolioData: PortfolioData = {
             institution: "Bachelor of Computer Science and Informatics",
             location: "Ismailia, Egypt",
             degree: "Suez Canal University",
-            period: "Sep 2022 – Jun 2026",
+            period: "Sep 2022 – Jul 2026",
             details: "",
         },
     ],
@@ -285,6 +285,7 @@ export const portfolioData: PortfolioData = {
             href: "https://www.instagram.com/mahmoud_abdellah_",
         },
         { label: "WhatsApp", href: "https://wa.me/201145325772" },
+        { label: "Telegram", href: "https://t.me/+201145325772" },
         { label: "X / Twitter", href: "https://x.com/Abo_3bdellah" },
     ],
     languages: [
